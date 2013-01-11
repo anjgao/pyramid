@@ -31,6 +31,11 @@
 		193F079C169E8ED0005D60DD /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 193F079B169E8ED0005D60DD /* SystemConfiguration.framework */; };
 		193F079E169E8EDC005D60DD /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 193F079D169E8EDC005D60DD /* MobileCoreServices.framework */; };
 		193F07A0169E8EF0005D60DD /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 193F079F169E8EF0005D60DD /* libz.dylib */; };
+		193F07B3169EA3AE005D60DD /* LKNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 193F07B2169EA3AE005D60DD /* LKNavigationController.m */; };
+		193F07B7169EAAFD005D60DD /* UICentre.m in Sources */ = {isa = PBXBuildFile; fileRef = 193F07B6169EAAFD005D60DD /* UICentre.m */; };
+		193F07BB169EB4A6005D60DD /* LKTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 193F07BA169EB4A6005D60DD /* LKTabBarController.m */; };
+		19C4D09E169FAF0F000610A6 /* LKDebugTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 19C4D09D169FAF0F000610A6 /* LKDebugTool.m */; };
+		19C4D0A2169FBE5F000610A6 /* LoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19C4D0A1169FBE5F000610A6 /* LoginController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -77,6 +82,18 @@
 		193F079B169E8ED0005D60DD /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		193F079D169E8EDC005D60DD /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		193F079F169E8EF0005D60DD /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		193F07B1169EA3AE005D60DD /* LKNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKNavigationController.h; sourceTree = "<group>"; };
+		193F07B2169EA3AE005D60DD /* LKNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKNavigationController.m; sourceTree = "<group>"; };
+		193F07B5169EAAFD005D60DD /* UICentre.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UICentre.h; path = centre/UICentre.h; sourceTree = "<group>"; };
+		193F07B6169EAAFD005D60DD /* UICentre.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UICentre.m; path = centre/UICentre.m; sourceTree = "<group>"; };
+		193F07B8169EACE5005D60DD /* LKCommonImport.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LKCommonImport.h; sourceTree = "<group>"; };
+		193F07B9169EB4A6005D60DD /* LKTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKTabBarController.h; sourceTree = "<group>"; };
+		193F07BA169EB4A6005D60DD /* LKTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKTabBarController.m; sourceTree = "<group>"; };
+		195461EB169FF551007A0DEA /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		19C4D09C169FAEF5000610A6 /* LKDebugTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LKDebugTool.h; sourceTree = "<group>"; };
+		19C4D09D169FAF0F000610A6 /* LKDebugTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKDebugTool.m; sourceTree = "<group>"; };
+		19C4D0A0169FBE5F000610A6 /* LoginController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginController.h; sourceTree = "<group>"; };
+		19C4D0A1169FBE5F000610A6 /* LoginController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,6 +150,7 @@
 		193F070B169E686E005D60DD /* Pyramid */ = {
 			isa = PBXGroup;
 			children = (
+				193F07B8169EACE5005D60DD /* LKCommonImport.h */,
 				193F0714169E686E005D60DD /* LKAppDelegate.h */,
 				193F0715169E686E005D60DD /* LKAppDelegate.m */,
 				193F070C169E686E005D60DD /* Supporting Files */,
@@ -157,6 +175,10 @@
 		193F076F169E73DF005D60DD /* Pyramid_code */ = {
 			isa = PBXGroup;
 			children = (
+				19C4D0A3169FBE74000610A6 /* module */,
+				19C4D099169FAD0C000610A6 /* tool */,
+				193F07B4169EA93D005D60DD /* centre */,
+				193F07B0169EA32C005D60DD /* LKBaseClass */,
 			);
 			path = Pyramid_code;
 			sourceTree = "<group>";
@@ -218,6 +240,52 @@
 			path = Reachability;
 			sourceTree = "<group>";
 		};
+		193F07B0169EA32C005D60DD /* LKBaseClass */ = {
+			isa = PBXGroup;
+			children = (
+				193F07B1169EA3AE005D60DD /* LKNavigationController.h */,
+				193F07B2169EA3AE005D60DD /* LKNavigationController.m */,
+				193F07B9169EB4A6005D60DD /* LKTabBarController.h */,
+				193F07BA169EB4A6005D60DD /* LKTabBarController.m */,
+			);
+			path = LKBaseClass;
+			sourceTree = "<group>";
+		};
+		193F07B4169EA93D005D60DD /* centre */ = {
+			isa = PBXGroup;
+			children = (
+				193F07B5169EAAFD005D60DD /* UICentre.h */,
+				193F07B6169EAAFD005D60DD /* UICentre.m */,
+			);
+			name = centre;
+			sourceTree = "<group>";
+		};
+		19C4D099169FAD0C000610A6 /* tool */ = {
+			isa = PBXGroup;
+			children = (
+				19C4D09C169FAEF5000610A6 /* LKDebugTool.h */,
+				19C4D09D169FAF0F000610A6 /* LKDebugTool.m */,
+			);
+			path = tool;
+			sourceTree = "<group>";
+		};
+		19C4D0A3169FBE74000610A6 /* module */ = {
+			isa = PBXGroup;
+			children = (
+				19C4D0A4169FBED0000610A6 /* Login */,
+			);
+			path = module;
+			sourceTree = "<group>";
+		};
+		19C4D0A4169FBED0000610A6 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				19C4D0A0169FBE5F000610A6 /* LoginController.h */,
+				19C4D0A1169FBE5F000610A6 /* LoginController.m */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -254,6 +322,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				"zh-Hans",
 			);
 			mainGroup = 193F06F6169E686E005D60DD;
 			productRefGroup = 193F0702169E686E005D60DD /* Products */;
@@ -297,6 +366,11 @@
 				193F0796169E7586005D60DD /* Jastor.m in Sources */,
 				193F0797169E7586005D60DD /* JastorRuntimeHelper.m in Sources */,
 				193F0798169E7586005D60DD /* Reachability.m in Sources */,
+				193F07B3169EA3AE005D60DD /* LKNavigationController.m in Sources */,
+				193F07B7169EAAFD005D60DD /* UICentre.m in Sources */,
+				193F07BB169EB4A6005D60DD /* LKTabBarController.m in Sources */,
+				19C4D09E169FAF0F000610A6 /* LKDebugTool.m in Sources */,
+				19C4D0A2169FBE5F000610A6 /* LoginController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -307,6 +381,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				193F070F169E686E005D60DD /* en */,
+				195461EB169FF551007A0DEA /* zh-Hans */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -370,6 +445,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Pyramid/Pyramid-Prefix.pch";
 				INFOPLIST_FILE = "Pyramid/Pyramid-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -381,6 +457,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Pyramid/Pyramid-Prefix.pch";
 				INFOPLIST_FILE = "Pyramid/Pyramid-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -405,6 +482,7 @@
 				193F0721169E686E005D60DD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

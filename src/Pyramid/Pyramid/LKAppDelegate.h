@@ -8,8 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+@class UICentre;
+
 @interface LKAppDelegate : UIResponder <UIApplicationDelegate>
 
-@property (strong, nonatomic) UIWindow *window;
+@property (strong, nonatomic) UICentre * objUICentre;
+@property (strong, nonatomic) UIWindow * window;
 
 @end
