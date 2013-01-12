@@ -10,7 +10,6 @@
 		193F0706169E686E005D60DD /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 193F0705169E686E005D60DD /* UIKit.framework */; };
 		193F0708169E686E005D60DD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 193F0707169E686E005D60DD /* Foundation.framework */; };
 		193F070A169E686E005D60DD /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 193F0709169E686E005D60DD /* CoreGraphics.framework */; };
-		193F0710169E686E005D60DD /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 193F070E169E686E005D60DD /* InfoPlist.strings */; };
 		193F0712169E686E005D60DD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 193F0711169E686E005D60DD /* main.m */; };
 		193F0716169E686E005D60DD /* LKAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 193F0715169E686E005D60DD /* LKAppDelegate.m */; };
 		193F0718169E686E005D60DD /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 193F0717169E686E005D60DD /* Default.png */; };
@@ -34,6 +33,9 @@
 		193F07B3169EA3AE005D60DD /* LKNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 193F07B2169EA3AE005D60DD /* LKNavigationController.m */; };
 		193F07B7169EAAFD005D60DD /* UICentre.m in Sources */ = {isa = PBXBuildFile; fileRef = 193F07B6169EAAFD005D60DD /* UICentre.m */; };
 		193F07BB169EB4A6005D60DD /* LKTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 193F07BA169EB4A6005D60DD /* LKTabBarController.m */; };
+		19B48F2B16A01030009FFC09 /* LKViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19B48F2A16A01030009FFC09 /* LKViewController.m */; };
+		19B48F2D16A01698009FFC09 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 19B48F2C16A01698009FFC09 /* Localizable.strings */; };
+		19B48F2F16A01D17009FFC09 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 19B48F2E16A01D17009FFC09 /* InfoPlist.strings */; };
 		19C4D09E169FAF0F000610A6 /* LKDebugTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 19C4D09D169FAF0F000610A6 /* LKDebugTool.m */; };
 		19C4D0A2169FBE5F000610A6 /* LoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19C4D0A1169FBE5F000610A6 /* LoginController.m */; };
 /* End PBXBuildFile section */
@@ -44,7 +46,6 @@
 		193F0707169E686E005D60DD /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		193F0709169E686E005D60DD /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		193F070D169E686E005D60DD /* Pyramid-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Pyramid-Info.plist"; sourceTree = "<group>"; };
-		193F070F169E686E005D60DD /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		193F0711169E686E005D60DD /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		193F0713169E686E005D60DD /* Pyramid-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Pyramid-Prefix.pch"; sourceTree = "<group>"; };
 		193F0714169E686E005D60DD /* LKAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LKAppDelegate.h; sourceTree = "<group>"; };
@@ -89,7 +90,10 @@
 		193F07B8169EACE5005D60DD /* LKCommonImport.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LKCommonImport.h; sourceTree = "<group>"; };
 		193F07B9169EB4A6005D60DD /* LKTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKTabBarController.h; sourceTree = "<group>"; };
 		193F07BA169EB4A6005D60DD /* LKTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKTabBarController.m; sourceTree = "<group>"; };
-		195461EB169FF551007A0DEA /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		19B48F2916A01030009FFC09 /* LKViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKViewController.h; sourceTree = "<group>"; };
+		19B48F2A16A01030009FFC09 /* LKViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKViewController.m; sourceTree = "<group>"; };
+		19B48F2C16A01698009FFC09 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
+		19B48F2E16A01D17009FFC09 /* InfoPlist.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = InfoPlist.strings; sourceTree = "<group>"; };
 		19C4D09C169FAEF5000610A6 /* LKDebugTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LKDebugTool.h; sourceTree = "<group>"; };
 		19C4D09D169FAF0F000610A6 /* LKDebugTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKDebugTool.m; sourceTree = "<group>"; };
 		19C4D0A0169FBE5F000610A6 /* LoginController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginController.h; sourceTree = "<group>"; };
@@ -161,13 +165,14 @@
 		193F070C169E686E005D60DD /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				19B48F2E16A01D17009FFC09 /* InfoPlist.strings */,
 				193F070D169E686E005D60DD /* Pyramid-Info.plist */,
-				193F070E169E686E005D60DD /* InfoPlist.strings */,
 				193F0711169E686E005D60DD /* main.m */,
 				193F0713169E686E005D60DD /* Pyramid-Prefix.pch */,
 				193F0717169E686E005D60DD /* Default.png */,
 				193F0719169E686E005D60DD /* Default@2x.png */,
 				193F071B169E686E005D60DD /* Default-568h@2x.png */,
+				19B48F2C16A01698009FFC09 /* Localizable.strings */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -247,6 +252,8 @@
 				193F07B2169EA3AE005D60DD /* LKNavigationController.m */,
 				193F07B9169EB4A6005D60DD /* LKTabBarController.h */,
 				193F07BA169EB4A6005D60DD /* LKTabBarController.m */,
+				19B48F2916A01030009FFC09 /* LKViewController.h */,
+				19B48F2A16A01030009FFC09 /* LKViewController.m */,
 			);
 			path = LKBaseClass;
 			sourceTree = "<group>";
@@ -339,10 +346,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				193F0710169E686E005D60DD /* InfoPlist.strings in Resources */,
 				193F0718169E686E005D60DD /* Default.png in Resources */,
 				193F071A169E686E005D60DD /* Default@2x.png in Resources */,
 				193F071C169E686E005D60DD /* Default-568h@2x.png in Resources */,
+				19B48F2D16A01698009FFC09 /* Localizable.strings in Resources */,
+				19B48F2F16A01D17009FFC09 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -371,22 +379,11 @@
 				193F07BB169EB4A6005D60DD /* LKTabBarController.m in Sources */,
 				19C4D09E169FAF0F000610A6 /* LKDebugTool.m in Sources */,
 				19C4D0A2169FBE5F000610A6 /* LoginController.m in Sources */,
+				19B48F2B16A01030009FFC09 /* LKViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		193F070E169E686E005D60DD /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				193F070F169E686E005D60DD /* en */,
-				195461EB169FF551007A0DEA /* zh-Hans */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		193F071D169E686E005D60DD /* Debug */ = {

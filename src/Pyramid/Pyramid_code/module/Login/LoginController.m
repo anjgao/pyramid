@@ -8,8 +8,11 @@
 
 #import "LoginController.h"
 
-@interface LoginController ()
-
+@interface LoginController () <UITextFieldDelegate>
+{
+    UITextField* _nameInput;
+    UITextField* _pwInput;
+}
 @end
 
 @implementation LoginController
@@ -26,28 +29,55 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
-    UILabel* label = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, 300, 40)];
-    label.text = @"login";
-    [self.view addSubview:label];
     
-    UIButton* btn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    btn.frame = CGRectMake(10, 60, 300, 30);
-//    UIButton* btn = [[UIButton alloc] initWithFrame:CGRectMake(10, 60, 300, 30)];
-    [btn addTarget:self action:@selector(btnSelected:) forControlEvents:UIControlEventTouchUpInside];
-    [btn setTitle:@"login" forState:UIControlStateNormal];
-    [self.view addSubview:btn];
-}
+    UILabel* test = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, 300, 20)];
+    test.text = LKString(@"login");
+    [self.view addSubview:test];
 
-- (void)btnSelected:(id)btn
-{
-    [_delegate loginSuccess];
+    _nameInput = [[UITextField alloc] initWithFrame:CGRectMake(50, 30, 220, 30)];
+    _nameInput.borderStyle = UITextBorderStyleRoundedRect;
+    _nameInput.autocapitalizationType = UITextAutocapitalizationTypeNone;
+    _nameInput.keyboardType = UIKeyboardTypeEmailAddress;
+    _nameInput.autocorrectionType = UITextAutocorrectionTypeNo;
+    _nameInput.enablesReturnKeyAutomatically = YES;
+    _nameInput.returnKeyType = UIReturnKeyNext;
+    _nameInput.delegate = self;
+    [self.view addSubview:_nameInput];
+    
+    _pwInput = [[UITextField alloc] initWithFrame:CGRectMake(50, 80, 220, 30)];
+    _pwInput.secureTextEntry = YES;
+    _pwInput.borderStyle = UITextBorderStyleRoundedRect;
+    _pwInput.keyboardType = UIKeyboardTypeASCIICapable;
+    _pwInput.enablesReturnKeyAutomatically = YES;
+    _pwInput.returnKeyType = UIReturnKeyGo;
+    _pwInput.delegate = self;
+    [self.view addSubview:_pwInput];
+    
+    [_nameInput becomeFirstResponder];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - UITextFieldDelegate
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    if (textField == _nameInput) {
+        [_pwInput becomeFirstResponder];
+    }
+    else if (textField == _pwInput) {
+        [self startLogin];
+    }
+    return NO;
+}
+
+#pragma mark - inner method
+-(void)startLogin
+{
+    [_delegate loginSuccess];
 }
 
 @end

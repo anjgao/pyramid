@@ -12,6 +12,6 @@
 -(void)loginSuccess;
 @end
 
-@interface LoginController : UIViewController
+@interface LoginController : LKViewController
 @property(nonatomic,assign)   id<LoginCtlDelegate> delegate;
 @end

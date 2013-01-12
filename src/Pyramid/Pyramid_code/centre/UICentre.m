@@ -34,13 +34,13 @@
 
     // tab 1
     UIViewController* ctl1 = [[UIViewController alloc] init];
-    ctl1.view.backgroundColor = [UIColor blackColor];
+    ctl1.view.backgroundColor = [UIColor grayColor];
     ctl1.title = @"1";
     LKNavigationController* nav1 = [[LKNavigationController alloc] initWithRootViewController:ctl1];
     
     // tab 2
     UIViewController* ctl2 = [[UIViewController alloc] init];
-    ctl2.view.backgroundColor = [UIColor grayColor];
+    ctl2.view.backgroundColor = [UIColor blackColor];
     ctl2.title = @"2";
     LKNavigationController* nav2 = [[LKNavigationController alloc] initWithRootViewController:ctl2];
 
@@ -60,6 +60,7 @@
     
 //    [_tabCtl createCustomBtns];
 //    _tabCtl.tabBar.hidden = YES;
+//    self.window.rootViewController = _tabCtl;   // layout main view
 }
 
 -(void)popLoginView
@@ -72,12 +73,11 @@
 #pragma mark - LoginDelegate
 -(void)loginSuccess
 {
+    self.window.rootViewController = _tabCtl;
     [UIView transitionWithView:self.window
-            duration:0.5
-            options: UIViewAnimationOptionTransitionFlipFromLeft | UIViewAnimationOptionCurveEaseIn
-            animations:^{
-                self.window.rootViewController = _tabCtl;
-            }
+            duration:0.3
+            options: UIViewAnimationOptionTransitionCrossDissolve | UIViewAnimationOptionCurveEaseOut
+            animations:nil 
             completion:nil];
 }
 

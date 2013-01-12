@@ -19,4 +19,11 @@
 // tool
 #import "LKDebugTool.h"
 
+// common header
+#import <QuartzCore/QuartzCore.h>
+#import "LKViewController.h"
+
+// useful Macros
+#define LKString(key)      NSLocalizedString(key,nil)
+
 #endif
