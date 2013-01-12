@@ -38,6 +38,11 @@
 		19B48F2F16A01D17009FFC09 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 19B48F2E16A01D17009FFC09 /* InfoPlist.strings */; };
 		19C4D09E169FAF0F000610A6 /* LKDebugTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 19C4D09D169FAF0F000610A6 /* LKDebugTool.m */; };
 		19C4D0A2169FBE5F000610A6 /* LoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19C4D0A1169FBE5F000610A6 /* LoginController.m */; };
+		19CA4CA916A1107A00812EE8 /* LKHTTPRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 19CA4CA816A1107A00812EE8 /* LKHTTPRequest.m */; };
+		19CA4CB116A1152C00812EE8 /* ConfigCentre.m in Sources */ = {isa = PBXBuildFile; fileRef = 19CA4CB016A1152C00812EE8 /* ConfigCentre.m */; };
+		19CA4CB816A13D8800812EE8 /* handyTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 19CA4CB716A13D8800812EE8 /* handyTool.m */; };
+		19CA4CBB16A1467E00812EE8 /* LoginResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 19CA4CBA16A1467E00812EE8 /* LoginResponse.m */; };
+		19CA4CBE16A1616200812EE8 /* UserCentre.m in Sources */ = {isa = PBXBuildFile; fileRef = 19CA4CBD16A1616200812EE8 /* UserCentre.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -98,6 +103,16 @@
 		19C4D09D169FAF0F000610A6 /* LKDebugTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKDebugTool.m; sourceTree = "<group>"; };
 		19C4D0A0169FBE5F000610A6 /* LoginController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginController.h; sourceTree = "<group>"; };
 		19C4D0A1169FBE5F000610A6 /* LoginController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginController.m; sourceTree = "<group>"; };
+		19CA4CA716A1107A00812EE8 /* LKHTTPRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKHTTPRequest.h; sourceTree = "<group>"; };
+		19CA4CA816A1107A00812EE8 /* LKHTTPRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKHTTPRequest.m; sourceTree = "<group>"; };
+		19CA4CAF16A1152C00812EE8 /* ConfigCentre.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ConfigCentre.h; path = centre/ConfigCentre.h; sourceTree = "<group>"; };
+		19CA4CB016A1152C00812EE8 /* ConfigCentre.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ConfigCentre.m; path = centre/ConfigCentre.m; sourceTree = "<group>"; };
+		19CA4CB616A13D8800812EE8 /* handyTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = handyTool.h; sourceTree = "<group>"; };
+		19CA4CB716A13D8800812EE8 /* handyTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = handyTool.m; sourceTree = "<group>"; };
+		19CA4CB916A1467E00812EE8 /* LoginResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginResponse.h; sourceTree = "<group>"; };
+		19CA4CBA16A1467E00812EE8 /* LoginResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginResponse.m; sourceTree = "<group>"; };
+		19CA4CBC16A1616200812EE8 /* UserCentre.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UserCentre.h; path = centre/UserCentre.h; sourceTree = "<group>"; };
+		19CA4CBD16A1616200812EE8 /* UserCentre.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UserCentre.m; path = centre/UserCentre.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -254,6 +269,8 @@
 				193F07BA169EB4A6005D60DD /* LKTabBarController.m */,
 				19B48F2916A01030009FFC09 /* LKViewController.h */,
 				19B48F2A16A01030009FFC09 /* LKViewController.m */,
+				19CA4CA716A1107A00812EE8 /* LKHTTPRequest.h */,
+				19CA4CA816A1107A00812EE8 /* LKHTTPRequest.m */,
 			);
 			path = LKBaseClass;
 			sourceTree = "<group>";
@@ -263,6 +280,10 @@
 			children = (
 				193F07B5169EAAFD005D60DD /* UICentre.h */,
 				193F07B6169EAAFD005D60DD /* UICentre.m */,
+				19CA4CAF16A1152C00812EE8 /* ConfigCentre.h */,
+				19CA4CB016A1152C00812EE8 /* ConfigCentre.m */,
+				19CA4CBC16A1616200812EE8 /* UserCentre.h */,
+				19CA4CBD16A1616200812EE8 /* UserCentre.m */,
 			);
 			name = centre;
 			sourceTree = "<group>";
@@ -272,6 +293,8 @@
 			children = (
 				19C4D09C169FAEF5000610A6 /* LKDebugTool.h */,
 				19C4D09D169FAF0F000610A6 /* LKDebugTool.m */,
+				19CA4CB616A13D8800812EE8 /* handyTool.h */,
+				19CA4CB716A13D8800812EE8 /* handyTool.m */,
 			);
 			path = tool;
 			sourceTree = "<group>";
@@ -289,6 +312,8 @@
 			children = (
 				19C4D0A0169FBE5F000610A6 /* LoginController.h */,
 				19C4D0A1169FBE5F000610A6 /* LoginController.m */,
+				19CA4CB916A1467E00812EE8 /* LoginResponse.h */,
+				19CA4CBA16A1467E00812EE8 /* LoginResponse.m */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -380,6 +405,11 @@
 				19C4D09E169FAF0F000610A6 /* LKDebugTool.m in Sources */,
 				19C4D0A2169FBE5F000610A6 /* LoginController.m in Sources */,
 				19B48F2B16A01030009FFC09 /* LKViewController.m in Sources */,
+				19CA4CA916A1107A00812EE8 /* LKHTTPRequest.m in Sources */,
+				19CA4CB116A1152C00812EE8 /* ConfigCentre.m in Sources */,
+				19CA4CB816A13D8800812EE8 /* handyTool.m in Sources */,
+				19CA4CBB16A1467E00812EE8 /* LoginResponse.m in Sources */,
+				19CA4CBE16A1616200812EE8 /* UserCentre.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

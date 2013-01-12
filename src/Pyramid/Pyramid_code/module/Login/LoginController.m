@@ -7,6 +7,8 @@
 //
 
 #import "LoginController.h"
+#import "ASIFormDataRequest.h"
+#import "LoginResponse.h"
 
 @interface LoginController () <UITextFieldDelegate>
 {
@@ -31,7 +33,7 @@
     [super viewDidLoad];
     
     UILabel* test = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, 300, 20)];
-    test.text = LKString(@"login");
+    test.text = LKString(login);
     [self.view addSubview:test];
 
     _nameInput = [[UITextField alloc] initWithFrame:CGRectMake(50, 30, 220, 30)];
@@ -77,7 +79,34 @@
 #pragma mark - inner method
 -(void)startLogin
 {
-    [_delegate loginSuccess];
+    ASIFormDataRequest* loginRequest = [ASIFormDataRequest requestWithURL:linkkkUrl(@"/io/login/")];
+    loginRequest.delegate = self;
+    loginRequest.shouldRedirect = NO;
+    
+    [loginRequest setPostValue:_nameInput.text forKey:@"login"];
+    [loginRequest setPostValue:_pwInput.text forKey:@"password"];
+    
+    [loginRequest startAsynchronous];
 }
+
+- (void)requestFinished:(ASIHTTPRequest *)request
+{
+    json2obj(request.responseData,LoginResponse)
+    
+    if ([repObj.status isEqualToString:@"okay"]) {
+        LK_USER.userID = repObj.data.user_id;
+        [_delegate loginSuccess];
+    }
+}
+
+- (void)requestFailed:(ASIHTTPRequest *)request
+{
+    NSString *responseString = [request responseString];
+    LKLog(responseString);
+    
+    NSError *error = [request error];
+    LKLog([error localizedDescription]);
+}
+
 
 @end

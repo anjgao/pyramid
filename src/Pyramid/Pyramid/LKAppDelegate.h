@@ -9,10 +9,15 @@
 #import <UIKit/UIKit.h>
 
 @class UICentre;
+@class ConfigCentre;
+@class UserCentre;
 
 @interface LKAppDelegate : UIResponder <UIApplicationDelegate>
 
-@property (strong, nonatomic) UICentre * objUICentre;
-@property (strong, nonatomic) UIWindow * window;
+@property (retain, nonatomic) UICentre * objUICentre;
+@property (retain, nonatomic) ConfigCentre * objConfigCentre;
+@property (retain, nonatomic) UserCentre * objUserCentre;
+
+@property (retain, nonatomic) UIWindow * window;
 
 @end

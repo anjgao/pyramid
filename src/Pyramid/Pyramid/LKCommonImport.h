@@ -12,18 +12,20 @@
 // appDelete & centres
 #import "LKAppDelegate.h"
 #import "UICentre.h"
+#import "ConfigCentre.h"
+#import "UserCentre.h"
 
 #define LK_APP      ((LKAppDelegate*)[UIApplication sharedApplication].delegate)
 #define LK_UI       LK_APP.objUICentre
+#define LK_CONFIG   LK_APP.objConfigCentre
+#define LK_USER     LK_APP.objUserCentre
 
 // tool
 #import "LKDebugTool.h"
+#import "handyTool.h"
 
 // common header
 #import <QuartzCore/QuartzCore.h>
 #import "LKViewController.h"
-
-// useful Macros
-#define LKString(key)      NSLocalizedString(key,nil)
 
 #endif
