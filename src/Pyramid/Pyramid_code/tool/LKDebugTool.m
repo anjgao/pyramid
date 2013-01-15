@@ -36,4 +36,19 @@ void printViewTree(UIView* rootView)
     LKLog(@"===========  view tree end  ============");
 }
 
+void printCookies(void)
+{
+    NSDateFormatter* df = [[NSDateFormatter alloc] init];
+    [df setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+    
+    LKLog(@"======= cookies ======");
+    NSHTTPCookieStorage* cookieStorage = [NSHTTPCookieStorage sharedHTTPCookieStorage];
+    NSArray* cookies = cookieStorage.cookies;
+    for (NSHTTPCookie * cookie in cookies ) {
+        NSString* strDate = [df stringFromDate:cookie.expiresDate];
+        LKLog(@"%@  %@  %@  %@  %@", cookie.name, cookie.value, strDate,cookie.domain, cookie.path);
+    }
+    LKLog(@"=====================");
+}
+
 #endif

@@ -14,34 +14,26 @@
 {
     UITextField* _nameInput;
     UITextField* _pwInput;
+    UILabel*     _errInfo;
 }
 @end
 
 @implementation LoginController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
-    UILabel* test = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, 300, 20)];
-    test.text = LKString(login);
-    [self.view addSubview:test];
+//    UILabel* test = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, 300, 20)];
+//    test.text = LKString(login);
+//    [self.view addSubview:test];
 
     _nameInput = [[UITextField alloc] initWithFrame:CGRectMake(50, 30, 220, 30)];
     _nameInput.borderStyle = UITextBorderStyleRoundedRect;
     _nameInput.autocapitalizationType = UITextAutocapitalizationTypeNone;
     _nameInput.keyboardType = UIKeyboardTypeEmailAddress;
     _nameInput.autocorrectionType = UITextAutocorrectionTypeNo;
-    _nameInput.enablesReturnKeyAutomatically = YES;
+//    _nameInput.enablesReturnKeyAutomatically = YES;
     _nameInput.returnKeyType = UIReturnKeyNext;
     _nameInput.delegate = self;
     [self.view addSubview:_nameInput];
@@ -50,10 +42,14 @@
     _pwInput.secureTextEntry = YES;
     _pwInput.borderStyle = UITextBorderStyleRoundedRect;
     _pwInput.keyboardType = UIKeyboardTypeASCIICapable;
-    _pwInput.enablesReturnKeyAutomatically = YES;
+//    _pwInput.enablesReturnKeyAutomatically = YES;
     _pwInput.returnKeyType = UIReturnKeyGo;
     _pwInput.delegate = self;
     [self.view addSubview:_pwInput];
+    
+    _errInfo = [[UILabel alloc] initWithFrame:CGRectMake(50, 120, 220, 60)];
+    _errInfo.numberOfLines = 0;
+    [self.view addSubview:_errInfo];
     
     [_nameInput becomeFirstResponder];
 }
@@ -91,11 +87,24 @@
 
 - (void)requestFinished:(ASIHTTPRequest *)request
 {
+    LKLog(request.responseString);
+    
     json2obj(request.responseData,LoginResponse)
     
     if ([repObj.status isEqualToString:@"okay"]) {
         LK_USER.userID = repObj.data.user_id;
         [_delegate loginSuccess];
+    }
+    else if ([repObj.status isEqualToString:@"oops"]) {
+        if (repObj.invalidations.__all__[0]) {
+            _errInfo.text = repObj.invalidations.__all__[0];
+        }
+        else if (repObj.invalidations.login[0]) {
+            _errInfo.text = repObj.invalidations.login[0];
+        }
+        else if (repObj.invalidations.password[0]) {
+            _errInfo.text = repObj.invalidations.password[0];
+        }
     }
 }
 

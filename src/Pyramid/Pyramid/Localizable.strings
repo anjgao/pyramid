@@ -6,4 +6,13 @@
   Copyright (c) 2013年 linkkk.com. All rights reserved.
 */
 
+
+// login
 "login" = "登录";
+
+// personal profile
+"myProfile" = "我的资料";
+
+// setting
+"setting" = "设置";
+"logout" = "退出登录";

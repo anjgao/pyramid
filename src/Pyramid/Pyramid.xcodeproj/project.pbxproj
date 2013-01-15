@@ -43,6 +43,8 @@
 		19CA4CB816A13D8800812EE8 /* handyTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 19CA4CB716A13D8800812EE8 /* handyTool.m */; };
 		19CA4CBB16A1467E00812EE8 /* LoginResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 19CA4CBA16A1467E00812EE8 /* LoginResponse.m */; };
 		19CA4CBE16A1616200812EE8 /* UserCentre.m in Sources */ = {isa = PBXBuildFile; fileRef = 19CA4CBD16A1616200812EE8 /* UserCentre.m */; };
+		19E32FA316A3E15F00B5A5F2 /* PersonalController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19E32FA216A3E15F00B5A5F2 /* PersonalController.m */; };
+		19E32FAB16A3F54400B5A5F2 /* SettingController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19E32FAA16A3F54400B5A5F2 /* SettingController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -113,6 +115,10 @@
 		19CA4CBA16A1467E00812EE8 /* LoginResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginResponse.m; sourceTree = "<group>"; };
 		19CA4CBC16A1616200812EE8 /* UserCentre.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UserCentre.h; path = centre/UserCentre.h; sourceTree = "<group>"; };
 		19CA4CBD16A1616200812EE8 /* UserCentre.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UserCentre.m; path = centre/UserCentre.m; sourceTree = "<group>"; };
+		19E32FA116A3E15F00B5A5F2 /* PersonalController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonalController.h; sourceTree = "<group>"; };
+		19E32FA216A3E15F00B5A5F2 /* PersonalController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonalController.m; sourceTree = "<group>"; };
+		19E32FA916A3F54400B5A5F2 /* SettingController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingController.h; sourceTree = "<group>"; };
+		19E32FAA16A3F54400B5A5F2 /* SettingController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -302,6 +308,8 @@
 		19C4D0A3169FBE74000610A6 /* module */ = {
 			isa = PBXGroup;
 			children = (
+				19E32FA816A3F3F300B5A5F2 /* Setting */,
+				19E32F9F16A3E0E700B5A5F2 /* PersonalProfile */,
 				19C4D0A4169FBED0000610A6 /* Login */,
 			);
 			path = module;
@@ -316,6 +324,24 @@
 				19CA4CBA16A1467E00812EE8 /* LoginResponse.m */,
 			);
 			path = Login;
+			sourceTree = "<group>";
+		};
+		19E32F9F16A3E0E700B5A5F2 /* PersonalProfile */ = {
+			isa = PBXGroup;
+			children = (
+				19E32FA116A3E15F00B5A5F2 /* PersonalController.h */,
+				19E32FA216A3E15F00B5A5F2 /* PersonalController.m */,
+			);
+			path = PersonalProfile;
+			sourceTree = "<group>";
+		};
+		19E32FA816A3F3F300B5A5F2 /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				19E32FA916A3F54400B5A5F2 /* SettingController.h */,
+				19E32FAA16A3F54400B5A5F2 /* SettingController.m */,
+			);
+			path = Setting;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -410,6 +436,8 @@
 				19CA4CB816A13D8800812EE8 /* handyTool.m in Sources */,
 				19CA4CBB16A1467E00812EE8 /* LoginResponse.m in Sources */,
 				19CA4CBE16A1616200812EE8 /* UserCentre.m in Sources */,
+				19E32FA316A3E15F00B5A5F2 /* PersonalController.m in Sources */,
+				19E32FAB16A3F54400B5A5F2 /* SettingController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -23,4 +23,12 @@ void printViewTree(UIView*);
 #define printViewTree(view)
 #endif
 
+// print sharedHTTPCookieStorage cookies
+#ifdef DEBUG
+void printCookies(void);
+#else
+#define printCookies
+#endif
+
+
 #endif

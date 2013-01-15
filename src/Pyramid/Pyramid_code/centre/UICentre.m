@@ -9,8 +9,13 @@
 #import "LKTabBarController.h"
 #import "LKNavigationController.h"
 #import "LoginController.h"
+#import "PersonalController.h"
+#import "SettingController.h"
 
 @interface UICentre() <LoginCtlDelegate>
+{
+    PersonalController*    _personalController;
+}
 
 @end
 
@@ -33,10 +38,8 @@
     _tabCtl = [[LKTabBarController alloc] init];
 
     // tab 1
-    UIViewController* ctl1 = [[UIViewController alloc] init];
-    ctl1.view.backgroundColor = [UIColor grayColor];
-    ctl1.title = @"1";
-    LKNavigationController* nav1 = [[LKNavigationController alloc] initWithRootViewController:ctl1];
+    _personalController = [[PersonalController alloc] init];
+    LKNavigationController* nav1 = [[LKNavigationController alloc] initWithRootViewController:_personalController];
     
     // tab 2
     UIViewController* ctl2 = [[UIViewController alloc] init];
@@ -51,10 +54,8 @@
     LKNavigationController* nav3 = [[LKNavigationController alloc] initWithRootViewController:ctl3];
 
     // tab 4
-    UIViewController* ctl4 = [[UIViewController alloc] init];
-    ctl4.view.backgroundColor = [UIColor whiteColor];
-    ctl4.title = @"4";
-    LKNavigationController* nav4 = [[LKNavigationController alloc] initWithRootViewController:ctl4];
+    SettingController* sc = [[SettingController alloc] init];
+    LKNavigationController* nav4 = [[LKNavigationController alloc] initWithRootViewController:sc];
 
     _tabCtl.viewControllers = @[nav1,nav2,nav3,nav4];
     
@@ -79,6 +80,8 @@
             options: UIViewAnimationOptionTransitionCrossDissolve | UIViewAnimationOptionCurveEaseOut
             animations:nil 
             completion:nil];
+    
+    [_personalController showProfileWithID:LK_USER.userID];
 }
 
 @end
