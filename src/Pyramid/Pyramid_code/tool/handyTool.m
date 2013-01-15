@@ -10,7 +10,7 @@
 
 NSURL* linkkkUrl(NSString* urlPath)
 {
-    return [NSURL URLWithString:[@"http://0.0.0.0:8000" stringByAppendingString:urlPath]];
+//    return [NSURL URLWithString:[@"http://0.0.0.0:8000" stringByAppendingString:urlPath]];
 
-//    return [NSURL URLWithString:[@"http://www.linkkk.com" stringByAppendingString:urlPath]];
+    return [NSURL URLWithString:[@"http://www.linkkk.com" stringByAppendingString:urlPath]];
 }

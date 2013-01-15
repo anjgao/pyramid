@@ -51,9 +51,9 @@
 #pragma mark - inner method
 - (void) initCentres
 {
-    _objUICentre = [[UICentre alloc] initWithWindow:self.window];
     _objConfigCentre = [[ConfigCentre alloc] init];
     _objUserCentre = [[UserCentre alloc] init];
+    _objUICentre = [[UICentre alloc] initWithWindow:self.window];
 }
 
 @end

@@ -36,6 +36,43 @@
 		19B48F2B16A01030009FFC09 /* LKViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19B48F2A16A01030009FFC09 /* LKViewController.m */; };
 		19B48F2D16A01698009FFC09 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 19B48F2C16A01698009FFC09 /* Localizable.strings */; };
 		19B48F2F16A01D17009FFC09 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 19B48F2E16A01D17009FFC09 /* InfoPlist.strings */; };
+		19B6929C16A4F0DB004B0374 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 193F0711169E686E005D60DD /* main.m */; };
+		19B6929D16A4F0DB004B0374 /* LKAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 193F0715169E686E005D60DD /* LKAppDelegate.m */; };
+		19B6929E16A4F0DB004B0374 /* ASIAuthenticationDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = 193F0773169E7586005D60DD /* ASIAuthenticationDialog.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		19B6929F16A4F0DB004B0374 /* ASIDataCompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = 193F0776169E7586005D60DD /* ASIDataCompressor.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		19B692A016A4F0DB004B0374 /* ASIDataDecompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = 193F0778169E7586005D60DD /* ASIDataDecompressor.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		19B692A116A4F0DB004B0374 /* ASIDownloadCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 193F077A169E7586005D60DD /* ASIDownloadCache.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		19B692A216A4F0DB004B0374 /* ASIFormDataRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 193F077C169E7586005D60DD /* ASIFormDataRequest.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		19B692A316A4F0DB004B0374 /* ASIHTTPRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 193F077E169E7586005D60DD /* ASIHTTPRequest.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		19B692A416A4F0DB004B0374 /* ASIInputStream.m in Sources */ = {isa = PBXBuildFile; fileRef = 193F0782169E7586005D60DD /* ASIInputStream.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		19B692A516A4F0DB004B0374 /* ASINetworkQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 193F0784169E7586005D60DD /* ASINetworkQueue.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		19B692A616A4F0DB004B0374 /* Jastor.m in Sources */ = {isa = PBXBuildFile; fileRef = 193F0788169E7586005D60DD /* Jastor.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		19B692A716A4F0DB004B0374 /* JastorRuntimeHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 193F078A169E7586005D60DD /* JastorRuntimeHelper.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		19B692A816A4F0DB004B0374 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 193F078D169E7586005D60DD /* Reachability.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		19B692A916A4F0DB004B0374 /* LKNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 193F07B2169EA3AE005D60DD /* LKNavigationController.m */; };
+		19B692AA16A4F0DB004B0374 /* UICentre.m in Sources */ = {isa = PBXBuildFile; fileRef = 193F07B6169EAAFD005D60DD /* UICentre.m */; };
+		19B692AB16A4F0DB004B0374 /* LKTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 193F07BA169EB4A6005D60DD /* LKTabBarController.m */; };
+		19B692AC16A4F0DB004B0374 /* LKDebugTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 19C4D09D169FAF0F000610A6 /* LKDebugTool.m */; };
+		19B692AD16A4F0DB004B0374 /* LoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19C4D0A1169FBE5F000610A6 /* LoginController.m */; };
+		19B692AE16A4F0DB004B0374 /* LKViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19B48F2A16A01030009FFC09 /* LKViewController.m */; };
+		19B692AF16A4F0DB004B0374 /* LKHTTPRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 19CA4CA816A1107A00812EE8 /* LKHTTPRequest.m */; };
+		19B692B016A4F0DB004B0374 /* ConfigCentre.m in Sources */ = {isa = PBXBuildFile; fileRef = 19CA4CB016A1152C00812EE8 /* ConfigCentre.m */; };
+		19B692B116A4F0DB004B0374 /* handyTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 19CA4CB716A13D8800812EE8 /* handyTool.m */; };
+		19B692B216A4F0DB004B0374 /* LoginResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 19CA4CBA16A1467E00812EE8 /* LoginResponse.m */; };
+		19B692B316A4F0DB004B0374 /* UserCentre.m in Sources */ = {isa = PBXBuildFile; fileRef = 19CA4CBD16A1616200812EE8 /* UserCentre.m */; };
+		19B692B416A4F0DB004B0374 /* PersonalController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19E32FA216A3E15F00B5A5F2 /* PersonalController.m */; };
+		19B692B516A4F0DB004B0374 /* SettingController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19E32FAA16A3F54400B5A5F2 /* SettingController.m */; };
+		19B692B716A4F0DB004B0374 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 193F079F169E8EF0005D60DD /* libz.dylib */; };
+		19B692B816A4F0DB004B0374 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 193F079D169E8EDC005D60DD /* MobileCoreServices.framework */; };
+		19B692B916A4F0DB004B0374 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 193F079B169E8ED0005D60DD /* SystemConfiguration.framework */; };
+		19B692BA16A4F0DB004B0374 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 193F0799169E8E61005D60DD /* CFNetwork.framework */; };
+		19B692BB16A4F0DB004B0374 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 193F0705169E686E005D60DD /* UIKit.framework */; };
+		19B692BC16A4F0DB004B0374 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 193F0707169E686E005D60DD /* Foundation.framework */; };
+		19B692BD16A4F0DB004B0374 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 193F0709169E686E005D60DD /* CoreGraphics.framework */; };
+		19B692BF16A4F0DB004B0374 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 193F0717169E686E005D60DD /* Default.png */; };
+		19B692C016A4F0DB004B0374 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 193F0719169E686E005D60DD /* Default@2x.png */; };
+		19B692C116A4F0DB004B0374 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 193F071B169E686E005D60DD /* Default-568h@2x.png */; };
+		19B692C216A4F0DB004B0374 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 19B48F2C16A01698009FFC09 /* Localizable.strings */; };
 		19C4D09E169FAF0F000610A6 /* LKDebugTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 19C4D09D169FAF0F000610A6 /* LKDebugTool.m */; };
 		19C4D0A2169FBE5F000610A6 /* LoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19C4D0A1169FBE5F000610A6 /* LoginController.m */; };
 		19CA4CA916A1107A00812EE8 /* LKHTTPRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 19CA4CA816A1107A00812EE8 /* LKHTTPRequest.m */; };
@@ -45,7 +82,29 @@
 		19CA4CBE16A1616200812EE8 /* UserCentre.m in Sources */ = {isa = PBXBuildFile; fileRef = 19CA4CBD16A1616200812EE8 /* UserCentre.m */; };
 		19E32FA316A3E15F00B5A5F2 /* PersonalController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19E32FA216A3E15F00B5A5F2 /* PersonalController.m */; };
 		19E32FAB16A3F54400B5A5F2 /* SettingController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19E32FAA16A3F54400B5A5F2 /* SettingController.m */; };
+		19FE6ABC16A4F5C7003CEE1C /* libPonyDebugger.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19B6929516A4F097004B0374 /* libPonyDebugger.a */; };
+		19FE6ABE16A4F5C8003CEE1C /* libSocketRocket.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19FE6ABD16A4F5C7003CEE1C /* libSocketRocket.a */; };
+		19FE6AC016A4F6B3003CEE1C /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 19FE6ABF16A4F6B3003CEE1C /* libicucore.dylib */; };
+		19FE6AC316A4F733003CEE1C /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19FE6AC216A4F733003CEE1C /* CoreData.framework */; };
+		19FE6AC516A4F74C003CEE1C /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19FE6AC416A4F74C003CEE1C /* Security.framework */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		19B6929416A4F097004B0374 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 19B6928816A4F096004B0374 /* PonyDebugger.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = F683ADAC14FC1B4C008EBBA7;
+			remoteInfo = PonyDebugger;
+		};
+		19FE6ABA16A4F569003CEE1C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 19B6928816A4F096004B0374 /* PonyDebugger.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = F683ADAB14FC1B4C008EBBA7;
+			remoteInfo = PonyDebugger;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		193F0701169E686E005D60DD /* Pyramid.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pyramid.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -101,6 +160,9 @@
 		19B48F2A16A01030009FFC09 /* LKViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKViewController.m; sourceTree = "<group>"; };
 		19B48F2C16A01698009FFC09 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		19B48F2E16A01D17009FFC09 /* InfoPlist.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = InfoPlist.strings; sourceTree = "<group>"; };
+		19B6928816A4F096004B0374 /* PonyDebugger.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = PonyDebugger.xcodeproj; path = PonyDebugger/ObjC/PonyDebugger.xcodeproj; sourceTree = "<group>"; };
+		19B692C716A4F0DB004B0374 /* Pyramid_PonyD.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pyramid_PonyD.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		19B692C916A4F0DC004B0374 /* Pyramid_PonyD-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Pyramid_PonyD-Info.plist"; path = "/Users/andregao/work/App/pyramid/src/Pyramid/Pyramid_PonyD-Info.plist"; sourceTree = "<absolute>"; };
 		19C4D09C169FAEF5000610A6 /* LKDebugTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LKDebugTool.h; sourceTree = "<group>"; };
 		19C4D09D169FAF0F000610A6 /* LKDebugTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKDebugTool.m; sourceTree = "<group>"; };
 		19C4D0A0169FBE5F000610A6 /* LoginController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginController.h; sourceTree = "<group>"; };
@@ -119,6 +181,10 @@
 		19E32FA216A3E15F00B5A5F2 /* PersonalController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonalController.m; sourceTree = "<group>"; };
 		19E32FA916A3F54400B5A5F2 /* SettingController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingController.h; sourceTree = "<group>"; };
 		19E32FAA16A3F54400B5A5F2 /* SettingController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingController.m; sourceTree = "<group>"; };
+		19FE6ABD16A4F5C7003CEE1C /* libSocketRocket.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSocketRocket.a; path = "Third-Party/PonyDebugger/ObjC/SocketRocket/build/Release-iphoneos/libSocketRocket.a"; sourceTree = "<group>"; };
+		19FE6ABF16A4F6B3003CEE1C /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
+		19FE6AC216A4F733003CEE1C /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		19FE6AC416A4F74C003CEE1C /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,12 +202,32 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		19B692B616A4F0DB004B0374 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				19FE6AC516A4F74C003CEE1C /* Security.framework in Frameworks */,
+				19FE6AC316A4F733003CEE1C /* CoreData.framework in Frameworks */,
+				19FE6AC016A4F6B3003CEE1C /* libicucore.dylib in Frameworks */,
+				19FE6ABE16A4F5C8003CEE1C /* libSocketRocket.a in Frameworks */,
+				19FE6ABC16A4F5C7003CEE1C /* libPonyDebugger.a in Frameworks */,
+				19B692B716A4F0DB004B0374 /* libz.dylib in Frameworks */,
+				19B692B816A4F0DB004B0374 /* MobileCoreServices.framework in Frameworks */,
+				19B692B916A4F0DB004B0374 /* SystemConfiguration.framework in Frameworks */,
+				19B692BA16A4F0DB004B0374 /* CFNetwork.framework in Frameworks */,
+				19B692BB16A4F0DB004B0374 /* UIKit.framework in Frameworks */,
+				19B692BC16A4F0DB004B0374 /* Foundation.framework in Frameworks */,
+				19B692BD16A4F0DB004B0374 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		193F06F6169E686E005D60DD = {
 			isa = PBXGroup;
 			children = (
+				19FE6AC116A4F6C3003CEE1C /* Pyramid_PonyD */,
 				193F0770169E74EE005D60DD /* Third-Party */,
 				193F076F169E73DF005D60DD /* Pyramid_code */,
 				193F070B169E686E005D60DD /* Pyramid */,
@@ -154,6 +240,7 @@
 			isa = PBXGroup;
 			children = (
 				193F0701169E686E005D60DD /* Pyramid.app */,
+				19B692C716A4F0DB004B0374 /* Pyramid_PonyD.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -212,6 +299,7 @@
 		193F0770169E74EE005D60DD /* Third-Party */ = {
 			isa = PBXGroup;
 			children = (
+				19B6928616A4F059004B0374 /* PonyDebugger */,
 				193F0771169E7586005D60DD /* ASIHTTPRequest */,
 				193F0786169E7586005D60DD /* Jastor */,
 				193F078B169E7586005D60DD /* Reachability */,
@@ -294,6 +382,22 @@
 			name = centre;
 			sourceTree = "<group>";
 		};
+		19B6928616A4F059004B0374 /* PonyDebugger */ = {
+			isa = PBXGroup;
+			children = (
+				19B6928816A4F096004B0374 /* PonyDebugger.xcodeproj */,
+			);
+			name = PonyDebugger;
+			sourceTree = "<group>";
+		};
+		19B6928916A4F096004B0374 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				19B6929516A4F097004B0374 /* libPonyDebugger.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		19C4D099169FAD0C000610A6 /* tool */ = {
 			isa = PBXGroup;
 			children = (
@@ -344,6 +448,18 @@
 			path = Setting;
 			sourceTree = "<group>";
 		};
+		19FE6AC116A4F6C3003CEE1C /* Pyramid_PonyD */ = {
+			isa = PBXGroup;
+			children = (
+				19FE6AC416A4F74C003CEE1C /* Security.framework */,
+				19FE6AC216A4F733003CEE1C /* CoreData.framework */,
+				19FE6ABD16A4F5C7003CEE1C /* libSocketRocket.a */,
+				19B692C916A4F0DC004B0374 /* Pyramid_PonyD-Info.plist */,
+				19FE6ABF16A4F6B3003CEE1C /* libicucore.dylib */,
+			);
+			name = Pyramid_PonyD;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -362,6 +478,24 @@
 			name = Pyramid;
 			productName = Pyramid;
 			productReference = 193F0701169E686E005D60DD /* Pyramid.app */;
+			productType = "com.apple.product-type.application";
+		};
+		19B6929A16A4F0DB004B0374 /* Pyramid_PonyD */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 19B692C416A4F0DB004B0374 /* Build configuration list for PBXNativeTarget "Pyramid_PonyD" */;
+			buildPhases = (
+				19B6929B16A4F0DB004B0374 /* Sources */,
+				19B692B616A4F0DB004B0374 /* Frameworks */,
+				19B692BE16A4F0DB004B0374 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				19FE6ABB16A4F569003CEE1C /* PBXTargetDependency */,
+			);
+			name = Pyramid_PonyD;
+			productName = Pyramid;
+			productReference = 19B692C716A4F0DB004B0374 /* Pyramid_PonyD.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -385,12 +519,29 @@
 			mainGroup = 193F06F6169E686E005D60DD;
 			productRefGroup = 193F0702169E686E005D60DD /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 19B6928916A4F096004B0374 /* Products */;
+					ProjectRef = 19B6928816A4F096004B0374 /* PonyDebugger.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				193F0700169E686E005D60DD /* Pyramid */,
+				19B6929A16A4F0DB004B0374 /* Pyramid_PonyD */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		19B6929516A4F097004B0374 /* libPonyDebugger.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libPonyDebugger.a;
+			remoteRef = 19B6929416A4F097004B0374 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		193F06FF169E686E005D60DD /* Resources */ = {
@@ -402,6 +553,17 @@
 				193F071C169E686E005D60DD /* Default-568h@2x.png in Resources */,
 				19B48F2D16A01698009FFC09 /* Localizable.strings in Resources */,
 				19B48F2F16A01D17009FFC09 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		19B692BE16A4F0DB004B0374 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				19B692BF16A4F0DB004B0374 /* Default.png in Resources */,
+				19B692C016A4F0DB004B0374 /* Default@2x.png in Resources */,
+				19B692C116A4F0DB004B0374 /* Default-568h@2x.png in Resources */,
+				19B692C216A4F0DB004B0374 /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -441,7 +603,48 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		19B6929B16A4F0DB004B0374 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				19B6929C16A4F0DB004B0374 /* main.m in Sources */,
+				19B6929D16A4F0DB004B0374 /* LKAppDelegate.m in Sources */,
+				19B6929E16A4F0DB004B0374 /* ASIAuthenticationDialog.m in Sources */,
+				19B6929F16A4F0DB004B0374 /* ASIDataCompressor.m in Sources */,
+				19B692A016A4F0DB004B0374 /* ASIDataDecompressor.m in Sources */,
+				19B692A116A4F0DB004B0374 /* ASIDownloadCache.m in Sources */,
+				19B692A216A4F0DB004B0374 /* ASIFormDataRequest.m in Sources */,
+				19B692A316A4F0DB004B0374 /* ASIHTTPRequest.m in Sources */,
+				19B692A416A4F0DB004B0374 /* ASIInputStream.m in Sources */,
+				19B692A516A4F0DB004B0374 /* ASINetworkQueue.m in Sources */,
+				19B692A616A4F0DB004B0374 /* Jastor.m in Sources */,
+				19B692A716A4F0DB004B0374 /* JastorRuntimeHelper.m in Sources */,
+				19B692A816A4F0DB004B0374 /* Reachability.m in Sources */,
+				19B692A916A4F0DB004B0374 /* LKNavigationController.m in Sources */,
+				19B692AA16A4F0DB004B0374 /* UICentre.m in Sources */,
+				19B692AB16A4F0DB004B0374 /* LKTabBarController.m in Sources */,
+				19B692AC16A4F0DB004B0374 /* LKDebugTool.m in Sources */,
+				19B692AD16A4F0DB004B0374 /* LoginController.m in Sources */,
+				19B692AE16A4F0DB004B0374 /* LKViewController.m in Sources */,
+				19B692AF16A4F0DB004B0374 /* LKHTTPRequest.m in Sources */,
+				19B692B016A4F0DB004B0374 /* ConfigCentre.m in Sources */,
+				19B692B116A4F0DB004B0374 /* handyTool.m in Sources */,
+				19B692B216A4F0DB004B0374 /* LoginResponse.m in Sources */,
+				19B692B316A4F0DB004B0374 /* UserCentre.m in Sources */,
+				19B692B416A4F0DB004B0374 /* PersonalController.m in Sources */,
+				19B692B516A4F0DB004B0374 /* SettingController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		19FE6ABB16A4F569003CEE1C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = PonyDebugger;
+			targetProxy = 19FE6ABA16A4F569003CEE1C /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		193F071D169E686E005D60DD /* Debug */ = {
@@ -518,6 +721,38 @@
 			};
 			name = Release;
 		};
+		19B692C516A4F0DB004B0374 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Pyramid/Pyramid-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+					"PonyD=1",
+				);
+				INFOPLIST_FILE = "Pyramid_PonyD-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = Pyramid_PonyD;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		19B692C616A4F0DB004B0374 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Pyramid/Pyramid-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = "PonyD=1";
+				INFOPLIST_FILE = "Pyramid_PonyD-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = Pyramid_PonyD;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -535,6 +770,15 @@
 			buildConfigurations = (
 				193F0720169E686E005D60DD /* Debug */,
 				193F0721169E686E005D60DD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		19B692C416A4F0DB004B0374 /* Build configuration list for PBXNativeTarget "Pyramid_PonyD" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				19B692C516A4F0DB004B0374 /* Debug */,
+				19B692C616A4F0DB004B0374 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
