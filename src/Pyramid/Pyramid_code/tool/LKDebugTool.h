@@ -27,7 +27,7 @@ void printViewTree(UIView*);
 #ifdef DEBUG
 void printCookies(void);
 #else
-#define printCookies
+#define printCookies()
 #endif
 
 

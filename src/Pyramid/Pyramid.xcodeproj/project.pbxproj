@@ -80,6 +80,11 @@
 		19CA4CB816A13D8800812EE8 /* handyTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 19CA4CB716A13D8800812EE8 /* handyTool.m */; };
 		19CA4CBB16A1467E00812EE8 /* LoginResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 19CA4CBA16A1467E00812EE8 /* LoginResponse.m */; };
 		19CA4CBE16A1616200812EE8 /* UserCentre.m in Sources */ = {isa = PBXBuildFile; fileRef = 19CA4CBD16A1616200812EE8 /* UserCentre.m */; };
+		19E20B5B16A6560C00313036 /* TaskCentre.m in Sources */ = {isa = PBXBuildFile; fileRef = 19E20B5A16A6560C00313036 /* TaskCentre.m */; };
+		19E20B5C16A6560C00313036 /* TaskCentre.m in Sources */ = {isa = PBXBuildFile; fileRef = 19E20B5A16A6560C00313036 /* TaskCentre.m */; };
+		19E20B5F16A6601600313036 /* STKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = 19E20B5E16A6601600313036 /* STKeychain.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		19E20B6016A6601600313036 /* STKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = 19E20B5E16A6601600313036 /* STKeychain.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		19E20B6216A6623F00313036 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19FE6AC416A4F74C003CEE1C /* Security.framework */; };
 		19E32FA316A3E15F00B5A5F2 /* PersonalController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19E32FA216A3E15F00B5A5F2 /* PersonalController.m */; };
 		19E32FAB16A3F54400B5A5F2 /* SettingController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19E32FAA16A3F54400B5A5F2 /* SettingController.m */; };
 		19FE6ABC16A4F5C7003CEE1C /* libPonyDebugger.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19B6929516A4F097004B0374 /* libPonyDebugger.a */; };
@@ -87,6 +92,8 @@
 		19FE6AC016A4F6B3003CEE1C /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 19FE6ABF16A4F6B3003CEE1C /* libicucore.dylib */; };
 		19FE6AC316A4F733003CEE1C /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19FE6AC216A4F733003CEE1C /* CoreData.framework */; };
 		19FE6AC516A4F74C003CEE1C /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19FE6AC416A4F74C003CEE1C /* Security.framework */; };
+		19FE6AE216A50A80003CEE1C /* PersonProfile.m in Sources */ = {isa = PBXBuildFile; fileRef = 19FE6AE116A50A80003CEE1C /* PersonProfile.m */; };
+		19FE6AE316A50A80003CEE1C /* PersonProfile.m in Sources */ = {isa = PBXBuildFile; fileRef = 19FE6AE116A50A80003CEE1C /* PersonProfile.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -177,6 +184,10 @@
 		19CA4CBA16A1467E00812EE8 /* LoginResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginResponse.m; sourceTree = "<group>"; };
 		19CA4CBC16A1616200812EE8 /* UserCentre.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UserCentre.h; path = centre/UserCentre.h; sourceTree = "<group>"; };
 		19CA4CBD16A1616200812EE8 /* UserCentre.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UserCentre.m; path = centre/UserCentre.m; sourceTree = "<group>"; };
+		19E20B5916A6560C00313036 /* TaskCentre.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TaskCentre.h; path = centre/TaskCentre.h; sourceTree = "<group>"; };
+		19E20B5A16A6560C00313036 /* TaskCentre.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TaskCentre.m; path = centre/TaskCentre.m; sourceTree = "<group>"; };
+		19E20B5D16A6601600313036 /* STKeychain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STKeychain.h; sourceTree = "<group>"; };
+		19E20B5E16A6601600313036 /* STKeychain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STKeychain.m; sourceTree = "<group>"; };
 		19E32FA116A3E15F00B5A5F2 /* PersonalController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonalController.h; sourceTree = "<group>"; };
 		19E32FA216A3E15F00B5A5F2 /* PersonalController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonalController.m; sourceTree = "<group>"; };
 		19E32FA916A3F54400B5A5F2 /* SettingController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingController.h; sourceTree = "<group>"; };
@@ -185,6 +196,8 @@
 		19FE6ABF16A4F6B3003CEE1C /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
 		19FE6AC216A4F733003CEE1C /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		19FE6AC416A4F74C003CEE1C /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		19FE6AE016A50A80003CEE1C /* PersonProfile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonProfile.h; sourceTree = "<group>"; };
+		19FE6AE116A50A80003CEE1C /* PersonProfile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonProfile.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -192,6 +205,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				19E20B6216A6623F00313036 /* Security.framework in Frameworks */,
 				193F07A0169E8EF0005D60DD /* libz.dylib in Frameworks */,
 				193F079E169E8EDC005D60DD /* MobileCoreServices.framework in Frameworks */,
 				193F079C169E8ED0005D60DD /* SystemConfiguration.framework in Frameworks */,
@@ -299,7 +313,7 @@
 		193F0770169E74EE005D60DD /* Third-Party */ = {
 			isa = PBXGroup;
 			children = (
-				19B6928616A4F059004B0374 /* PonyDebugger */,
+				19E20B6116A6602200313036 /* STKeychain */,
 				193F0771169E7586005D60DD /* ASIHTTPRequest */,
 				193F0786169E7586005D60DD /* Jastor */,
 				193F078B169E7586005D60DD /* Reachability */,
@@ -378,6 +392,8 @@
 				19CA4CB016A1152C00812EE8 /* ConfigCentre.m */,
 				19CA4CBC16A1616200812EE8 /* UserCentre.h */,
 				19CA4CBD16A1616200812EE8 /* UserCentre.m */,
+				19E20B5916A6560C00313036 /* TaskCentre.h */,
+				19E20B5A16A6560C00313036 /* TaskCentre.m */,
 			);
 			name = centre;
 			sourceTree = "<group>";
@@ -388,6 +404,7 @@
 				19B6928816A4F096004B0374 /* PonyDebugger.xcodeproj */,
 			);
 			name = PonyDebugger;
+			path = "Third-Party";
 			sourceTree = "<group>";
 		};
 		19B6928916A4F096004B0374 /* Products */ = {
@@ -430,11 +447,22 @@
 			path = Login;
 			sourceTree = "<group>";
 		};
+		19E20B6116A6602200313036 /* STKeychain */ = {
+			isa = PBXGroup;
+			children = (
+				19E20B5D16A6601600313036 /* STKeychain.h */,
+				19E20B5E16A6601600313036 /* STKeychain.m */,
+			);
+			path = STKeychain;
+			sourceTree = "<group>";
+		};
 		19E32F9F16A3E0E700B5A5F2 /* PersonalProfile */ = {
 			isa = PBXGroup;
 			children = (
 				19E32FA116A3E15F00B5A5F2 /* PersonalController.h */,
 				19E32FA216A3E15F00B5A5F2 /* PersonalController.m */,
+				19FE6AE016A50A80003CEE1C /* PersonProfile.h */,
+				19FE6AE116A50A80003CEE1C /* PersonProfile.m */,
 			);
 			path = PersonalProfile;
 			sourceTree = "<group>";
@@ -451,6 +479,7 @@
 		19FE6AC116A4F6C3003CEE1C /* Pyramid_PonyD */ = {
 			isa = PBXGroup;
 			children = (
+				19B6928616A4F059004B0374 /* PonyDebugger */,
 				19FE6AC416A4F74C003CEE1C /* Security.framework */,
 				19FE6AC216A4F733003CEE1C /* CoreData.framework */,
 				19FE6ABD16A4F5C7003CEE1C /* libSocketRocket.a */,
@@ -600,6 +629,9 @@
 				19CA4CBE16A1616200812EE8 /* UserCentre.m in Sources */,
 				19E32FA316A3E15F00B5A5F2 /* PersonalController.m in Sources */,
 				19E32FAB16A3F54400B5A5F2 /* SettingController.m in Sources */,
+				19FE6AE216A50A80003CEE1C /* PersonProfile.m in Sources */,
+				19E20B5B16A6560C00313036 /* TaskCentre.m in Sources */,
+				19E20B5F16A6601600313036 /* STKeychain.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -633,6 +665,9 @@
 				19B692B316A4F0DB004B0374 /* UserCentre.m in Sources */,
 				19B692B416A4F0DB004B0374 /* PersonalController.m in Sources */,
 				19B692B516A4F0DB004B0374 /* SettingController.m in Sources */,
+				19FE6AE316A50A80003CEE1C /* PersonProfile.m in Sources */,
+				19E20B5C16A6560C00313036 /* TaskCentre.m in Sources */,
+				19E20B6016A6601600313036 /* STKeychain.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

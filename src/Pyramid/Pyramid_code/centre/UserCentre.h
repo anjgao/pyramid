@@ -12,4 +12,9 @@
 
 @property(nonatomic,retain) NSNumber*   userID;
 
+// userName and password
+-(BOOL)storeUserName:(NSString*)name andPW:(NSString*)pw;
+-(BOOL)getUserName:(NSString**)pName andPW:(NSString**)pPW;
+-(void)deleteNameAndPW;
+
 @end

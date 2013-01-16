@@ -14,11 +14,13 @@
 #import "UICentre.h"
 #import "ConfigCentre.h"
 #import "UserCentre.h"
+#import "TaskCentre.h"
 
 #define LK_APP      ((LKAppDelegate*)[UIApplication sharedApplication].delegate)
 #define LK_UI       LK_APP.objUICentre
 #define LK_CONFIG   LK_APP.objConfigCentre
 #define LK_USER     LK_APP.objUserCentre
+#define LK_TASK     LK_APP.objTaskCentre
 
 // tool
 #import "LKDebugTool.h"

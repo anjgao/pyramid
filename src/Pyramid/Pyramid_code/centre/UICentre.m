@@ -12,7 +12,7 @@
 #import "PersonalController.h"
 #import "SettingController.h"
 
-@interface UICentre() <LoginCtlDelegate>
+@interface UICentre()
 {
     PersonalController*    _personalController;
 }
@@ -27,9 +27,27 @@
     
     self.window = window;
     [self initTabs];
-    [self popLoginView];
     
     return self;
+}
+
+-(void)autoLoginFinish:(BOOL)bSuccess;
+{
+    if (bSuccess) {
+        [_personalController showProfileWithID:LK_USER.userID];
+    }
+}
+
+-(void)loginSuccess
+{
+    self.window.rootViewController = _tabCtl;
+    [UIView transitionWithView:self.window
+                      duration:0.3
+                       options: UIViewAnimationOptionTransitionCrossDissolve | UIViewAnimationOptionCurveEaseOut
+                    animations:nil
+                    completion:nil];
+    
+    [_personalController showProfileWithID:LK_USER.userID];
 }
 
 #pragma mark - inner method
@@ -64,24 +82,28 @@
 //    self.window.rootViewController = _tabCtl;   // layout main view
 }
 
--(void)popLoginView
+-(void)startup:(BOOL)bLogin
 {
-    LoginController* loginCtl = [[LoginController alloc] init];
-    loginCtl.delegate = self;
-    self.window.rootViewController = loginCtl;
+    if (bLogin) {
+        LoginController* loginCtl = [[LoginController alloc] init];
+        self.window.rootViewController = loginCtl;
+    }
+    else {
+        self.window.rootViewController = _tabCtl;
+    }
 }
 
-#pragma mark - LoginDelegate
--(void)loginSuccess
+-(void)popLogin:(NSString*)hint
 {
-    self.window.rootViewController = _tabCtl;
-    [UIView transitionWithView:self.window
-            duration:0.3
-            options: UIViewAnimationOptionTransitionCrossDissolve | UIViewAnimationOptionCurveEaseOut
-            animations:nil 
-            completion:nil];
+    LoginController* loginCtl = [[LoginController alloc] init];
+    loginCtl.hint = hint;
+    self.window.rootViewController = loginCtl;
     
-    [_personalController showProfileWithID:LK_USER.userID];
+    [UIView transitionWithView:self.window
+                      duration:0.3
+                       options: UIViewAnimationOptionTransitionFlipFromLeft
+                    animations:nil
+                    completion:nil];
 }
 
 @end

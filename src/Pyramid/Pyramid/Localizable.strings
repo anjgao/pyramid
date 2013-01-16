@@ -12,6 +12,9 @@
 
 // personal profile
 "myProfile" = "我的资料";
+"friend" = "遇到朋友";
+"exps" = "参与经历";
+"hostexps" = "发起经历";
 
 // setting
 "setting" = "设置";

@@ -8,10 +8,22 @@
 
 #import "PersonalController.h"
 #import "ASIHTTPRequest.h"
+#import "PersonProfile.h"
 
 @interface PersonalController ()
 {
-    NSNumber* _curPersonID;
+    // data
+    NSNumber * _curPersonID;
+    PersonProfile * _curProfile;
+    
+    // views
+    UILabel * _name;
+    UILabel * _area;
+    UILabel * _story;
+    UIButton * _friend;
+    UIButton * _exp;
+    UIButton * _hostedexp;
+    UIImageView * _portrait;
 }
 @end
 
@@ -27,7 +39,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
+	
+    [self createViews];
 }
 
 - (void)didReceiveMemoryWarning
@@ -44,6 +57,34 @@
 }
 
 #pragma mark - inner method
+-(void)createViews
+{
+    _name = [[UILabel alloc] initWithFrame:CGRectMake(150, 10, 150, 30)];
+    [self.view addSubview:_name];
+    
+    _area = [[UILabel alloc] initWithFrame:CGRectMake(150, 50, 150, 20)];
+    [self.view addSubview:_area];
+
+    _story = [[UILabel alloc] initWithFrame:CGRectMake(150, 80, 150, 60)];
+    [self.view addSubview:_story];
+    
+    _friend = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    _friend.frame = CGRectMake(10, 150, 90, 30);
+    [self.view addSubview:_friend];
+    [_friend addTarget:self action:@selector(friendedPressed:) forControlEvents:UIControlEventTouchUpInside];
+    
+    _exp = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    _exp.frame = CGRectMake(115, 150, 90, 30);
+    [self.view addSubview:_exp];
+    
+    _hostedexp = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    _hostedexp.frame = CGRectMake(220, 150, 90, 30);
+    [self.view addSubview:_hostedexp];
+    
+    _portrait = [[UIImageView alloc] initWithFrame:CGRectMake(10, 10, 130, 130)];
+    [self.view addSubview:_portrait];
+}
+
 -(void)requestPersonalData
 {
     NSString* urlPath = [NSString stringWithFormat:@"/api/alpha/host/profile/%@/",_curPersonID.stringValue];
@@ -54,18 +95,55 @@
 
 - (void)requestFinished:(ASIHTTPRequest *)request
 {
-    NSString* res = [request responseString];
-    LKLog(res);
+    json2obj(request.responseData, PersonProfile)
+    _curProfile = repObj;
+    [self fillView];
+    [self requestPortrait];
 }
 
 - (void)requestFailed:(ASIHTTPRequest *)request
 {
-    NSString *responseString = [request responseString];
-    LKLog(responseString);
+    LKLog([request responseString]);
     
-    NSError *error = [request error];
-    LKLog([error localizedDescription]);
+    LKLog([[request error] localizedDescription]);
 }
 
+-(void)fillView
+{
+    _name.text = _curProfile.username;
+    _area.text = [_curProfile.district.name stringByAppendingString:_curProfile.district.city.name];
+    _story.text = _curProfile.story;
+    
+    [_friend setTitle:[LKString(friend) stringByAppendingFormat:@": %@",[_curProfile.stat.circle_count stringValue]] forState:UIControlStateNormal];
+    [_exp setTitle:[LKString(friend) stringByAppendingFormat:@": %@",[_curProfile.stat.team_count stringValue]] forState:UIControlStateNormal];
+    [_hostedexp setTitle:[LKString(friend) stringByAppendingFormat:@": %@",[_curProfile.stat.hosted_team_count stringValue]] forState:UIControlStateNormal];
+}
+
+-(void)requestPortrait
+{
+    ASIHTTPRequest * request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:_curProfile.avatar.large]];
+    request.didFinishSelector = @selector(portraitLoadFinished:);
+    request.didFailSelector = @selector(portraitLoadFailed:);
+    request.delegate = self;
+    request.cacheStoragePolicy = ASICachePermanentlyCacheStoragePolicy;
+    [request startAsynchronous];
+}
+
+- (void)portraitLoadFinished:(ASIHTTPRequest *)request
+{
+    BOOL a = request.didUseCachedResponse;
+    _portrait.image = [UIImage imageWithData:[request responseData]];
+}
+
+- (void)portraitLoadFailed:(ASIHTTPRequest *)request
+{
+    LKLog([request responseString]);
+    LKLog([[request error] localizedDescription]);
+}
+
+-(void)friendedPressed:(UIButton*)btn
+{
+    [self requestPortrait];
+}
 
 @end

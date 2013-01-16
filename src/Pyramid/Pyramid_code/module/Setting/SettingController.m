@@ -56,33 +56,7 @@
 //
 -(void)logoutBtnPressed:(UIButton*)logoutBtn
 {
-    [LK_CONFIG cleanSessionCookie];
-    printCookies();
-    
-    [self serverLogout];
-}
-
-- (void)serverLogout
-{
-    ASIHTTPRequest * request = [ASIHTTPRequest requestWithURL:linkkkUrl(@"/logout")];
-    request.shouldRedirect = NO;
-    request.delegate = self;
-    [request startAsynchronous];
-}
-
-- (void)requestFinished:(ASIHTTPRequest *)request
-{
-    NSString* res = [request responseString];
-    LKLog(res);
-}
-
-- (void)requestFailed:(ASIHTTPRequest *)request
-{
-    NSString *responseString = [request responseString];
-    LKLog(responseString);
-    
-    NSError *error = [request error];
-    LKLog([error localizedDescription]);
+    [LK_TASK logout:nil];
 }
 
 

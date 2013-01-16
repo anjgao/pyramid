@@ -12,9 +12,11 @@
 
 @interface LoginController () <UITextFieldDelegate>
 {
-    UITextField* _nameInput;
-    UITextField* _pwInput;
-    UILabel*     _errInfo;
+    UITextField*    _nameInput;
+    UITextField*    _pwInput;
+    UILabel*        _errInfo;
+    NSString*       _user;
+    NSString*       _pw;
 }
 @end
 
@@ -49,6 +51,7 @@
     
     _errInfo = [[UILabel alloc] initWithFrame:CGRectMake(50, 120, 220, 60)];
     _errInfo.numberOfLines = 0;
+    _errInfo.text = _hint;
     [self.view addSubview:_errInfo];
     
     [_nameInput becomeFirstResponder];
@@ -67,6 +70,8 @@
         [_pwInput becomeFirstResponder];
     }
     else if (textField == _pwInput) {
+        _user = _nameInput.text;
+        _pw = _pwInput.text;
         [self startLogin];
     }
     return NO;
@@ -79,8 +84,8 @@
     loginRequest.delegate = self;
     loginRequest.shouldRedirect = NO;
     
-    [loginRequest setPostValue:_nameInput.text forKey:@"login"];
-    [loginRequest setPostValue:_pwInput.text forKey:@"password"];
+    [loginRequest setPostValue:_user forKey:@"login"];
+    [loginRequest setPostValue:_pw forKey:@"password"];
     
     [loginRequest startAsynchronous];
 }
@@ -93,7 +98,8 @@
     
     if ([repObj.status isEqualToString:@"okay"]) {
         LK_USER.userID = repObj.data.user_id;
-        [_delegate loginSuccess];
+        [LK_USER storeUserName:_user andPW:_pw];
+        [LK_UI loginSuccess];
     }
     else if ([repObj.status isEqualToString:@"oops"]) {
         if (repObj.invalidations.__all__[0]) {
@@ -110,11 +116,9 @@
 
 - (void)requestFailed:(ASIHTTPRequest *)request
 {
-    NSString *responseString = [request responseString];
-    LKLog(responseString);
+    LKLog([request responseString]);
     
-    NSError *error = [request error];
-    LKLog([error localizedDescription]);
+    LKLog([[request error] localizedDescription]);
 }
 
 

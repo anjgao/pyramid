@@ -11,12 +11,14 @@
 @class UICentre;
 @class ConfigCentre;
 @class UserCentre;
+@class TaskCentre;
 
 @interface LKAppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (retain, nonatomic) UICentre * objUICentre;
 @property (retain, nonatomic) ConfigCentre * objConfigCentre;
 @property (retain, nonatomic) UserCentre * objUserCentre;
+@property (retain, nonatomic) TaskCentre * objTaskCentre;
 
 @property (retain, nonatomic) UIWindow * window;
 

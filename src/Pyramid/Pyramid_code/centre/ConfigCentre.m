@@ -20,9 +20,26 @@
 -(id)init
 {
     self = [super init];
-    
+
+    // ponyD
 #ifdef PonyD
-    // ponyDebugger
+    [self setupPonyDebugger];
+#endif
+    
+    // for debug
+    printCookies();
+    
+    // ASIHTTPRequest
+    ASIDownloadCache* downLoadCache = [ASIDownloadCache sharedCache];
+    downLoadCache.defaultCachePolicy = ASIAskServerIfModifiedWhenStaleCachePolicy;
+    [ASIHTTPRequest setDefaultCache:downLoadCache];
+    
+    return self;
+}
+
+#ifdef PonyD
+-(void)setupPonyDebugger
+{
     PDDebugger *debugger = [PDDebugger defaultInstance];
     
     // Enable Network debugging, and automatically track network traffic that comes through any classes that NSURLConnectionDelegate methods.
@@ -30,8 +47,8 @@
     [debugger forwardAllNetworkTraffic];
     
     // Enable Core Data debugging, and broadcast the main managed object context.
-//    [debugger enableCoreDataDebugging];
-//    [debugger addManagedObjectContext:self.managedObjectContext withName:@"Twitter Test MOC"];
+    //    [debugger enableCoreDataDebugging];
+    //    [debugger addManagedObjectContext:self.managedObjectContext withName:@"Twitter Test MOC"];
     
     // Enable View Hierarchy debugging. This will swizzle UIView methods to monitor changes in the hierarchy
     // Choose a few UIView key paths to display as attributes of the dom nodes
@@ -40,16 +57,8 @@
     
     // Connect to a specific host
     [debugger connectToURL:[NSURL URLWithString:@"ws://localhost:9000/device"]];
-#endif
-    
-    // for debug
-    printCookies();
-    
-    // ASIHTTPRequest
-    [ASIHTTPRequest setDefaultCache:[ASIDownloadCache sharedCache]];
-    
-    return self;
 }
+#endif
 
 -(void)cleanSessionCookie
 {

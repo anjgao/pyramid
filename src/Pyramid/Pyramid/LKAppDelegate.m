@@ -54,6 +54,9 @@
     _objConfigCentre = [[ConfigCentre alloc] init];
     _objUserCentre = [[UserCentre alloc] init];
     _objUICentre = [[UICentre alloc] initWithWindow:self.window];
+    _objTaskCentre = [[TaskCentre alloc] init];
+    
+    [_objTaskCentre startup];
 }
 
 @end

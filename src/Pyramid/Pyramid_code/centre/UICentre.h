@@ -18,4 +18,9 @@
 
 -(id)initWithWindow:(UIWindow *) window;
 
+-(void)startup:(BOOL)bLogin;                // call from taskCentre
+-(void)popLogin:(NSString*)hint;            // call from taskCentre
+-(void)autoLoginFinish:(BOOL)bSuccess;      // call from taskCentre
+-(void)loginSuccess;                        // call from LoginController
+
 @end

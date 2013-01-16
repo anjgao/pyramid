@@ -8,10 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@protocol LoginCtlDelegate <NSObject>
--(void)loginSuccess;
-@end
-
 @interface LoginController : LKViewController
-@property(nonatomic,assign)   id<LoginCtlDelegate> delegate;
+@property(nonatomic,retain) NSString* hint;
 @end

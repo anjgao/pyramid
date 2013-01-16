@@ -26,7 +26,7 @@ NSURL* linkkkUrl(NSString* urlPath);
         }                                                                                                   \
         else {                                                                                              \
             @try {                                                                                          \
-                repObj = [[LoginResponse alloc] initWithDictionary:dataDic];                                \
+                repObj = [[ObjClass alloc] initWithDictionary:dataDic];                                \
             }                                                                                               \
             @catch (NSException *exception) {                                                               \
                 LKLog(@"!!!!! json: dictionary to object error !!!!!");                                     \
