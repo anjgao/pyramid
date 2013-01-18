@@ -6,7 +6,7 @@
 //  Copyright (c) 2013年 linkkk.com. All rights reserved.
 //
 
-#import "Jastor.h"
+#import "JsonObj.h"
 
 @interface Json_Avatar : Jastor
 @property(nonatomic,retain) NSString * caption;
@@ -18,21 +18,6 @@
 @property(nonatomic,retain) NSNumber * raw_width;
 @property(nonatomic,retain) NSString * resource_uri;
 @property(nonatomic,retain) NSString * small;
-@end
-
-@interface Json_City : Jastor
-@property(nonatomic,retain) NSNumber * id;
-@property(nonatomic,retain) NSString * name;
-@property(nonatomic,retain) NSString * resource_uri;
-@property(nonatomic,retain) NSNumber * weight;
-@end
-
-@interface Json_District : Jastor
-@property(nonatomic,retain) Json_City * city;
-@property(nonatomic,retain) NSNumber * id;
-@property(nonatomic,retain) NSString * name;
-@property(nonatomic,retain) NSString * resource_uri;
-@property(nonatomic,retain) NSNumber * weight;
 @end
 
 @interface Json_Provider_Profile : Jastor

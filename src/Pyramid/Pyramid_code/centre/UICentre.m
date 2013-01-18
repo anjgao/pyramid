@@ -11,6 +11,7 @@
 #import "LoginController.h"
 #import "PersonalController.h"
 #import "SettingController.h"
+#import "LinkeeViewController.h"
 
 @interface UICentre()
 {
@@ -60,11 +61,10 @@
     LKNavigationController* nav1 = [[LKNavigationController alloc] initWithRootViewController:_personalController];
     
     // tab 2
-    UIViewController* ctl2 = [[UIViewController alloc] init];
-    ctl2.view.backgroundColor = [UIColor blackColor];
-    ctl2.title = @"2";
+    LinkeeViewController* ctl2 = [[LinkeeViewController alloc] init];
     LKNavigationController* nav2 = [[LKNavigationController alloc] initWithRootViewController:ctl2];
-
+    nav2.navigationBarHidden = YES;
+    
     // tab 3
     UIViewController* ctl3 = [[UIViewController alloc] init];
     ctl3.view.backgroundColor = [UIColor brownColor];

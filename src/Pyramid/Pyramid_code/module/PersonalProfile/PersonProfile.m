@@ -12,14 +12,6 @@
 
 @end
 
-@implementation Json_City
-
-@end
-
-@implementation Json_District
-
-@end
-
 @implementation Json_Provider_Profile
 
 @end

@@ -34,6 +34,9 @@
     downLoadCache.defaultCachePolicy = ASIAskServerIfModifiedWhenStaleCachePolicy;
     [ASIHTTPRequest setDefaultCache:downLoadCache];
     
+    // statusBar color
+//    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackTranslucent]; 
+    
     return self;
 }
 

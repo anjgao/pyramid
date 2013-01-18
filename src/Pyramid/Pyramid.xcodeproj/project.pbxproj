@@ -33,6 +33,14 @@
 		193F07B3169EA3AE005D60DD /* LKNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 193F07B2169EA3AE005D60DD /* LKNavigationController.m */; };
 		193F07B7169EAAFD005D60DD /* UICentre.m in Sources */ = {isa = PBXBuildFile; fileRef = 193F07B6169EAAFD005D60DD /* UICentre.m */; };
 		193F07BB169EB4A6005D60DD /* LKTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 193F07BA169EB4A6005D60DD /* LKTabBarController.m */; };
+		19B0BAE316A93C2700A8BB02 /* LKView.m in Sources */ = {isa = PBXBuildFile; fileRef = 19B0BAE216A93C2700A8BB02 /* LKView.m */; };
+		19B0BAE416A93C2700A8BB02 /* LKView.m in Sources */ = {isa = PBXBuildFile; fileRef = 19B0BAE216A93C2700A8BB02 /* LKView.m */; };
+		19B0BAE716A93C7C00A8BB02 /* LinkeeExploreView.m in Sources */ = {isa = PBXBuildFile; fileRef = 19B0BAE616A93C7C00A8BB02 /* LinkeeExploreView.m */; };
+		19B0BAE816A93C7C00A8BB02 /* LinkeeExploreView.m in Sources */ = {isa = PBXBuildFile; fileRef = 19B0BAE616A93C7C00A8BB02 /* LinkeeExploreView.m */; };
+		19B0BAEB16A94A7F00A8BB02 /* LinkeeTopTabView.m in Sources */ = {isa = PBXBuildFile; fileRef = 19B0BAEA16A94A7F00A8BB02 /* LinkeeTopTabView.m */; };
+		19B0BAEC16A94A7F00A8BB02 /* LinkeeTopTabView.m in Sources */ = {isa = PBXBuildFile; fileRef = 19B0BAEA16A94A7F00A8BB02 /* LinkeeTopTabView.m */; };
+		19B0BAEF16A95BB000A8BB02 /* FriendLinkeeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 19B0BAEE16A95BAF00A8BB02 /* FriendLinkeeView.m */; };
+		19B0BAF016A95BB000A8BB02 /* FriendLinkeeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 19B0BAEE16A95BAF00A8BB02 /* FriendLinkeeView.m */; };
 		19B48F2B16A01030009FFC09 /* LKViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19B48F2A16A01030009FFC09 /* LKViewController.m */; };
 		19B48F2D16A01698009FFC09 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 19B48F2C16A01698009FFC09 /* Localizable.strings */; };
 		19B48F2F16A01D17009FFC09 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 19B48F2E16A01D17009FFC09 /* InfoPlist.strings */; };
@@ -85,6 +93,12 @@
 		19E20B5F16A6601600313036 /* STKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = 19E20B5E16A6601600313036 /* STKeychain.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		19E20B6016A6601600313036 /* STKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = 19E20B5E16A6601600313036 /* STKeychain.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		19E20B6216A6623F00313036 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19FE6AC416A4F74C003CEE1C /* Security.framework */; };
+		19E20B6616A69B8E00313036 /* LinkeeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19E20B6516A69B8E00313036 /* LinkeeViewController.m */; };
+		19E20B6716A69B8E00313036 /* LinkeeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19E20B6516A69B8E00313036 /* LinkeeViewController.m */; };
+		19E20B6A16A69C7900313036 /* ExploreLinkeeResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 19E20B6916A69C7900313036 /* ExploreLinkeeResponse.m */; };
+		19E20B6B16A69C7900313036 /* ExploreLinkeeResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 19E20B6916A69C7900313036 /* ExploreLinkeeResponse.m */; };
+		19E20B6F16A6BC9B00313036 /* JsonObj.m in Sources */ = {isa = PBXBuildFile; fileRef = 19E20B6E16A6BC9B00313036 /* JsonObj.m */; };
+		19E20B7016A6BC9B00313036 /* JsonObj.m in Sources */ = {isa = PBXBuildFile; fileRef = 19E20B6E16A6BC9B00313036 /* JsonObj.m */; };
 		19E32FA316A3E15F00B5A5F2 /* PersonalController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19E32FA216A3E15F00B5A5F2 /* PersonalController.m */; };
 		19E32FAB16A3F54400B5A5F2 /* SettingController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19E32FAA16A3F54400B5A5F2 /* SettingController.m */; };
 		19FE6ABC16A4F5C7003CEE1C /* libPonyDebugger.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19B6929516A4F097004B0374 /* libPonyDebugger.a */; };
@@ -163,6 +177,14 @@
 		193F07B8169EACE5005D60DD /* LKCommonImport.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LKCommonImport.h; sourceTree = "<group>"; };
 		193F07B9169EB4A6005D60DD /* LKTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKTabBarController.h; sourceTree = "<group>"; };
 		193F07BA169EB4A6005D60DD /* LKTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKTabBarController.m; sourceTree = "<group>"; };
+		19B0BAE116A93C2700A8BB02 /* LKView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKView.h; sourceTree = "<group>"; };
+		19B0BAE216A93C2700A8BB02 /* LKView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKView.m; sourceTree = "<group>"; };
+		19B0BAE516A93C7B00A8BB02 /* LinkeeExploreView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LinkeeExploreView.h; sourceTree = "<group>"; };
+		19B0BAE616A93C7C00A8BB02 /* LinkeeExploreView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LinkeeExploreView.m; sourceTree = "<group>"; };
+		19B0BAE916A94A7F00A8BB02 /* LinkeeTopTabView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LinkeeTopTabView.h; sourceTree = "<group>"; };
+		19B0BAEA16A94A7F00A8BB02 /* LinkeeTopTabView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LinkeeTopTabView.m; sourceTree = "<group>"; };
+		19B0BAED16A95BAF00A8BB02 /* FriendLinkeeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendLinkeeView.h; sourceTree = "<group>"; };
+		19B0BAEE16A95BAF00A8BB02 /* FriendLinkeeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendLinkeeView.m; sourceTree = "<group>"; };
 		19B48F2916A01030009FFC09 /* LKViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKViewController.h; sourceTree = "<group>"; };
 		19B48F2A16A01030009FFC09 /* LKViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKViewController.m; sourceTree = "<group>"; };
 		19B48F2C16A01698009FFC09 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
@@ -188,6 +210,12 @@
 		19E20B5A16A6560C00313036 /* TaskCentre.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TaskCentre.m; path = centre/TaskCentre.m; sourceTree = "<group>"; };
 		19E20B5D16A6601600313036 /* STKeychain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STKeychain.h; sourceTree = "<group>"; };
 		19E20B5E16A6601600313036 /* STKeychain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STKeychain.m; sourceTree = "<group>"; };
+		19E20B6416A69B8E00313036 /* LinkeeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LinkeeViewController.h; sourceTree = "<group>"; };
+		19E20B6516A69B8E00313036 /* LinkeeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LinkeeViewController.m; sourceTree = "<group>"; };
+		19E20B6816A69C7900313036 /* ExploreLinkeeResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExploreLinkeeResponse.h; sourceTree = "<group>"; };
+		19E20B6916A69C7900313036 /* ExploreLinkeeResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExploreLinkeeResponse.m; sourceTree = "<group>"; };
+		19E20B6D16A6BC9B00313036 /* JsonObj.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JsonObj.h; sourceTree = "<group>"; };
+		19E20B6E16A6BC9B00313036 /* JsonObj.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JsonObj.m; sourceTree = "<group>"; };
 		19E32FA116A3E15F00B5A5F2 /* PersonalController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonalController.h; sourceTree = "<group>"; };
 		19E32FA216A3E15F00B5A5F2 /* PersonalController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonalController.m; sourceTree = "<group>"; };
 		19E32FA916A3F54400B5A5F2 /* SettingController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingController.h; sourceTree = "<group>"; };
@@ -302,6 +330,7 @@
 		193F076F169E73DF005D60DD /* Pyramid_code */ = {
 			isa = PBXGroup;
 			children = (
+				19E20B6C16A6BC4500313036 /* JsonObj */,
 				19C4D0A3169FBE74000610A6 /* module */,
 				19C4D099169FAD0C000610A6 /* tool */,
 				193F07B4169EA93D005D60DD /* centre */,
@@ -379,6 +408,8 @@
 				19B48F2A16A01030009FFC09 /* LKViewController.m */,
 				19CA4CA716A1107A00812EE8 /* LKHTTPRequest.h */,
 				19CA4CA816A1107A00812EE8 /* LKHTTPRequest.m */,
+				19B0BAE116A93C2700A8BB02 /* LKView.h */,
+				19B0BAE216A93C2700A8BB02 /* LKView.m */,
 			);
 			path = LKBaseClass;
 			sourceTree = "<group>";
@@ -429,6 +460,7 @@
 		19C4D0A3169FBE74000610A6 /* module */ = {
 			isa = PBXGroup;
 			children = (
+				19E20B6316A69B4400313036 /* Linkee */,
 				19E32FA816A3F3F300B5A5F2 /* Setting */,
 				19E32F9F16A3E0E700B5A5F2 /* PersonalProfile */,
 				19C4D0A4169FBED0000610A6 /* Login */,
@@ -454,6 +486,32 @@
 				19E20B5E16A6601600313036 /* STKeychain.m */,
 			);
 			path = STKeychain;
+			sourceTree = "<group>";
+		};
+		19E20B6316A69B4400313036 /* Linkee */ = {
+			isa = PBXGroup;
+			children = (
+				19E20B6416A69B8E00313036 /* LinkeeViewController.h */,
+				19E20B6516A69B8E00313036 /* LinkeeViewController.m */,
+				19E20B6816A69C7900313036 /* ExploreLinkeeResponse.h */,
+				19E20B6916A69C7900313036 /* ExploreLinkeeResponse.m */,
+				19B0BAE516A93C7B00A8BB02 /* LinkeeExploreView.h */,
+				19B0BAE616A93C7C00A8BB02 /* LinkeeExploreView.m */,
+				19B0BAE916A94A7F00A8BB02 /* LinkeeTopTabView.h */,
+				19B0BAEA16A94A7F00A8BB02 /* LinkeeTopTabView.m */,
+				19B0BAED16A95BAF00A8BB02 /* FriendLinkeeView.h */,
+				19B0BAEE16A95BAF00A8BB02 /* FriendLinkeeView.m */,
+			);
+			path = Linkee;
+			sourceTree = "<group>";
+		};
+		19E20B6C16A6BC4500313036 /* JsonObj */ = {
+			isa = PBXGroup;
+			children = (
+				19E20B6D16A6BC9B00313036 /* JsonObj.h */,
+				19E20B6E16A6BC9B00313036 /* JsonObj.m */,
+			);
+			path = JsonObj;
 			sourceTree = "<group>";
 		};
 		19E32F9F16A3E0E700B5A5F2 /* PersonalProfile */ = {
@@ -632,6 +690,13 @@
 				19FE6AE216A50A80003CEE1C /* PersonProfile.m in Sources */,
 				19E20B5B16A6560C00313036 /* TaskCentre.m in Sources */,
 				19E20B5F16A6601600313036 /* STKeychain.m in Sources */,
+				19E20B6616A69B8E00313036 /* LinkeeViewController.m in Sources */,
+				19E20B6A16A69C7900313036 /* ExploreLinkeeResponse.m in Sources */,
+				19E20B6F16A6BC9B00313036 /* JsonObj.m in Sources */,
+				19B0BAE316A93C2700A8BB02 /* LKView.m in Sources */,
+				19B0BAE716A93C7C00A8BB02 /* LinkeeExploreView.m in Sources */,
+				19B0BAEB16A94A7F00A8BB02 /* LinkeeTopTabView.m in Sources */,
+				19B0BAEF16A95BB000A8BB02 /* FriendLinkeeView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -668,6 +733,13 @@
 				19FE6AE316A50A80003CEE1C /* PersonProfile.m in Sources */,
 				19E20B5C16A6560C00313036 /* TaskCentre.m in Sources */,
 				19E20B6016A6601600313036 /* STKeychain.m in Sources */,
+				19E20B6716A69B8E00313036 /* LinkeeViewController.m in Sources */,
+				19E20B6B16A69C7900313036 /* ExploreLinkeeResponse.m in Sources */,
+				19E20B7016A6BC9B00313036 /* JsonObj.m in Sources */,
+				19B0BAE416A93C2700A8BB02 /* LKView.m in Sources */,
+				19B0BAE816A93C7C00A8BB02 /* LinkeeExploreView.m in Sources */,
+				19B0BAEC16A94A7F00A8BB02 /* LinkeeTopTabView.m in Sources */,
+				19B0BAF016A95BB000A8BB02 /* FriendLinkeeView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
