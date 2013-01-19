@@ -33,14 +33,18 @@
 		193F07B3169EA3AE005D60DD /* LKNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 193F07B2169EA3AE005D60DD /* LKNavigationController.m */; };
 		193F07B7169EAAFD005D60DD /* UICentre.m in Sources */ = {isa = PBXBuildFile; fileRef = 193F07B6169EAAFD005D60DD /* UICentre.m */; };
 		193F07BB169EB4A6005D60DD /* LKTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 193F07BA169EB4A6005D60DD /* LKTabBarController.m */; };
+		19A937E216AA4E580076DE9B /* LKTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19A937E116AA4E580076DE9B /* LKTableController.m */; };
+		19A937E316AA4E580076DE9B /* LKTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19A937E116AA4E580076DE9B /* LKTableController.m */; };
+		19A937EE16AA7DD40076DE9B /* LinkeeStreamController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19A937ED16AA7DD40076DE9B /* LinkeeStreamController.m */; };
+		19A937EF16AA7DD40076DE9B /* LinkeeStreamController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19A937ED16AA7DD40076DE9B /* LinkeeStreamController.m */; };
+		19A937F216AA7ECB0076DE9B /* LinkeeExploreController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19A937F116AA7ECB0076DE9B /* LinkeeExploreController.m */; };
+		19A937F316AA7ECB0076DE9B /* LinkeeExploreController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19A937F116AA7ECB0076DE9B /* LinkeeExploreController.m */; };
+		19A937F616AA7EEC0076DE9B /* LinkeeNewsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19A937F516AA7EEB0076DE9B /* LinkeeNewsController.m */; };
+		19A937F716AA7EEC0076DE9B /* LinkeeNewsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19A937F516AA7EEB0076DE9B /* LinkeeNewsController.m */; };
 		19B0BAE316A93C2700A8BB02 /* LKView.m in Sources */ = {isa = PBXBuildFile; fileRef = 19B0BAE216A93C2700A8BB02 /* LKView.m */; };
 		19B0BAE416A93C2700A8BB02 /* LKView.m in Sources */ = {isa = PBXBuildFile; fileRef = 19B0BAE216A93C2700A8BB02 /* LKView.m */; };
-		19B0BAE716A93C7C00A8BB02 /* LinkeeExploreView.m in Sources */ = {isa = PBXBuildFile; fileRef = 19B0BAE616A93C7C00A8BB02 /* LinkeeExploreView.m */; };
-		19B0BAE816A93C7C00A8BB02 /* LinkeeExploreView.m in Sources */ = {isa = PBXBuildFile; fileRef = 19B0BAE616A93C7C00A8BB02 /* LinkeeExploreView.m */; };
 		19B0BAEB16A94A7F00A8BB02 /* LinkeeTopTabView.m in Sources */ = {isa = PBXBuildFile; fileRef = 19B0BAEA16A94A7F00A8BB02 /* LinkeeTopTabView.m */; };
 		19B0BAEC16A94A7F00A8BB02 /* LinkeeTopTabView.m in Sources */ = {isa = PBXBuildFile; fileRef = 19B0BAEA16A94A7F00A8BB02 /* LinkeeTopTabView.m */; };
-		19B0BAEF16A95BB000A8BB02 /* FriendLinkeeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 19B0BAEE16A95BAF00A8BB02 /* FriendLinkeeView.m */; };
-		19B0BAF016A95BB000A8BB02 /* FriendLinkeeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 19B0BAEE16A95BAF00A8BB02 /* FriendLinkeeView.m */; };
 		19B48F2B16A01030009FFC09 /* LKViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19B48F2A16A01030009FFC09 /* LKViewController.m */; };
 		19B48F2D16A01698009FFC09 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 19B48F2C16A01698009FFC09 /* Localizable.strings */; };
 		19B48F2F16A01D17009FFC09 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 19B48F2E16A01D17009FFC09 /* InfoPlist.strings */; };
@@ -95,8 +99,6 @@
 		19E20B6216A6623F00313036 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19FE6AC416A4F74C003CEE1C /* Security.framework */; };
 		19E20B6616A69B8E00313036 /* LinkeeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19E20B6516A69B8E00313036 /* LinkeeViewController.m */; };
 		19E20B6716A69B8E00313036 /* LinkeeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19E20B6516A69B8E00313036 /* LinkeeViewController.m */; };
-		19E20B6A16A69C7900313036 /* ExploreLinkeeResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 19E20B6916A69C7900313036 /* ExploreLinkeeResponse.m */; };
-		19E20B6B16A69C7900313036 /* ExploreLinkeeResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 19E20B6916A69C7900313036 /* ExploreLinkeeResponse.m */; };
 		19E20B6F16A6BC9B00313036 /* JsonObj.m in Sources */ = {isa = PBXBuildFile; fileRef = 19E20B6E16A6BC9B00313036 /* JsonObj.m */; };
 		19E20B7016A6BC9B00313036 /* JsonObj.m in Sources */ = {isa = PBXBuildFile; fileRef = 19E20B6E16A6BC9B00313036 /* JsonObj.m */; };
 		19E32FA316A3E15F00B5A5F2 /* PersonalController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19E32FA216A3E15F00B5A5F2 /* PersonalController.m */; };
@@ -177,21 +179,25 @@
 		193F07B8169EACE5005D60DD /* LKCommonImport.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LKCommonImport.h; sourceTree = "<group>"; };
 		193F07B9169EB4A6005D60DD /* LKTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKTabBarController.h; sourceTree = "<group>"; };
 		193F07BA169EB4A6005D60DD /* LKTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKTabBarController.m; sourceTree = "<group>"; };
+		19A937E016AA4E580076DE9B /* LKTableController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKTableController.h; sourceTree = "<group>"; };
+		19A937E116AA4E580076DE9B /* LKTableController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKTableController.m; sourceTree = "<group>"; };
+		19A937EC16AA7DD40076DE9B /* LinkeeStreamController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LinkeeStreamController.h; sourceTree = "<group>"; };
+		19A937ED16AA7DD40076DE9B /* LinkeeStreamController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LinkeeStreamController.m; sourceTree = "<group>"; };
+		19A937F016AA7ECB0076DE9B /* LinkeeExploreController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LinkeeExploreController.h; sourceTree = "<group>"; };
+		19A937F116AA7ECB0076DE9B /* LinkeeExploreController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LinkeeExploreController.m; sourceTree = "<group>"; };
+		19A937F416AA7EEB0076DE9B /* LinkeeNewsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LinkeeNewsController.h; sourceTree = "<group>"; };
+		19A937F516AA7EEB0076DE9B /* LinkeeNewsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LinkeeNewsController.m; sourceTree = "<group>"; };
 		19B0BAE116A93C2700A8BB02 /* LKView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKView.h; sourceTree = "<group>"; };
 		19B0BAE216A93C2700A8BB02 /* LKView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKView.m; sourceTree = "<group>"; };
-		19B0BAE516A93C7B00A8BB02 /* LinkeeExploreView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LinkeeExploreView.h; sourceTree = "<group>"; };
-		19B0BAE616A93C7C00A8BB02 /* LinkeeExploreView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LinkeeExploreView.m; sourceTree = "<group>"; };
 		19B0BAE916A94A7F00A8BB02 /* LinkeeTopTabView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LinkeeTopTabView.h; sourceTree = "<group>"; };
 		19B0BAEA16A94A7F00A8BB02 /* LinkeeTopTabView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LinkeeTopTabView.m; sourceTree = "<group>"; };
-		19B0BAED16A95BAF00A8BB02 /* FriendLinkeeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendLinkeeView.h; sourceTree = "<group>"; };
-		19B0BAEE16A95BAF00A8BB02 /* FriendLinkeeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendLinkeeView.m; sourceTree = "<group>"; };
 		19B48F2916A01030009FFC09 /* LKViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKViewController.h; sourceTree = "<group>"; };
 		19B48F2A16A01030009FFC09 /* LKViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKViewController.m; sourceTree = "<group>"; };
 		19B48F2C16A01698009FFC09 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		19B48F2E16A01D17009FFC09 /* InfoPlist.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = InfoPlist.strings; sourceTree = "<group>"; };
 		19B6928816A4F096004B0374 /* PonyDebugger.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = PonyDebugger.xcodeproj; path = PonyDebugger/ObjC/PonyDebugger.xcodeproj; sourceTree = "<group>"; };
 		19B692C716A4F0DB004B0374 /* Pyramid_PonyD.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pyramid_PonyD.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		19B692C916A4F0DC004B0374 /* Pyramid_PonyD-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Pyramid_PonyD-Info.plist"; path = "/Users/andregao/work/App/pyramid/src/Pyramid/Pyramid_PonyD-Info.plist"; sourceTree = "<absolute>"; };
+		19B692C916A4F0DC004B0374 /* Pyramid_PonyD-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Pyramid_PonyD-Info.plist"; path = "/Users/andregao/work/App/pyramid/src/Pyramid/Pyramid/Pyramid_PonyD-Info.plist"; sourceTree = "<absolute>"; };
 		19C4D09C169FAEF5000610A6 /* LKDebugTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LKDebugTool.h; sourceTree = "<group>"; };
 		19C4D09D169FAF0F000610A6 /* LKDebugTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKDebugTool.m; sourceTree = "<group>"; };
 		19C4D0A0169FBE5F000610A6 /* LoginController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginController.h; sourceTree = "<group>"; };
@@ -212,8 +218,6 @@
 		19E20B5E16A6601600313036 /* STKeychain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STKeychain.m; sourceTree = "<group>"; };
 		19E20B6416A69B8E00313036 /* LinkeeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LinkeeViewController.h; sourceTree = "<group>"; };
 		19E20B6516A69B8E00313036 /* LinkeeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LinkeeViewController.m; sourceTree = "<group>"; };
-		19E20B6816A69C7900313036 /* ExploreLinkeeResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExploreLinkeeResponse.h; sourceTree = "<group>"; };
-		19E20B6916A69C7900313036 /* ExploreLinkeeResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExploreLinkeeResponse.m; sourceTree = "<group>"; };
 		19E20B6D16A6BC9B00313036 /* JsonObj.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JsonObj.h; sourceTree = "<group>"; };
 		19E20B6E16A6BC9B00313036 /* JsonObj.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JsonObj.m; sourceTree = "<group>"; };
 		19E32FA116A3E15F00B5A5F2 /* PersonalController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonalController.h; sourceTree = "<group>"; };
@@ -410,6 +414,8 @@
 				19CA4CA816A1107A00812EE8 /* LKHTTPRequest.m */,
 				19B0BAE116A93C2700A8BB02 /* LKView.h */,
 				19B0BAE216A93C2700A8BB02 /* LKView.m */,
+				19A937E016AA4E580076DE9B /* LKTableController.h */,
+				19A937E116AA4E580076DE9B /* LKTableController.m */,
 			);
 			path = LKBaseClass;
 			sourceTree = "<group>";
@@ -491,16 +497,16 @@
 		19E20B6316A69B4400313036 /* Linkee */ = {
 			isa = PBXGroup;
 			children = (
+				19A937EC16AA7DD40076DE9B /* LinkeeStreamController.h */,
+				19A937ED16AA7DD40076DE9B /* LinkeeStreamController.m */,
 				19E20B6416A69B8E00313036 /* LinkeeViewController.h */,
 				19E20B6516A69B8E00313036 /* LinkeeViewController.m */,
-				19E20B6816A69C7900313036 /* ExploreLinkeeResponse.h */,
-				19E20B6916A69C7900313036 /* ExploreLinkeeResponse.m */,
-				19B0BAE516A93C7B00A8BB02 /* LinkeeExploreView.h */,
-				19B0BAE616A93C7C00A8BB02 /* LinkeeExploreView.m */,
 				19B0BAE916A94A7F00A8BB02 /* LinkeeTopTabView.h */,
 				19B0BAEA16A94A7F00A8BB02 /* LinkeeTopTabView.m */,
-				19B0BAED16A95BAF00A8BB02 /* FriendLinkeeView.h */,
-				19B0BAEE16A95BAF00A8BB02 /* FriendLinkeeView.m */,
+				19A937F016AA7ECB0076DE9B /* LinkeeExploreController.h */,
+				19A937F116AA7ECB0076DE9B /* LinkeeExploreController.m */,
+				19A937F416AA7EEB0076DE9B /* LinkeeNewsController.h */,
+				19A937F516AA7EEB0076DE9B /* LinkeeNewsController.m */,
 			);
 			path = Linkee;
 			sourceTree = "<group>";
@@ -691,12 +697,13 @@
 				19E20B5B16A6560C00313036 /* TaskCentre.m in Sources */,
 				19E20B5F16A6601600313036 /* STKeychain.m in Sources */,
 				19E20B6616A69B8E00313036 /* LinkeeViewController.m in Sources */,
-				19E20B6A16A69C7900313036 /* ExploreLinkeeResponse.m in Sources */,
 				19E20B6F16A6BC9B00313036 /* JsonObj.m in Sources */,
 				19B0BAE316A93C2700A8BB02 /* LKView.m in Sources */,
-				19B0BAE716A93C7C00A8BB02 /* LinkeeExploreView.m in Sources */,
 				19B0BAEB16A94A7F00A8BB02 /* LinkeeTopTabView.m in Sources */,
-				19B0BAEF16A95BB000A8BB02 /* FriendLinkeeView.m in Sources */,
+				19A937E216AA4E580076DE9B /* LKTableController.m in Sources */,
+				19A937EE16AA7DD40076DE9B /* LinkeeStreamController.m in Sources */,
+				19A937F216AA7ECB0076DE9B /* LinkeeExploreController.m in Sources */,
+				19A937F616AA7EEC0076DE9B /* LinkeeNewsController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -734,12 +741,13 @@
 				19E20B5C16A6560C00313036 /* TaskCentre.m in Sources */,
 				19E20B6016A6601600313036 /* STKeychain.m in Sources */,
 				19E20B6716A69B8E00313036 /* LinkeeViewController.m in Sources */,
-				19E20B6B16A69C7900313036 /* ExploreLinkeeResponse.m in Sources */,
 				19E20B7016A6BC9B00313036 /* JsonObj.m in Sources */,
 				19B0BAE416A93C2700A8BB02 /* LKView.m in Sources */,
-				19B0BAE816A93C7C00A8BB02 /* LinkeeExploreView.m in Sources */,
 				19B0BAEC16A94A7F00A8BB02 /* LinkeeTopTabView.m in Sources */,
-				19B0BAF016A95BB000A8BB02 /* FriendLinkeeView.m in Sources */,
+				19A937E316AA4E580076DE9B /* LKTableController.m in Sources */,
+				19A937EF16AA7DD40076DE9B /* LinkeeStreamController.m in Sources */,
+				19A937F316AA7ECB0076DE9B /* LinkeeExploreController.m in Sources */,
+				19A937F716AA7EEC0076DE9B /* LinkeeNewsController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -838,7 +846,7 @@
 					"$(inherited)",
 					"PonyD=1",
 				);
-				INFOPLIST_FILE = "Pyramid_PonyD-Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Pyramid/Pyramid_PonyD-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = Pyramid_PonyD;
@@ -852,7 +860,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Pyramid/Pyramid-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = "PonyD=1";
-				INFOPLIST_FILE = "Pyramid_PonyD-Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Pyramid/Pyramid_PonyD-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = Pyramid_PonyD;

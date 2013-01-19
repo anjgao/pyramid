@@ -30,9 +30,7 @@
     printCookies();
     
     // ASIHTTPRequest
-    ASIDownloadCache* downLoadCache = [ASIDownloadCache sharedCache];
-    downLoadCache.defaultCachePolicy = ASIAskServerIfModifiedWhenStaleCachePolicy;
-    [ASIHTTPRequest setDefaultCache:downLoadCache];
+    [ASIHTTPRequest setDefaultCache:[ASIDownloadCache sharedCache]];
     
     // statusBar color
 //    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackTranslucent]; 
@@ -63,7 +61,7 @@
 }
 #endif
 
--(void)cleanSessionCookie
+-(void)clearSessionCookie
 {
     [ASIHTTPRequest clearSession];
     
@@ -81,6 +79,12 @@
     for ( NSHTTPCookie * cookie in delCookies ) {
         [cookieStorage deleteCookie:cookie];
     }
+}
+
+-(void)clearCache
+{
+    // http
+    [[ASIDownloadCache sharedCache] clearCachedResponsesForStoragePolicy:ASICachePermanentlyCacheStoragePolicy];    // todo 异步执行
 }
 
 @end

@@ -9,5 +9,6 @@
 #import <Foundation/Foundation.h>
 
 @interface ConfigCentre : NSObject
--(void)cleanSessionCookie;
+-(void)clearSessionCookie;
+-(void)clearCache;
 @end

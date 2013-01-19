@@ -19,6 +19,7 @@
 // setting
 "setting" = "设置";
 "logout" = "退出登录";
+"clearCache" = "清除缓存";
 
 // linkee
 "exploreLinkee" = "广场";

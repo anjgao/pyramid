@@ -66,7 +66,7 @@
 - (void)logout:(NSString*)hint
 {
     [LK_USER deleteNameAndPW];
-    [LK_CONFIG cleanSessionCookie];
+    [LK_CONFIG clearSessionCookie];
     printCookies();
     // todo clean user data?
     [self serverLogout];

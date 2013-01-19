@@ -7,15 +7,15 @@
 //
 
 #import "LinkeeViewController.h"
-#import "LinkeeExploreView.h"
 #import "LinkeeTopTabView.h"
-#import "FriendLinkeeView.h"
+#import "LinkeeExploreController.h"
+#import "LinkeeNewsController.h"
 
 @interface LinkeeViewController () <UITableViewDataSource,UITableViewDelegate,LinkeeTopTabViewDelegate>
 {
     LinkeeTopTabView * _topTabView;
-    LinkeeExploreView * _linkeeExploreView;
-    FriendLinkeeView * _friendLinkeeView;
+    LinkeeExploreController * _linkeeExploreCtl;
+    LinkeeNewsController * _friendLinkeeCtl;
 }
 @end
 
@@ -28,28 +28,27 @@
     CGRect frame = self.view.bounds;
     frame.size.height -= 44;
     frame.origin.y += 44;
-    _linkeeExploreView = [[LinkeeExploreView alloc] initWithFrame:frame];
-    _friendLinkeeView = [[FriendLinkeeView alloc] initWithFrame:frame];
-    [self.view addSubview:_linkeeExploreView];
+    _linkeeExploreCtl = [[LinkeeExploreController alloc] initWithCapacity:20];
+    _friendLinkeeCtl = [[LinkeeNewsController alloc] initWithCapacity:20];
+    _linkeeExploreCtl.view.frame = frame;
+    [self.view addSubview:_linkeeExploreCtl.view];
     
     frame.origin.y = 0;
     frame.size.height = 44;
     _topTabView = [[LinkeeTopTabView alloc] initWithFrame:frame];
     [self.view addSubview:_topTabView];
     _topTabView.delegate = self;
-    
-    printViewTree(self.view);
 }
 
 #pragma mark - LinkeeTopTabViewDelegate
 -(void)showExploreLinkee
 {
-    [self changeViewFrom:_friendLinkeeView to:_linkeeExploreView];
+    [self changeViewFrom:_friendLinkeeCtl.view to:_linkeeExploreCtl.view];
 }
 
 -(void)showFriendLinkee
 {
-    [self changeViewFrom:_linkeeExploreView to:_friendLinkeeView];
+    [self changeViewFrom:_linkeeExploreCtl.view to:_friendLinkeeCtl.view];
 }
 
 -(void)changeViewFrom:(UIView*)from to:(UIView*)to
