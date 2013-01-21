@@ -11,4 +11,5 @@
 @interface ConfigCentre : NSObject
 -(void)clearSessionCookie;
 -(void)clearCache;
+-(BOOL)isRetina;
 @end

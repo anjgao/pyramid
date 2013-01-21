@@ -7,11 +7,17 @@
 //
 
 #import "LKViewController.h"
+#import "ASIHTTPRequest.h"
 
 @protocol LKTableControllerDelegate <NSObject>
 -(void)createCellSubviews:(UITableViewCell*)cell;
--(void)fillCell:(UITableViewCell*)cell data:(id)data;
--(void)loadMoreData;
+-(void)fillCell:(UITableViewCell*)cell data:(id)data index:(NSIndexPath*)index forHeight:(BOOL)bForHeight;
+-(NSString*)requestUrlPath;
+-(void)loadSuccess:(ASIHTTPRequest *)request;
+@optional
+-(void)loadFailed:(ASIHTTPRequest *)request;
+-(void)cellItemLoadFinish:(ASIHTTPRequest*)request;
+-(void)cellItemLoadFailed:(ASIHTTPRequest*)request;
 @end
 
 @interface LKTableController : LKViewController <UITableViewDataSource,UITableViewDelegate,LKTableControllerDelegate>
@@ -21,4 +27,5 @@
     BOOL                _bLoadFinish;
 }
 - (id)initWithCapacity:(uint)capacity;
+- (void)requestCellItem:(NSString*)url userInfo:(NSDictionary*)userInfo;
 @end

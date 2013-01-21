@@ -15,6 +15,12 @@
 #import <PonyDebugger/PonyDebugger.h>
 #endif
 
+@interface ConfigCentre()
+{
+    BOOL _isRetina;
+}
+@end
+
 @implementation ConfigCentre
 
 -(id)init
@@ -34,6 +40,9 @@
     
     // statusBar color
 //    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackTranslucent]; 
+    
+    // isRetina
+    _isRetina = ([UIScreen instancesRespondToSelector:@selector(scale)] ? (2 == [[UIScreen mainScreen] scale]) : NO);
     
     return self;
 }
@@ -85,6 +94,11 @@
 {
     // http
     [[ASIDownloadCache sharedCache] clearCachedResponsesForStoragePolicy:ASICachePermanentlyCacheStoragePolicy];    // todo 异步执行
+}
+
+-(BOOL)isRetina
+{
+    return _isRetina;
 }
 
 @end

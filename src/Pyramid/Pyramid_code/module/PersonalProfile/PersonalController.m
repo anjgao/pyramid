@@ -143,7 +143,8 @@
 
 -(void)friendedPressed:(UIButton*)btn
 {
-    [self requestPortrait];
+    CGSize s1 = _portrait.image.size;
+    float c1 = _portrait.image.scale;
 }
 
 @end
