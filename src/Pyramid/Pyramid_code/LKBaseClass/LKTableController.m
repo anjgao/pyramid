@@ -65,10 +65,6 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-    
-    _table = nil;
-    _bLoadFinish = NO;
-    _footer = nil;
 }
 
 #pragma mark - UITableView
@@ -122,6 +118,9 @@
     NSString* urlPath = [self requestUrlPath];
     if (nil == urlPath)
         return;
+    
+    int b = _queue.operations.count;
+    int c = _queue.operationCount;
     
     _curRequest = [ASIHTTPRequest requestWithURL:linkkkUrl(urlPath)];
     _curRequest.delegate = self;
@@ -185,6 +184,11 @@
 }
 
 -(void)loadSuccess:(ASIHTTPRequest *)request
+{
+    
+}
+
+-(void)loadFailed:(ASIHTTPRequest *)request
 {
     
 }

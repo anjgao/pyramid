@@ -12,6 +12,8 @@
 #define CELL_TEXT           250
 #define CELL_IMG            251
 #define CELL_CONTENT_IMG    252
+#define CELL_NAME           253
+#define CELL_TIME           254
 
 @interface LinkeeStreamController ()
 
@@ -32,6 +34,16 @@
     img.contentMode = UIViewContentModeScaleAspectFit;
     img.tag = CELL_IMG;
     [cell.contentView addSubview:img];
+    
+    UILabel* name = [[UILabel alloc] initWithFrame:CGRectMake(70, 15, cell.bounds.size.width-80, 20)];
+    name.tag = CELL_NAME;
+    [cell.contentView addSubview:name];
+    
+    UILabel* time = [[UILabel alloc] initWithFrame:CGRectMake(70, 40, cell.bounds.size.width-80, 20)];
+    time.tag = CELL_TIME;
+    time.font = [UIFont systemFontOfSize:13];
+    time.textColor = [UIColor grayColor];
+    [cell.contentView addSubview:time];
 }
 
 -(void)fillCell:(UITableViewCell*)cell data:(id)data index:(NSIndexPath *)index forHeight:(BOOL)bForHeight
@@ -41,17 +53,26 @@
         return;
     
     if (!bForHeight) {
+        // name
+        UILabel * name = (UILabel*)[cell viewWithTag:CELL_NAME];
+        name.text = objData.author.username;
+        
+        // time
+        UILabel * time = (UILabel*)[cell viewWithTag:CELL_TIME];
+        time.text = [LK_CONFIG dateDisplayString:objData.created];
+        
+        // avatar
         UIImageView * img = (UIImageView*)[cell viewWithTag:CELL_IMG];
         img.image = nil;
-        UIImageView * contentImg = (UIImageView*)[cell viewWithTag:CELL_CONTENT_IMG];
-        [contentImg removeFromSuperview];
-        
         NSDictionary * imgDic = @{@"index":index,@"type":@0};
         if ([LK_CONFIG isRetina])
             [self requestCellItem:objData.author.medium_avatar userInfo:imgDic];
         else
             [self requestCellItem:objData.author.small_avatar userInfo:imgDic];
         
+        // content image
+        UIImageView * contentImg = (UIImageView*)[cell viewWithTag:CELL_CONTENT_IMG];
+        [contentImg removeFromSuperview];
         if (objData.image) {
             NSDictionary * imgDic = @{@"index":index,@"type":@1};
             if ([LK_CONFIG isRetina])
@@ -61,6 +82,7 @@
         }
     }
     
+    // content
     UILabel* text = (UILabel*)[cell viewWithTag:CELL_TEXT];
     CGRect frame = text.frame;
     frame.size = CGSizeMake(cell.bounds.size.width - 20, 0);
@@ -71,7 +93,7 @@
     CGRect cellFrame = cell.frame;
     cellFrame.size.height = text.frame.size.height + 80;
     if (objData.image) {
-        int h = [self heightWithWidth:[objData.image.raw_width intValue] height:[objData.image.raw_height intValue]];
+        int h = [self sizeWithWidth:[objData.image.raw_width intValue] height:[objData.image.raw_height intValue]].height;
         cellFrame.size.height += (h+10);
     }
     cell.frame = cellFrame;
@@ -90,12 +112,24 @@
         }
         else if (type == 1) {
             UIImage * contentImg = [UIImage imageWithData:request.responseData];
+//            UIImage * scale = [UIImage imageWithCGImage:contentImg.CGImage scale:2.0 orientation:UIImageOrientationUp];
             UIImageView * img = [[UIImageView alloc] initWithImage:contentImg];
+            img.contentMode = UIViewContentModeScaleAspectFit;
             img.tag = CELL_CONTENT_IMG;
             CGRect imgFrame = img.frame;
             if ([LK_CONFIG isRetina]) {
-                imgFrame.size.height /= 2;
-                imgFrame.size.width /= 2;
+                if (contentImg.size.height > 201) {
+                    imgFrame.size = [self sizeWithWidth:contentImg.size.width height:contentImg.size.height];
+                }
+                else {
+                    imgFrame.size.height /= 2;
+                    imgFrame.size.width /= 2;
+                }
+            }
+            else {
+                if (contentImg.size.height > 81) {
+                    imgFrame.size = [self sizeWithWidth:contentImg.size.width height:contentImg.size.height];                    
+                }
             }
             imgFrame.origin = CGPointMake((cell.frame.size.width - imgFrame.size.width)/2, cell.frame.size.height - 10 - imgFrame.size.height);
             img.frame = imgFrame;
@@ -106,7 +140,7 @@
 
 -(void)cellItemLoadFailed:(ASIHTTPRequest*)request
 {
-    
+    // todo 显示拉取失败的图
 }
 
 #pragma mark - LinkeeStreamCtlDelegate
@@ -116,21 +150,28 @@
 }
 
 #pragma mark - inner method
--(int)heightWithWidth:(int)width height:(int)height
+-(CGSize)sizeWithWidth:(int)width height:(int)height
 {
+    CGSize retSize = CGSizeZero;
     int imgSize = 80;
     if (LK_CONFIG.isRetina) {
         imgSize = 200;
     }
     
     if (width >= height) {
-        imgSize = imgSize * height / width;
+        retSize.height = imgSize * height / width;
+        retSize.width = imgSize;
+    }
+    else {
+        retSize.width = imgSize * width / height;
+        retSize.height = imgSize;
     }
     
     if (LK_CONFIG.isRetina) {
-        return imgSize/2;
+        retSize.height /= 2;
+        retSize.width /= 2;
     }
-    return imgSize;
+    return retSize;
 }
 
 @end

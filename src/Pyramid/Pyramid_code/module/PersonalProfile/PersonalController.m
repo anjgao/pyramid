@@ -115,8 +115,8 @@
     _story.text = _curProfile.story;
     
     [_friend setTitle:[LKString(friend) stringByAppendingFormat:@": %@",[_curProfile.stat.circle_count stringValue]] forState:UIControlStateNormal];
-    [_exp setTitle:[LKString(friend) stringByAppendingFormat:@": %@",[_curProfile.stat.team_count stringValue]] forState:UIControlStateNormal];
-    [_hostedexp setTitle:[LKString(friend) stringByAppendingFormat:@": %@",[_curProfile.stat.hosted_team_count stringValue]] forState:UIControlStateNormal];
+    [_exp setTitle:[LKString(exps) stringByAppendingFormat:@": %@",[_curProfile.stat.team_count stringValue]] forState:UIControlStateNormal];
+    [_hostedexp setTitle:[LKString(hostexps) stringByAppendingFormat:@": %@",[_curProfile.stat.hosted_team_count stringValue]] forState:UIControlStateNormal];
 }
 
 -(void)requestPortrait

@@ -12,7 +12,7 @@
 @interface Json_City : Jastor
 @property(nonatomic,retain) NSNumber * id;
 @property(nonatomic,retain) NSString * name;
-@property(nonatomic,retain) NSString * resource_uri;
+//@property(nonatomic,retain) NSString * resource_uri;
 @property(nonatomic,retain) NSNumber * weight;
 @end
 
@@ -20,7 +20,7 @@
 @property(nonatomic,retain) Json_City * city;
 @property(nonatomic,retain) NSNumber * id;
 @property(nonatomic,retain) NSString * name;
-@property(nonatomic,retain) NSString * resource_uri;
+//@property(nonatomic,retain) NSString * resource_uri;
 @property(nonatomic,retain) NSNumber * weight;
 @end
 
@@ -43,14 +43,14 @@
 @property(nonatomic,retain) NSString * raw;
 @property(nonatomic,retain) NSNumber * raw_width;
 @property(nonatomic,retain) NSNumber * raw_height;
-@property(nonatomic,retain) NSString * resource_uri;
+//@property(nonatomic,retain) NSString * resource_uri;
 @end
 
 ///////////////////////////////////////////////////////////////////////////////////////
-@interface Json_author : Jastor     // linkee作者、reply作者
+@interface Json_user : Jastor     // linkee作者、reply作者、好友列表项
 @property(nonatomic,retain) Json_District * district;
 @property(nonatomic,retain) NSNumber * id;
-@property(nonatomic,retain) NSString * resource_uri;
+//@property(nonatomic,retain) NSString * resource_uri;
 @property(nonatomic,retain) NSString * medium_avatar;
 @property(nonatomic,retain) NSString * small_avatar;
 @property(nonatomic,retain) NSString * story;
@@ -68,35 +68,35 @@
 @interface Json_current_profile : Jastor
 @property(nonatomic,retain) Json_image * cover_image;
 @property(nonatomic,retain) NSString * name;
-@property(nonatomic,retain) NSString * resource_uri;
+//@property(nonatomic,retain) NSString * resource_uri;
 @end
 
 @interface Json_activity : Jastor
 @property(nonatomic,retain) Json_current_profile * current_profile;
 @property(nonatomic,retain) NSNumber * id;
-@property(nonatomic,retain) NSString * resource_uri;
+//@property(nonatomic,retain) NSString * resource_uri;
 @end
 
 @interface Json_recent_replie : Jastor
-@property(nonatomic,retain) Json_author * author;
+@property(nonatomic,retain) Json_user * author;
 @property(nonatomic,retain) NSString * content;
 @property(nonatomic,retain) NSString * created;
 @property(nonatomic,retain) NSNumber * id;
 @property(nonatomic,retain) NSNumber * linkee;
 @property(nonatomic,retain) NSArray * mentions;
-@property(nonatomic,retain) NSString * resource_uri;
+//@property(nonatomic,retain) NSString * resource_uri;
 @end
 
-@interface Json_user : Jastor
+@interface Json_FW_user : Jastor
 @property(nonatomic,retain) NSNumber * id;
 @property(nonatomic,retain) NSString * username;
 @property(nonatomic,retain) NSString * story;
-@property(nonatomic,retain) NSString * resource_uri;
+//@property(nonatomic,retain) NSString * resource_uri;
 @end
 
 @interface Json_linkee : Jastor
 @property(nonatomic,retain) Json_activity * activity;
-@property(nonatomic,retain) Json_author * author;
+@property(nonatomic,retain) Json_user * author;
 @property(nonatomic,retain) NSString * content;
 @property(nonatomic,retain) NSString * created;
 @property(nonatomic,retain) NSNumber * id;
@@ -107,15 +107,23 @@
 @property(nonatomic,retain) NSArray * mentions;
 @property(nonatomic,retain) NSArray * recent_replies;
 @property(nonatomic,retain) NSNumber * reply_count;
-@property(nonatomic,retain) NSString * resource_uri;
-@property(nonatomic,retain) Json_user * user;
+//@property(nonatomic,retain) NSString * resource_uri;
+@property(nonatomic,retain) Json_FW_user * user;
 @end
 
 ///////////////////////////////////////////////////////////////////////////////////////
 @interface Json_news : Jastor
 @property(nonatomic,retain) Json_linkee * linkee;
 @property(nonatomic,retain) NSNumber * id;
-@property(nonatomic,retain) NSString * resource_uri;
+//@property(nonatomic,retain) NSString * resource_uri;
+@end
+
+///////////////////////////////////////////////////////////////////////////////////////
+@interface Json_people : Jastor
+@property(nonatomic,retain) Json_user * follow;
+@property(nonatomic,retain) NSNumber * id;
+@property(nonatomic,retain) NSString * user;
+//@property(nonatomic,retain) NSString * resource_uri;
 @end
 
 ///////////////////////////////////////////////////////////////////////////////////////
@@ -130,5 +138,8 @@
 @property(nonatomic,retain) NSArray * objects;
 @end
 
-
+@interface PeopleStreamResponse : Jastor
+//@property(nonatomic,retain) Json_meta * meta;
+@property(nonatomic,retain) NSArray * objects;
+@end
 

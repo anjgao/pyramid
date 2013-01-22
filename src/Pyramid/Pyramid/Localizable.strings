@@ -6,6 +6,12 @@
   Copyright (c) 2013年 linkkk.com. All rights reserved.
 */
 
+// time display
+"td_old" = "yyyy'年'MM'月'dd'日 'HH':'mm";
+"td_justnow" = "1分钟内";
+"td_inHour" = "%d分钟前";
+"td_today" = "'今天'HH':'mm";
+"td_thisYear" = "MM'月'dd'日 'HH':'mm";
 
 // login
 "login" = "登录";

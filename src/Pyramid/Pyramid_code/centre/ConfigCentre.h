@@ -12,4 +12,5 @@
 -(void)clearSessionCookie;
 -(void)clearCache;
 -(BOOL)isRetina;
+-(NSString*)dateDisplayString:(NSString*)date;
 @end

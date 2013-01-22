@@ -17,7 +17,10 @@
 
 @interface ConfigCentre()
 {
-    BOOL _isRetina;
+    BOOL                _isRetina;
+    NSDateFormatter*    _inputDateFormatter;
+    NSDateFormatter*    _outputDateFormatter;
+    NSDateFormatter*    _dayDateFormatter;
 }
 @end
 
@@ -43,6 +46,14 @@
     
     // isRetina
     _isRetina = ([UIScreen instancesRespondToSelector:@selector(scale)] ? (2 == [[UIScreen mainScreen] scale]) : NO);
+    
+    // date
+    _dayDateFormatter = [[NSDateFormatter alloc] init];
+    [_dayDateFormatter setDateFormat:@"yyyyMMdd"];
+    [_dayDateFormatter setTimeZone:[NSTimeZone systemTimeZone]];
+    _inputDateFormatter = [[NSDateFormatter alloc] init];
+    [_inputDateFormatter setDateFormat:@"yyyy'-'MM'-'dd'T'HH':'mm':'sszzz"];
+    _outputDateFormatter = [[NSDateFormatter alloc] init];
     
     return self;
 }
@@ -99,6 +110,31 @@
 -(BOOL)isRetina
 {
     return _isRetina;
+}
+
+-(NSString*)dateDisplayString:(NSString*)date
+{
+    NSDate * theDate = [_inputDateFormatter dateFromString:date];
+    NSTimeInterval sinceNow = -[theDate timeIntervalSinceNow];
+    int min = sinceNow / 60;
+    if (min < 0)
+        return nil;
+    else if ( min == 0 )
+        return LKString(td_justnow);
+    else if (min < 60)
+        return [NSString stringWithFormat:LKString(td_inHour),min];
+    
+    NSString * theDateStr = [_dayDateFormatter stringFromDate:theDate];
+    NSString * todayStr = [_dayDateFormatter stringFromDate:[NSDate date]];
+    
+    if ([theDateStr isEqualToString:todayStr])
+        [_outputDateFormatter setDateFormat:LKString(td_today)];
+    else if ([[theDateStr substringToIndex:4] isEqualToString:[todayStr substringToIndex:4]])
+        [_outputDateFormatter setDateFormat:LKString(td_thisYear)];
+    else
+        [_outputDateFormatter setDateFormat:LKString(td_old)];
+    
+    return [_outputDateFormatter stringFromDate:theDate];
 }
 
 @end

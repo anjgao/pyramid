@@ -24,7 +24,7 @@
 
 @end
 
-@implementation Json_author
+@implementation Json_user
 
 @end
 
@@ -40,7 +40,7 @@
 
 @end
 
-@implementation Json_user
+@implementation Json_FW_user
 
 @end
 
@@ -64,6 +64,11 @@
 
 @end
 
+@implementation Json_people
+
+@end
+
+
 ///////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////
 @implementation ExploreLinkeeResponse
@@ -77,4 +82,11 @@
     return [Json_news class];
 }
 @end
+
+@implementation PeopleStreamResponse
++ (Class)objects_class {
+    return [Json_people class];
+}
+@end
+
 
