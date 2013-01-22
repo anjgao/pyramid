@@ -14,6 +14,7 @@
     UIActivityIndicatorView * _footer;
     ASIHTTPRequest * _curRequest;
     ASINetworkQueue * _queue;
+    UITableViewCell * _cellForH;
 }
 @end
 
@@ -94,11 +95,10 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     // todo 存储高度、不每次重复计算
-    static UITableViewCell* cell = nil;
-    if (!cell)
-        cell = [self createTableCell:nil];
-    [self fillCell:cell data:[_data objectAtIndex:indexPath.row] index:indexPath forHeight:YES];
-    return cell.frame.size.height;
+    if (!_cellForH)
+        _cellForH = [self createTableCell:nil];
+    [self fillCell:_cellForH data:[_data objectAtIndex:indexPath.row] index:indexPath forHeight:YES];
+    return _cellForH.frame.size.height;
 }
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath

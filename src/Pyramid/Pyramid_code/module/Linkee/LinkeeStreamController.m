@@ -149,6 +149,12 @@
     return nil;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell* cell = [_table cellForRowAtIndexPath:indexPath];
+    [cell setSelected:NO animated:YES];
+}
+
 #pragma mark - inner method
 -(CGSize)sizeWithWidth:(int)width height:(int)height
 {

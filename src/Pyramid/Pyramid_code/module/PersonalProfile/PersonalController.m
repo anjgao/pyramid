@@ -9,6 +9,7 @@
 #import "PersonalController.h"
 #import "ASIHTTPRequest.h"
 #import "PersonProfile.h"
+#import "PeopleStreamController.h"
 
 @interface PersonalController ()
 {
@@ -32,7 +33,7 @@
 -(id)init
 {
     self = [super init];
-    self.title = LKString(myProfile);
+//    self.title = LKString(myProfile);
     return self;
 }
 
@@ -97,6 +98,7 @@
 {
     json2obj(request.responseData, PersonProfile)
     _curProfile = repObj;
+    self.title = _curProfile.username;
     [self fillView];
     [self requestPortrait];
 }
@@ -143,8 +145,8 @@
 
 -(void)friendedPressed:(UIButton*)btn
 {
-    CGSize s1 = _portrait.image.size;
-    float c1 = _portrait.image.scale;
+    PeopleStreamController* psCtl = [[PeopleStreamController alloc] initWithID:_curPersonID];
+    [self.navigationController pushViewController:psCtl animated:YES];
 }
 
 @end
