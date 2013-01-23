@@ -72,14 +72,19 @@
 		_refreshHeaderView.delegate = self;
 		[_table addSubview:_refreshHeaderView];
     }
-    
-    [self firstRefresh];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(void)refresh
+{
+    [_table setContentOffset:CGPointMake(0, -65) animated:NO];
+    [_refreshHeaderView egoRefreshScrollViewDidScroll:_table];
+	[_refreshHeaderView egoRefreshScrollViewDidEndDragging:_table];
 }
 
 #pragma mark - UITableView
@@ -218,14 +223,6 @@
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
 {
 	[_refreshHeaderView egoRefreshScrollViewDidEndDragging:scrollView];
-}
-
-#pragma mark - UIScrollViewDelegate Methods
--(void)firstRefresh
-{
-    _table.contentOffset = CGPointMake(0, -70);
-    [_refreshHeaderView egoRefreshScrollViewDidScroll:_table];
-	[_refreshHeaderView egoRefreshScrollViewDidEndDragging:_table];
 }
 
 #pragma mark - LKTableControllerDelegate

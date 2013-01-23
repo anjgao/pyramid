@@ -10,6 +10,7 @@
 #import "ASIHTTPRequest.h"
 #import "PersonProfile.h"
 #import "PeopleStreamController.h"
+#import "ProfileLinkeeController.h"
 
 @interface PersonalController ()
 {
@@ -17,7 +18,11 @@
     NSNumber * _curPersonID;
     PersonProfile * _curProfile;
     
+    // controller
+    ProfileLinkeeController * _linkeeCtl;
+    
     // views
+    UIView * _infoView;
     UILabel * _name;
     UILabel * _area;
     UILabel * _story;
@@ -38,12 +43,14 @@
 {
     self = [super init];
 //    self.title = LKString(myProfile);
+    _linkeeCtl = [[ProfileLinkeeController alloc] initWithCapacity:20];
     return self;
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.view.autoresizingMask = UIViewAutoresizingFlexibleHeight;
 	
     [self createViews];
 }
@@ -65,35 +72,45 @@
 {
     _curPersonID = personID;
     [self requestPersonalData];
+    
+    _linkeeCtl.targetID = personID;
+    [_linkeeCtl refresh];
 }
 
 #pragma mark - inner method
 -(void)createViews
 {
+    _infoView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 190)];
+    
     _name = [[UILabel alloc] initWithFrame:CGRectMake(150, 10, 150, 30)];
-    [self.view addSubview:_name];
+    [_infoView addSubview:_name];
     
     _area = [[UILabel alloc] initWithFrame:CGRectMake(150, 50, 150, 20)];
-    [self.view addSubview:_area];
+    [_infoView addSubview:_area];
 
     _story = [[UILabel alloc] initWithFrame:CGRectMake(150, 80, 150, 60)];
-    [self.view addSubview:_story];
+    [_infoView addSubview:_story];
     
     _friend = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     _friend.frame = CGRectMake(10, 150, 90, 30);
-    [self.view addSubview:_friend];
+    [_infoView addSubview:_friend];
     [_friend addTarget:self action:@selector(friendedPressed:) forControlEvents:UIControlEventTouchUpInside];
     
     _exp = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     _exp.frame = CGRectMake(115, 150, 90, 30);
-    [self.view addSubview:_exp];
+    [_infoView addSubview:_exp];
     
     _hostedexp = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     _hostedexp.frame = CGRectMake(220, 150, 90, 30);
-    [self.view addSubview:_hostedexp];
+    [_infoView addSubview:_hostedexp];
     
     _portrait = [[UIImageView alloc] initWithFrame:CGRectMake(10, 10, 130, 130)];
-    [self.view addSubview:_portrait];
+    [_infoView addSubview:_portrait];
+    
+    _linkeeCtl.view.frame = self.view.bounds;
+    [self.view addSubview:_linkeeCtl.view];
+    UITableView * table = [_linkeeCtl getTable];
+    table.tableHeaderView = _infoView;
 }
 
 -(void)requestPersonalData

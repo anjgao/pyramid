@@ -35,6 +35,8 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    
+    [self refresh];
 }
 
 - (void)didReceiveMemoryWarning
@@ -56,8 +58,8 @@
     
     NSNumber * userID = ((Json_people*)_data[indexPath.row]).follow.id;
     PersonalController * peopleCtl = [[PersonalController alloc] init];
-    [peopleCtl showProfileWithID:userID];
     [self.navigationController pushViewController:peopleCtl animated:YES];
+    [peopleCtl showProfileWithID:userID];
 }
 
 #pragma mark - LKTableControllerDelegate
