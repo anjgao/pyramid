@@ -8,13 +8,17 @@
 
 #import "LKTableController.h"
 #import "ASINetworkQueue.h"
+#import "EGORefreshTableHeaderView.h"
 
-@interface LKTableController()
+@interface LKTableController() <EGORefreshTableHeaderDelegate>
 {
+    EGORefreshTableHeaderView *_refreshHeaderView;
     UIActivityIndicatorView * _footer;
+    UITableViewCell * _cellForH;
+    
+    BOOL _bRefreshRequest;
     ASIHTTPRequest * _curRequest;
     ASINetworkQueue * _queue;
-    UITableViewCell * _cellForH;
 }
 @end
 
@@ -38,7 +42,7 @@
 
 - (void)dealloc
 {
-    [_curRequest cancel];
+    [_curRequest clearDelegatesAndCancel];
     [_queue reset];
 }
 
@@ -48,18 +52,28 @@
 
     self.view.autoresizingMask = UIViewAutoresizingFlexibleHeight;
     
-    _table = [[UITableView alloc] initWithFrame:self.view.bounds];
-    _table.dataSource = self;
-    _table.delegate = self;
-    _table.autoresizingMask = UIViewAutoresizingFlexibleHeight;
-    [self.view addSubview:_table];
+    if (nil == _table) {
+        _table = [[UITableView alloc] initWithFrame:self.view.bounds];
+        _table.dataSource = self;
+        _table.delegate = self;
+        _table.autoresizingMask = UIViewAutoresizingFlexibleHeight;
+        [self.view addSubview:_table];
+    }
     
-    _footer = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-    _footer.frame = CGRectMake(0, 0, _table.bounds.size.width, 60);
-    _footer.hidesWhenStopped = YES;
-    _table.tableFooterView = _footer;
+    if (nil == _footer) {
+        _footer = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+        _footer.frame = CGRectMake(0, 0, _table.bounds.size.width, 60);
+        _footer.hidesWhenStopped = YES;
+        _table.tableFooterView = _footer;
+    }
     
-    [self requestData];
+    if (nil == _refreshHeaderView) {
+        _refreshHeaderView = [[EGORefreshTableHeaderView alloc] initWithFrame:CGRectMake(0, 0 - _table.bounds.size.height, self.view.frame.size.width, _table.bounds.size.height)];
+		_refreshHeaderView.delegate = self;
+		[_table addSubview:_refreshHeaderView];
+    }
+    
+    [self firstRefresh];
 }
 
 - (void)didReceiveMemoryWarning
@@ -105,22 +119,19 @@
 {
     if ( !_bLoadFinish && indexPath.row == _data.count-1 )
     {
-        [self requestData];
+        [self requestData:NO];
     }
 }
 
 #pragma mark - request data
--(void)requestData
+-(void)requestData:(BOOL)bRefresh
 {
     if (_curRequest)
         return;
     
-    NSString* urlPath = [self requestUrlPath];
+    NSString* urlPath = [self requestUrlPath:bRefresh];
     if (nil == urlPath)
         return;
-    
-    int b = _queue.operations.count;
-    int c = _queue.operationCount;
     
     _curRequest = [ASIHTTPRequest requestWithURL:linkkkUrl(urlPath)];
     _curRequest.delegate = self;
@@ -128,23 +139,34 @@
     _curRequest.didFailSelector = @selector(dataLoadFailed:);
     [_curRequest startAsynchronous];
     
-    [_footer startAnimating];
+    _bRefreshRequest = bRefresh;
+    if (!bRefresh)
+        [_footer startAnimating];
 }
 
 - (void)dataLoadFinished:(ASIHTTPRequest *)request
 {
     _curRequest = nil;
-    [_footer stopAnimating];
     
-    uint old = _data.count;
-    [self loadSuccess:request];
-    uint new = _data.count;
-    
-    NSMutableArray * insertArr = [NSMutableArray arrayWithCapacity:20];
-    for (uint i = old; i < new; i++) {
-        [insertArr addObject:[NSIndexPath indexPathForRow:i inSection:0]];
+    if (_bRefreshRequest) {
+        [_refreshHeaderView egoRefreshScrollViewDataSourceDidFinishedLoading:_table];
+        [_data removeAllObjects];
+        [self loadSuccess:request bRefresh:YES];
+        [_table reloadData];
     }
-    [_table insertRowsAtIndexPaths:insertArr withRowAnimation:UITableViewRowAnimationNone];
+    else {
+        [_footer stopAnimating];
+        
+        uint old = _data.count;
+        [self loadSuccess:request bRefresh:NO];
+        uint new = _data.count;
+        
+        NSMutableArray * insertArr = [NSMutableArray arrayWithCapacity:20];
+        for (uint i = old; i < new; i++) {
+            [insertArr addObject:[NSIndexPath indexPathForRow:i inSection:0]];
+        }
+        [_table insertRowsAtIndexPaths:insertArr withRowAnimation:UITableViewRowAnimationNone];
+    }
 }
 
 - (void)dataLoadFailed:(ASIHTTPRequest *)request
@@ -154,17 +176,56 @@
     LKLog([request responseString]);
     LKLog([[request error] localizedDescription]);
     
-    [_footer stopAnimating];
-    [self loadFailed:request];
+    if (_bRefreshRequest)
+        [_refreshHeaderView egoRefreshScrollViewDataSourceDidFinishedLoading:_table];
+    else
+        [_footer stopAnimating];
+    
+    [self loadFailed:request bRefresh:_bRefreshRequest];
 }
 
-#pragma mark - cell image
+#pragma mark - cell item
 - (void)requestCellItem:(NSString*)url userInfo:(NSDictionary*)userInfo
 {
     ASIHTTPRequest * request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:url]];
     request.cacheStoragePolicy = ASICachePermanentlyCacheStoragePolicy;
     request.userInfo = userInfo;
     [_queue addOperation:request];
+}
+
+#pragma mark - EGORefreshTableHeaderDelegate Methods
+- (void)egoRefreshTableHeaderDidTriggerRefresh:(EGORefreshTableHeaderView*)view
+{
+    [self requestData:YES];
+}
+
+- (BOOL)egoRefreshTableHeaderDataSourceIsLoading:(EGORefreshTableHeaderView*)view
+{
+	return (_curRequest != nil);
+}
+
+- (NSDate*)egoRefreshTableHeaderDataSourceLastUpdated:(EGORefreshTableHeaderView*)view
+{
+	return [NSDate date];	
+}
+
+#pragma mark - UIScrollViewDelegate Methods
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+	[_refreshHeaderView egoRefreshScrollViewDidScroll:scrollView];    
+}
+
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
+{
+	[_refreshHeaderView egoRefreshScrollViewDidEndDragging:scrollView];
+}
+
+#pragma mark - UIScrollViewDelegate Methods
+-(void)firstRefresh
+{
+    _table.contentOffset = CGPointMake(0, -70);
+    [_refreshHeaderView egoRefreshScrollViewDidScroll:_table];
+	[_refreshHeaderView egoRefreshScrollViewDidEndDragging:_table];
 }
 
 #pragma mark - LKTableControllerDelegate
@@ -178,17 +239,17 @@
     
 }
 
--(NSString*)requestUrlPath
+-(NSString*)requestUrlPath:(BOOL)bRefresh
 {
     return nil;
 }
 
--(void)loadSuccess:(ASIHTTPRequest *)request
+-(void)loadSuccess:(ASIHTTPRequest *)request bRefresh:(BOOL)bRefresh
 {
     
 }
 
--(void)loadFailed:(ASIHTTPRequest *)request
+-(void)loadFailed:(ASIHTTPRequest *)request bRefresh:(BOOL)bRefresh
 {
     
 }

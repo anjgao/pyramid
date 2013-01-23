@@ -90,10 +90,10 @@
         [self requestCellItem:item.follow.small_avatar userInfo:imgDic];
 }
 
--(NSString*)requestUrlPath
+-(NSString*)requestUrlPath:(BOOL)bRefresh
 {
     NSNumber * start = @2147483647;     // todo news id超过该数值时
-    if (_data.count > 0 ) {
+    if (_data.count > 0 && !bRefresh) {
         Json_people* last = (Json_people*)[_data lastObject];
         start = last.id;
     }
@@ -102,18 +102,13 @@
     return urlPath;
 }
 
--(void)loadSuccess:(ASIHTTPRequest *)request
+-(void)loadSuccess:(ASIHTTPRequest *)request bRefresh:(BOOL)bRefresh
 {
     json2obj(request.responseData, PeopleStreamResponse)
     [_data addObjectsFromArray:repObj.objects];
     if (repObj.objects.count < 20) {
         _bLoadFinish = YES;
     }
-}
-
--(void)loadFailed:(ASIHTTPRequest *)request
-{
-    
 }
 
 -(void)cellItemLoadFinish:(ASIHTTPRequest*)request
@@ -125,11 +120,6 @@
         img.image = [UIImage imageWithData:request.responseData];
     }
 
-}
-
--(void)cellItemLoadFailed:(ASIHTTPRequest*)request
-{
-    
 }
 
 

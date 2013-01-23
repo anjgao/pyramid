@@ -29,10 +29,10 @@
 }
 
 #pragma mark - request data
--(NSString*)requestUrlPath
+-(NSString*)requestUrlPath:(BOOL)bRefresh
 {
     NSNumber * start = @2147483647;     // todo news id超过该数值时
-    if (_data.count > 0 ) {
+    if (_data.count > 0 && !bRefresh) {
         Json_news* last = (Json_news*)[_data lastObject];
         start = last.id;
     }
@@ -41,7 +41,7 @@
     return urlPath;
 }
 
-- (void)loadSuccess:(ASIHTTPRequest *)request
+- (void)loadSuccess:(ASIHTTPRequest *)request bRefresh:(BOOL)bRefresh
 {
     json2obj(request.responseData, NewsResponse)
     [_data addObjectsFromArray:repObj.objects];

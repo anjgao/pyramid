@@ -29,14 +29,17 @@
 }
 
 #pragma mark - request data
--(NSString*)requestUrlPath
+-(NSString*)requestUrlPath:(BOOL)bRefresh
 {
-    return [NSString stringWithFormat:@"/api/alpha/explore_linkee/explore/?limit=20&offset=%d", _data.count];
+    uint offset = 0;
+    if (!bRefresh)
+        offset = _data.count;
+    return [NSString stringWithFormat:@"/api/alpha/explore_linkee/explore/?limit=20&offset=%d", offset];
 }
 
-- (void)loadSuccess:(ASIHTTPRequest *)request
+- (void)loadSuccess:(ASIHTTPRequest *)request bRefresh:(BOOL)bRefresh
 {
-    json2obj(request.responseData, ExploreLinkeeResponse)
+    json2obj(request.responseData, ExploreLinkeeResponse)    
     [_data addObjectsFromArray:repObj.objects];
     if (repObj.objects.count < 20) {
         _bLoadFinish = YES;

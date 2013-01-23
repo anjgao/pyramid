@@ -12,10 +12,10 @@
 @protocol LKTableControllerDelegate <NSObject>
 -(void)createCellSubviews:(UITableViewCell*)cell;
 -(void)fillCell:(UITableViewCell*)cell data:(id)data index:(NSIndexPath*)index forHeight:(BOOL)bForHeight;
--(NSString*)requestUrlPath;
--(void)loadSuccess:(ASIHTTPRequest *)request;
+-(NSString*)requestUrlPath:(BOOL)bRefresh;
+-(void)loadSuccess:(ASIHTTPRequest *)request bRefresh:(BOOL)bRefresh;
 @optional
--(void)loadFailed:(ASIHTTPRequest *)request;
+-(void)loadFailed:(ASIHTTPRequest *)request bRefresh:(BOOL)bRefresh;
 -(void)cellItemLoadFinish:(ASIHTTPRequest*)request;
 -(void)cellItemLoadFailed:(ASIHTTPRequest*)request;
 @end
