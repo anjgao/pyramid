@@ -116,6 +116,10 @@
 		19CE667416AF8B4B001DD00E /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19CE667216AF8B23001DD00E /* QuartzCore.framework */; };
 		19CE667B16AFB397001DD00E /* ProfileLinkeeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19CE667A16AFB397001DD00E /* ProfileLinkeeController.m */; };
 		19CE667C16AFB397001DD00E /* ProfileLinkeeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19CE667A16AFB397001DD00E /* ProfileLinkeeController.m */; };
+		19CE668016AFCCB8001DD00E /* LinkeeDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19CE667F16AFCCB8001DD00E /* LinkeeDetailController.m */; };
+		19CE668116AFCCB8001DD00E /* LinkeeDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19CE667F16AFCCB8001DD00E /* LinkeeDetailController.m */; };
+		19CE668416AFF0CB001DD00E /* ReplyStreamController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19CE668316AFF0CB001DD00E /* ReplyStreamController.m */; };
+		19CE668516AFF0CB001DD00E /* ReplyStreamController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19CE668316AFF0CB001DD00E /* ReplyStreamController.m */; };
 		19E20B5B16A6560C00313036 /* TaskCentre.m in Sources */ = {isa = PBXBuildFile; fileRef = 19E20B5A16A6560C00313036 /* TaskCentre.m */; };
 		19E20B5C16A6560C00313036 /* TaskCentre.m in Sources */ = {isa = PBXBuildFile; fileRef = 19E20B5A16A6560C00313036 /* TaskCentre.m */; };
 		19E20B5F16A6601600313036 /* STKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = 19E20B5E16A6601600313036 /* STKeychain.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -251,6 +255,10 @@
 		19CE667216AF8B23001DD00E /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		19CE667916AFB397001DD00E /* ProfileLinkeeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileLinkeeController.h; sourceTree = "<group>"; };
 		19CE667A16AFB397001DD00E /* ProfileLinkeeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileLinkeeController.m; sourceTree = "<group>"; };
+		19CE667E16AFCCB8001DD00E /* LinkeeDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LinkeeDetailController.h; sourceTree = "<group>"; };
+		19CE667F16AFCCB8001DD00E /* LinkeeDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LinkeeDetailController.m; sourceTree = "<group>"; };
+		19CE668216AFF0CB001DD00E /* ReplyStreamController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReplyStreamController.h; sourceTree = "<group>"; };
+		19CE668316AFF0CB001DD00E /* ReplyStreamController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReplyStreamController.m; sourceTree = "<group>"; };
 		19E20B5916A6560C00313036 /* TaskCentre.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TaskCentre.h; path = centre/TaskCentre.h; sourceTree = "<group>"; };
 		19E20B5A16A6560C00313036 /* TaskCentre.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TaskCentre.m; path = centre/TaskCentre.m; sourceTree = "<group>"; };
 		19E20B5D16A6601600313036 /* STKeychain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STKeychain.h; sourceTree = "<group>"; };
@@ -518,6 +526,7 @@
 		19C4D0A3169FBE74000610A6 /* module */ = {
 			isa = PBXGroup;
 			children = (
+				19CE667D16AFCBF5001DD00E /* LinkeeDetail */,
 				19AD481416AE977A00B5BA02 /* PeopleStream */,
 				19E20B6316A69B4400313036 /* Linkee */,
 				19E32FA816A3F3F300B5A5F2 /* Setting */,
@@ -577,6 +586,17 @@
 				19CE665B16AF84E1001DD00E /* whiteArrow@2x.png */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		19CE667D16AFCBF5001DD00E /* LinkeeDetail */ = {
+			isa = PBXGroup;
+			children = (
+				19CE667E16AFCCB8001DD00E /* LinkeeDetailController.h */,
+				19CE667F16AFCCB8001DD00E /* LinkeeDetailController.m */,
+				19CE668216AFF0CB001DD00E /* ReplyStreamController.h */,
+				19CE668316AFF0CB001DD00E /* ReplyStreamController.m */,
+			);
+			path = LinkeeDetail;
 			sourceTree = "<group>";
 		};
 		19E20B6116A6602200313036 /* STKeychain */ = {
@@ -819,6 +839,8 @@
 				19AD481716AE97DA00B5BA02 /* PeopleStreamController.m in Sources */,
 				19CE665C16AF84E1001DD00E /* EGORefreshTableHeaderView.m in Sources */,
 				19CE667B16AFB397001DD00E /* ProfileLinkeeController.m in Sources */,
+				19CE668016AFCCB8001DD00E /* LinkeeDetailController.m in Sources */,
+				19CE668416AFF0CB001DD00E /* ReplyStreamController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -866,6 +888,8 @@
 				19AD481816AE97DA00B5BA02 /* PeopleStreamController.m in Sources */,
 				19CE665D16AF84E1001DD00E /* EGORefreshTableHeaderView.m in Sources */,
 				19CE667C16AFB397001DD00E /* ProfileLinkeeController.m in Sources */,
+				19CE668116AFCCB8001DD00E /* LinkeeDetailController.m in Sources */,
+				19CE668516AFF0CB001DD00E /* ReplyStreamController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

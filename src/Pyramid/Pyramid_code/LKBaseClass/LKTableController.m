@@ -87,6 +87,11 @@
 	[_refreshHeaderView egoRefreshScrollViewDidEndDragging:_table];
 }
 
+-(UITableView*)getTable
+{
+    return _table;
+}
+
 #pragma mark - UITableView
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {

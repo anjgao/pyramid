@@ -8,6 +8,7 @@
 
 #import "LinkeeStreamController.h"
 #import "JsonObj.h"
+#import "LinkeeDetailController.h"
 
 #define CELL_TEXT           250
 #define CELL_IMG            251
@@ -149,12 +150,6 @@
     return nil;
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    UITableViewCell* cell = [_table cellForRowAtIndexPath:indexPath];
-    [cell setSelected:NO animated:YES];
-}
-
 #pragma mark - inner method
 -(CGSize)sizeWithWidth:(int)width height:(int)height
 {
@@ -179,5 +174,21 @@
     }
     return retSize;
 }
+
+#pragma mark - UITableView
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell* cell = [_table cellForRowAtIndexPath:indexPath];
+    [cell setSelected:NO animated:YES];
+    
+    Json_linkee * item = [self getCellLinkee: _data[indexPath.row]];
+    LinkeeDetailController * ldCtl = [[LinkeeDetailController alloc] initWithLinkee:item];
+    
+    if (self.navigationController)
+        [self.navigationController pushViewController:ldCtl animated:YES];
+    else
+        [_navCtl pushViewController:ldCtl animated:YES];
+}
+
 
 @end

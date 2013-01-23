@@ -29,4 +29,5 @@
 - (id)initWithCapacity:(uint)capacity;
 - (void)requestCellItem:(NSString*)url userInfo:(NSDictionary*)userInfo;
 - (void)refresh;
+- (UITableView*)getTable;
 @end

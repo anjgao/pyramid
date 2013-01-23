@@ -15,11 +15,6 @@
 
 @implementation ProfileLinkeeController
 
--(UITableView*)getTable
-{
-    return _table;
-}
-
 #pragma mark - request data
 -(NSString*)requestUrlPath:(BOOL)bRefresh
 {

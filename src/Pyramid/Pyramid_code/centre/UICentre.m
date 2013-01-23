@@ -64,6 +64,7 @@
     LinkeeViewController* ctl2 = [[LinkeeViewController alloc] init];
     LKNavigationController* nav2 = [[LKNavigationController alloc] initWithRootViewController:ctl2];
     nav2.navigationBarHidden = YES;
+    nav2.delegate = ctl2;
     
     // tab 3
     UIViewController* ctl3 = [[UIViewController alloc] init];

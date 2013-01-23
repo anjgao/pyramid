@@ -30,6 +30,9 @@
     frame.origin.y += 44;
     _linkeeExploreCtl = [[LinkeeExploreController alloc] initWithCapacity:20];
     _friendLinkeeCtl = [[LinkeeNewsController alloc] initWithCapacity:20];
+    _linkeeExploreCtl.navCtl = self.navigationController;
+    _friendLinkeeCtl.navCtl = self.navigationController;
+    
     _linkeeExploreCtl.view.frame = frame;
     [self.view addSubview:_linkeeExploreCtl.view];
     
@@ -67,6 +70,13 @@
     // Dispose of any resources that can be recreated.
 }
 
-
+#pragma mark - UINavigationControllerDelegate
+- (void)navigationController:(UINavigationController *)navigationController willShowViewController:(UIViewController *)viewController animated:(BOOL)animated
+{
+    if (viewController == self)
+        [navigationController setNavigationBarHidden:YES animated:YES];
+    else
+        [navigationController setNavigationBarHidden:NO animated:YES];
+}
 
 @end

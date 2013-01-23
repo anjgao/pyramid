@@ -15,5 +15,5 @@
 @end
 
 @interface LinkeeStreamController : LKTableController <LinkeeStreamCtlDelegate>
-
+@property(nonatomic,assign)UINavigationController * navCtl;
 @end

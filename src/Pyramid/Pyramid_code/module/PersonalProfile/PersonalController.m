@@ -50,6 +50,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    _linkeeCtl.navCtl = self.navigationController;
     self.view.autoresizingMask = UIViewAutoresizingFlexibleHeight;
 	
     [self createViews];

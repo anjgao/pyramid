@@ -10,5 +10,4 @@
 
 @interface ProfileLinkeeController : LinkeeStreamController
 @property(nonatomic,retain) NSNumber * targetID;
--(UITableView*)getTable;
 @end
