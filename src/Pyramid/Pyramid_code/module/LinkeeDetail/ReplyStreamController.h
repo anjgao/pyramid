@@ -9,5 +9,5 @@
 #import "LKTableController.h"
 
 @interface ReplyStreamController : LKTableController
-
+- (id)initWithLinkeeID:(NSNumber*)linkeeID;
 @end

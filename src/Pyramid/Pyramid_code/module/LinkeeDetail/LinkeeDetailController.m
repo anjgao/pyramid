@@ -27,7 +27,7 @@
     UILabel * _exp;
     
     //
-    ReplyStreamController* _reply;
+    ReplyStreamController * _reply;
     
     // request
     ASIHTTPRequest * _portraitRequest;
@@ -47,7 +47,7 @@
 {
     self = [super init];
     _linkee = linkee;
-    _reply = [[ReplyStreamController alloc] initWithCapacity:20];
+    _reply = [[ReplyStreamController alloc] initWithLinkeeID:_linkee.id];
     return self;
 }
 
@@ -100,8 +100,6 @@
     [_linkeeView addSubview:_content];
     startY += (_content.bounds.size.height + 10);
     _contentEndY = startY;
-    
-    // todo add pic
     
     _time = [[UILabel alloc] initWithFrame:CGRectMake(0, startY, 0, 15)];
     _time.textColor = [UIColor grayColor];

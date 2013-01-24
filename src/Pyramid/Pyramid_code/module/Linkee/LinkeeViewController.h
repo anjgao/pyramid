@@ -8,6 +8,6 @@
 
 #import "LKViewController.h"
 
-@interface LinkeeViewController : LKViewController <UINavigationControllerDelegate>
+@interface LinkeeViewController : LKViewController
 
 @end

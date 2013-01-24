@@ -16,9 +16,9 @@
 
 @end
 
-@implementation Json_meta
-
-@end
+//@implementation Json_meta
+//
+//@end
 
 @implementation Json_image
 
@@ -68,6 +68,11 @@
 
 @end
 
+@implementation Json_reply
++ (Class)mentions_class {
+    return [Json_mention class];
+}
+@end
 
 ///////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////
@@ -88,5 +93,12 @@
     return [Json_people class];
 }
 @end
+
+@implementation ReplyStreamResponse : Jastor
++ (Class)objects_class {
+    return [Json_reply class];
+}
+@end
+
 
 

@@ -58,6 +58,7 @@
     
     NSNumber * userID = ((Json_people*)_data[indexPath.row]).follow.id;
     PersonalController * peopleCtl = [[PersonalController alloc] init];
+    peopleCtl.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:peopleCtl animated:YES];
     [peopleCtl showProfileWithID:userID];
 }
@@ -80,11 +81,11 @@
     if (bForHeight)
         return;
     
-    UILabel * name = (UILabel*)[cell viewWithTag:CELL_NAME];
+    UILabel * name = (UILabel*)[cell.contentView viewWithTag:CELL_NAME];
     name.text = item.follow.username;
     
     NSDictionary * imgDic = @{@"index":index};
-    UIImageView * head = (UIImageView*)[cell viewWithTag:CELL_HEAD];
+    UIImageView * head = (UIImageView*)[cell.contentView viewWithTag:CELL_HEAD];
     head.image = nil;
     if ([LK_CONFIG isRetina])
         [self requestCellItem:item.follow.medium_avatar userInfo:imgDic];
@@ -118,7 +119,7 @@
     NSIndexPath * index = [request.userInfo objectForKey:@"index"];
     UITableViewCell* cell = [_table cellForRowAtIndexPath:index];
     if (cell) {
-        UIImageView * img = (UIImageView*)[cell viewWithTag:CELL_HEAD];
+        UIImageView * img = (UIImageView*)[cell.contentView viewWithTag:CELL_HEAD];
         img.image = [UIImage imageWithData:request.responseData];
     }
 

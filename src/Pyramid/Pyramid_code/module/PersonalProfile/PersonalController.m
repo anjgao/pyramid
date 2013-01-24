@@ -177,6 +177,7 @@
 -(void)friendedPressed:(UIButton*)btn
 {
     PeopleStreamController* psCtl = [[PeopleStreamController alloc] initWithID:_curPersonID];
+    psCtl.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:psCtl animated:YES];
 }
 

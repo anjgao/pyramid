@@ -59,6 +59,8 @@
     // tab 1
     _personalController = [[PersonalController alloc] init];
     LKNavigationController* nav1 = [[LKNavigationController alloc] initWithRootViewController:_personalController];
+    nav1.navigationBarHidden = YES;
+    nav1.delegate = _personalController;
     
     // tab 2
     LinkeeViewController* ctl2 = [[LinkeeViewController alloc] init];

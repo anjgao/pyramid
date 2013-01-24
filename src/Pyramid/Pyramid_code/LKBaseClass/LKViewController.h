@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface LKViewController : UIViewController
+@interface LKViewController : UIViewController <UINavigationControllerDelegate>
 
 @end

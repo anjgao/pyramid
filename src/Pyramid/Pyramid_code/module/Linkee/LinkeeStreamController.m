@@ -55,15 +55,15 @@
     
     if (!bForHeight) {
         // name
-        UILabel * name = (UILabel*)[cell viewWithTag:CELL_NAME];
+        UILabel * name = (UILabel*)[cell.contentView viewWithTag:CELL_NAME];
         name.text = objData.author.username;
         
         // time
-        UILabel * time = (UILabel*)[cell viewWithTag:CELL_TIME];
+        UILabel * time = (UILabel*)[cell.contentView viewWithTag:CELL_TIME];
         time.text = [LK_CONFIG dateDisplayString:objData.created];
         
         // avatar
-        UIImageView * img = (UIImageView*)[cell viewWithTag:CELL_IMG];
+        UIImageView * img = (UIImageView*)[cell.contentView viewWithTag:CELL_IMG];
         img.image = nil;
         NSDictionary * imgDic = @{@"index":index,@"type":@0};
         if ([LK_CONFIG isRetina])
@@ -72,7 +72,7 @@
             [self requestCellItem:objData.author.small_avatar userInfo:imgDic];
         
         // content image
-        UIImageView * contentImg = (UIImageView*)[cell viewWithTag:CELL_CONTENT_IMG];
+        UIImageView * contentImg = (UIImageView*)[cell.contentView viewWithTag:CELL_CONTENT_IMG];
         [contentImg removeFromSuperview];
         if (objData.image) {
             NSDictionary * imgDic = @{@"index":index,@"type":@1};
@@ -84,7 +84,7 @@
     }
     
     // content
-    UILabel* text = (UILabel*)[cell viewWithTag:CELL_TEXT];
+    UILabel* text = (UILabel*)[cell.contentView viewWithTag:CELL_TEXT];
     CGRect frame = text.frame;
     frame.size = CGSizeMake(cell.bounds.size.width - 20, 0);
     text.frame = frame;
@@ -108,7 +108,7 @@
     UITableViewCell* cell = [_table cellForRowAtIndexPath:index];
     if (cell) {
         if (type == 0) {
-            UIImageView * img = (UIImageView*)[cell viewWithTag:CELL_IMG];
+            UIImageView * img = (UIImageView*)[cell.contentView viewWithTag:CELL_IMG];
             img.image = [UIImage imageWithData:request.responseData];
         }
         else if (type == 1) {
@@ -183,6 +183,7 @@
     
     Json_linkee * item = [self getCellLinkee: _data[indexPath.row]];
     LinkeeDetailController * ldCtl = [[LinkeeDetailController alloc] initWithLinkee:item];
+    ldCtl.hidesBottomBarWhenPushed = YES;
     
     if (self.navigationController)
         [self.navigationController pushViewController:ldCtl animated:YES];

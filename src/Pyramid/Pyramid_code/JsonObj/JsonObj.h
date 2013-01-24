@@ -25,13 +25,13 @@
 @end
 
 ///////////////////////////////////////////////////////////////////////////////////////
-@interface Json_meta : Jastor
-@property(nonatomic,retain) NSNumber * limit;
-@property(nonatomic,retain) NSNumber * offset;
-@property(nonatomic,retain) NSNumber * total_count;
-// @property(nonatomic,retain) NSString * next;
-// @property(nonatomic,retain) NSString * previous;
-@end
+//@interface Json_meta : Jastor
+//@property(nonatomic,retain) NSNumber * limit;
+//@property(nonatomic,retain) NSNumber * offset;
+//@property(nonatomic,retain) NSNumber * total_count;
+//@property(nonatomic,retain) NSString * next;
+//@property(nonatomic,retain) NSString * previous;
+//@end
 
 ///////////////////////////////////////////////////////////////////////////////////////
 @interface Json_image : Jastor      // 经历封面图、linkee中的图
@@ -127,6 +127,17 @@
 @end
 
 ///////////////////////////////////////////////////////////////////////////////////////
+@interface Json_reply : Jastor
+@property(nonatomic,retain) NSString * content;
+@property(nonatomic,retain) NSString * created;
+@property(nonatomic,retain) NSNumber * id;
+@property(nonatomic,retain) NSNumber * linkee;
+@property(nonatomic,retain) NSArray * mentions;
+@property(nonatomic,retain) Json_user * author;
+//@property(nonatomic,retain) NSString * resource_uri;
+@end
+
+///////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////
 @interface ExploreLinkeeResponse : Jastor
 //@property(nonatomic,retain) Json_meta * meta;
@@ -140,6 +151,10 @@
 
 @interface PeopleStreamResponse : Jastor
 //@property(nonatomic,retain) Json_meta * meta;
+@property(nonatomic,retain) NSArray * objects;
+@end
+
+@interface ReplyStreamResponse : Jastor
 @property(nonatomic,retain) NSArray * objects;
 @end
 

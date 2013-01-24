@@ -26,4 +26,14 @@
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark - UINavigationControllerDelegate
+- (void)navigationController:(UINavigationController *)navigationController willShowViewController:(UIViewController *)viewController animated:(BOOL)animated
+{
+    if (viewController == navigationController.viewControllers[0])
+        [navigationController setNavigationBarHidden:YES animated:YES];
+    else
+        [navigationController setNavigationBarHidden:NO animated:YES];
+}
+
+
 @end
