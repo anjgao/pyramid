@@ -15,6 +15,7 @@
 #define CELL_CONTENT_IMG    252
 #define CELL_NAME           253
 #define CELL_TIME           254
+#define CELL_FW             255
 
 @interface LinkeeStreamController ()
 
@@ -36,10 +37,10 @@
     img.tag = CELL_IMG;
     [cell.contentView addSubview:img];
     
-    UILabel* name = [[UILabel alloc] initWithFrame:CGRectMake(70, 15, cell.bounds.size.width-80, 20)];
+    UILabel* name = [[UILabel alloc] init];
     name.tag = CELL_NAME;
     [cell.contentView addSubview:name];
-    
+        
     UILabel* time = [[UILabel alloc] initWithFrame:CGRectMake(70, 40, cell.bounds.size.width-80, 20)];
     time.tag = CELL_TIME;
     time.font = [UIFont systemFontOfSize:13];
@@ -56,7 +57,9 @@
     if (!bForHeight) {
         // name
         UILabel * name = (UILabel*)[cell.contentView viewWithTag:CELL_NAME];
+        name.frame = CGRectMake(70, 15, cell.bounds.size.width-80, 20);
         name.text = objData.author.username;
+        [name sizeToFit];
         
         // time
         UILabel * time = (UILabel*)[cell.contentView viewWithTag:CELL_TIME];
@@ -70,6 +73,23 @@
             [self requestCellItem:objData.author.medium_avatar userInfo:imgDic];
         else
             [self requestCellItem:objData.author.small_avatar userInfo:imgDic];
+        
+        // FW
+        UILabel* fw = (UILabel*)[cell.contentView viewWithTag:CELL_FW];
+        if (objData.is_relinkee) {
+            if (!fw) {
+                fw = [[UILabel alloc] init];
+                fw.tag = CELL_FW;
+                fw.font = [UIFont systemFontOfSize:13];
+                fw.textColor = [UIColor grayColor];
+                [cell.contentView addSubview:fw];
+            }
+            fw.frame = CGRectMake(name.frame.origin.x+name.frame.size.width+20, 20, 200, 15);
+            fw.text = [objData.user.username stringByAppendingFormat:@" %@",LKString(fw)];
+        }
+        else if (fw) {
+            [fw removeFromSuperview];
+        }
         
         // content image
         UIImageView * contentImg = (UIImageView*)[cell.contentView viewWithTag:CELL_CONTENT_IMG];

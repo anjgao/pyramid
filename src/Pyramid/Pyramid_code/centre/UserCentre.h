@@ -11,6 +11,7 @@
 @interface UserCentre : NSObject
 
 @property(nonatomic,retain) NSNumber*   userID;
+@property(nonatomic,retain) NSString*   xsrfToken;
 
 // userName and password
 -(BOOL)storeUserName:(NSString*)name andPW:(NSString*)pw;

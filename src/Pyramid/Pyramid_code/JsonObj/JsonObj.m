@@ -74,6 +74,14 @@
 }
 @end
 
+@implementation Json_activity_profile
+
+@end
+
+@implementation Json_experience
+
+@end
+
 ///////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////
 @implementation ExploreLinkeeResponse
@@ -97,6 +105,12 @@
 @implementation ReplyStreamResponse : Jastor
 + (Class)objects_class {
     return [Json_reply class];
+}
+@end
+
+@implementation ExperienceStreamResponse : Jastor
++ (Class)objects_class {
+    return [Json_experience class];
 }
 @end
 

@@ -43,6 +43,12 @@
 		19A937F716AA7EEC0076DE9B /* LinkeeNewsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19A937F516AA7EEB0076DE9B /* LinkeeNewsController.m */; };
 		19AD481716AE97DA00B5BA02 /* PeopleStreamController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19AD481616AE97DA00B5BA02 /* PeopleStreamController.m */; };
 		19AD481816AE97DA00B5BA02 /* PeopleStreamController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19AD481616AE97DA00B5BA02 /* PeopleStreamController.m */; };
+		19B01D5416B0FABF00C7D41F /* ExperienceStreamController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19B01D5316B0FABF00C7D41F /* ExperienceStreamController.m */; };
+		19B01D5516B0FABF00C7D41F /* ExperienceStreamController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19B01D5316B0FABF00C7D41F /* ExperienceStreamController.m */; };
+		19B01D5916B1172000C7D41F /* ExperienceController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19B01D5816B1172000C7D41F /* ExperienceController.m */; };
+		19B01D5A16B1172000C7D41F /* ExperienceController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19B01D5816B1172000C7D41F /* ExperienceController.m */; };
+		19B01D5E16B1219800C7D41F /* NewLinkeeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19B01D5D16B1219800C7D41F /* NewLinkeeController.m */; };
+		19B01D5F16B1219800C7D41F /* NewLinkeeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19B01D5D16B1219800C7D41F /* NewLinkeeController.m */; };
 		19B0BAE316A93C2700A8BB02 /* LKView.m in Sources */ = {isa = PBXBuildFile; fileRef = 19B0BAE216A93C2700A8BB02 /* LKView.m */; };
 		19B0BAE416A93C2700A8BB02 /* LKView.m in Sources */ = {isa = PBXBuildFile; fileRef = 19B0BAE216A93C2700A8BB02 /* LKView.m */; };
 		19B0BAEB16A94A7F00A8BB02 /* LinkeeTopTabView.m in Sources */ = {isa = PBXBuildFile; fileRef = 19B0BAEA16A94A7F00A8BB02 /* LinkeeTopTabView.m */; };
@@ -217,6 +223,12 @@
 		19A937F516AA7EEB0076DE9B /* LinkeeNewsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LinkeeNewsController.m; sourceTree = "<group>"; };
 		19AD481516AE97DA00B5BA02 /* PeopleStreamController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PeopleStreamController.h; sourceTree = "<group>"; };
 		19AD481616AE97DA00B5BA02 /* PeopleStreamController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PeopleStreamController.m; sourceTree = "<group>"; };
+		19B01D5216B0FABF00C7D41F /* ExperienceStreamController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExperienceStreamController.h; sourceTree = "<group>"; };
+		19B01D5316B0FABF00C7D41F /* ExperienceStreamController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExperienceStreamController.m; sourceTree = "<group>"; };
+		19B01D5716B1172000C7D41F /* ExperienceController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExperienceController.h; sourceTree = "<group>"; };
+		19B01D5816B1172000C7D41F /* ExperienceController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExperienceController.m; sourceTree = "<group>"; };
+		19B01D5C16B1219800C7D41F /* NewLinkeeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewLinkeeController.h; sourceTree = "<group>"; };
+		19B01D5D16B1219800C7D41F /* NewLinkeeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewLinkeeController.m; sourceTree = "<group>"; };
 		19B0BAE116A93C2700A8BB02 /* LKView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKView.h; sourceTree = "<group>"; };
 		19B0BAE216A93C2700A8BB02 /* LKView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKView.m; sourceTree = "<group>"; };
 		19B0BAE916A94A7F00A8BB02 /* LinkeeTopTabView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LinkeeTopTabView.h; sourceTree = "<group>"; };
@@ -495,6 +507,33 @@
 			path = PeopleStream;
 			sourceTree = "<group>";
 		};
+		19B01D5116B0F9C200C7D41F /* ExperienceStream */ = {
+			isa = PBXGroup;
+			children = (
+				19B01D5216B0FABF00C7D41F /* ExperienceStreamController.h */,
+				19B01D5316B0FABF00C7D41F /* ExperienceStreamController.m */,
+			);
+			path = ExperienceStream;
+			sourceTree = "<group>";
+		};
+		19B01D5616B1168100C7D41F /* Experience */ = {
+			isa = PBXGroup;
+			children = (
+				19B01D5716B1172000C7D41F /* ExperienceController.h */,
+				19B01D5816B1172000C7D41F /* ExperienceController.m */,
+			);
+			path = Experience;
+			sourceTree = "<group>";
+		};
+		19B01D5B16B1213D00C7D41F /* NewLinkee */ = {
+			isa = PBXGroup;
+			children = (
+				19B01D5C16B1219800C7D41F /* NewLinkeeController.h */,
+				19B01D5D16B1219800C7D41F /* NewLinkeeController.m */,
+			);
+			path = NewLinkee;
+			sourceTree = "<group>";
+		};
 		19B6928616A4F059004B0374 /* PonyDebugger */ = {
 			isa = PBXGroup;
 			children = (
@@ -526,9 +565,12 @@
 		19C4D0A3169FBE74000610A6 /* module */ = {
 			isa = PBXGroup;
 			children = (
+				19B01D5B16B1213D00C7D41F /* NewLinkee */,
+				19B01D5616B1168100C7D41F /* Experience */,
+				19B01D5116B0F9C200C7D41F /* ExperienceStream */,
 				19CE667D16AFCBF5001DD00E /* LinkeeDetail */,
 				19AD481416AE977A00B5BA02 /* PeopleStream */,
-				19E20B6316A69B4400313036 /* Linkee */,
+				19E20B6316A69B4400313036 /* LinkeeStream */,
 				19E32FA816A3F3F300B5A5F2 /* Setting */,
 				19E32F9F16A3E0E700B5A5F2 /* PersonalProfile */,
 				19C4D0A4169FBED0000610A6 /* Login */,
@@ -608,7 +650,7 @@
 			path = STKeychain;
 			sourceTree = "<group>";
 		};
-		19E20B6316A69B4400313036 /* Linkee */ = {
+		19E20B6316A69B4400313036 /* LinkeeStream */ = {
 			isa = PBXGroup;
 			children = (
 				19A937EC16AA7DD40076DE9B /* LinkeeStreamController.h */,
@@ -622,6 +664,7 @@
 				19A937F416AA7EEB0076DE9B /* LinkeeNewsController.h */,
 				19A937F516AA7EEB0076DE9B /* LinkeeNewsController.m */,
 			);
+			name = LinkeeStream;
 			path = Linkee;
 			sourceTree = "<group>";
 		};
@@ -841,6 +884,9 @@
 				19CE667B16AFB397001DD00E /* ProfileLinkeeController.m in Sources */,
 				19CE668016AFCCB8001DD00E /* LinkeeDetailController.m in Sources */,
 				19CE668416AFF0CB001DD00E /* ReplyStreamController.m in Sources */,
+				19B01D5416B0FABF00C7D41F /* ExperienceStreamController.m in Sources */,
+				19B01D5916B1172000C7D41F /* ExperienceController.m in Sources */,
+				19B01D5E16B1219800C7D41F /* NewLinkeeController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -890,6 +936,9 @@
 				19CE667C16AFB397001DD00E /* ProfileLinkeeController.m in Sources */,
 				19CE668116AFCCB8001DD00E /* LinkeeDetailController.m in Sources */,
 				19CE668516AFF0CB001DD00E /* ReplyStreamController.m in Sources */,
+				19B01D5516B0FABF00C7D41F /* ExperienceStreamController.m in Sources */,
+				19B01D5A16B1172000C7D41F /* ExperienceController.m in Sources */,
+				19B01D5F16B1219800C7D41F /* NewLinkeeController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

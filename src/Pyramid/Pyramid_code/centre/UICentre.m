@@ -12,6 +12,7 @@
 #import "PersonalController.h"
 #import "SettingController.h"
 #import "LinkeeViewController.h"
+#import "NewLinkeeController.h"
 
 @interface UICentre()
 {
@@ -69,9 +70,7 @@
     nav2.delegate = ctl2;
     
     // tab 3
-    UIViewController* ctl3 = [[UIViewController alloc] init];
-    ctl3.view.backgroundColor = [UIColor brownColor];
-    ctl3.title = @"3";
+    NewLinkeeController * ctl3 = [[NewLinkeeController alloc] init];
     LKNavigationController* nav3 = [[LKNavigationController alloc] initWithRootViewController:ctl3];
 
     // tab 4

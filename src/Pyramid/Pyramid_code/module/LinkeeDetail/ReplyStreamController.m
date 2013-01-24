@@ -110,9 +110,7 @@
 }
 
 -(void)loadSuccess:(ASIHTTPRequest *)request bRefresh:(BOOL)bRefresh
-{
-    LKLog(request.responseString);
-    
+{    
     json2obj(request.responseData, ReplyStreamResponse)
     [_data addObjectsFromArray:repObj.objects];
     if (repObj.objects.count < 20) {

@@ -13,6 +13,9 @@
 "td_today" = "'今天 'HH':'mm";
 "td_thisYear" = "MM'月'dd'日 'HH':'mm";
 
+// common
+"fw" = "转发";
+
 // login
 "login" = "登录";
 

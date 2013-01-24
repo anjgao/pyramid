@@ -11,6 +11,7 @@
 #import "PersonProfile.h"
 #import "PeopleStreamController.h"
 #import "ProfileLinkeeController.h"
+#import "ExperienceStreamController.h"
 
 @interface PersonalController ()
 {
@@ -100,6 +101,7 @@
     _exp = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     _exp.frame = CGRectMake(115, 150, 90, 30);
     [_infoView addSubview:_exp];
+    [_exp addTarget:self action:@selector(expPressed:) forControlEvents:UIControlEventTouchUpInside];
     
     _hostedexp = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     _hostedexp.frame = CGRectMake(220, 150, 90, 30);
@@ -177,6 +179,13 @@
 -(void)friendedPressed:(UIButton*)btn
 {
     PeopleStreamController* psCtl = [[PeopleStreamController alloc] initWithID:_curPersonID];
+    psCtl.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:psCtl animated:YES];
+}
+
+-(void)expPressed:(UIButton*)btn
+{
+    ExperienceStreamController * psCtl = [[ExperienceStreamController alloc] initWithUserID:_curPersonID];
     psCtl.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:psCtl animated:YES];
 }

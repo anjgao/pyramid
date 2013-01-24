@@ -48,6 +48,7 @@
     json2obj(request.responseData,LoginResponse)
     
     if ([repObj.status isEqualToString:@"okay"]) {
+        [self saveXSRFToken:request.responseCookies];
         LK_USER.userID = repObj.data.user_id;
         [LK_UI autoLoginFinish:YES];
     }
@@ -60,6 +61,16 @@
 {
     LKLog([request responseString]);
     LKLog([[request error] localizedDescription]);
+}
+
+-(void)saveXSRFToken:(NSArray*)cookies
+{
+    for (NSHTTPCookie* cookie in cookies) {
+        if ([cookie.name isEqualToString:@"XSRF-TOKEN"]) {
+            LK_USER.xsrfToken = cookie.value;
+            break;
+        }
+    }
 }
 
 #pragma mark - logout

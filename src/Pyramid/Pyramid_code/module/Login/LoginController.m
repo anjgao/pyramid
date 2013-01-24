@@ -97,6 +97,7 @@
     json2obj(request.responseData,LoginResponse)
     
     if ([repObj.status isEqualToString:@"okay"]) {
+        [self saveXSRFToken:request.responseCookies];
         LK_USER.userID = repObj.data.user_id;
         [LK_USER storeUserName:_user andPW:_pw];
         [LK_UI loginSuccess];
@@ -121,5 +122,14 @@
     LKLog([[request error] localizedDescription]);
 }
 
+-(void)saveXSRFToken:(NSArray*)cookies
+{
+    for (NSHTTPCookie* cookie in cookies) {
+        if ([cookie.name isEqualToString:@"XSRF-TOKEN"]) {
+            LK_USER.xsrfToken = cookie.value;
+            break;
+        }
+    }
+}
 
 @end

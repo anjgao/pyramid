@@ -138,6 +138,26 @@
 @end
 
 ///////////////////////////////////////////////////////////////////////////////////////
+@interface Json_activity_profile : Jastor
+@property(nonatomic,retain) NSString * abstract;
+@property(nonatomic,retain) NSString * address;
+@property(nonatomic,retain) Json_image * cover_image;
+@property(nonatomic,retain) NSString * created;
+@property(nonatomic,retain) Json_District * district;
+@property(nonatomic,retain) NSNumber * market_price;
+@property(nonatomic,retain) NSString * name;
+//@property(nonatomic,retain) NSString * resource_uri;
+@end
+
+@interface Json_experience : Jastor
+@property(nonatomic,retain) Json_activity_profile * activity_profile;
+@property(nonatomic,retain) NSNumber * id;
+//@property(nonatomic,retain) Json_team * team;     // todo
+@property(nonatomic,retain) NSString * user;
+//@property(nonatomic,retain) NSString * resource_uri;
+@end
+
+///////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////
 @interface ExploreLinkeeResponse : Jastor
 //@property(nonatomic,retain) Json_meta * meta;
@@ -155,6 +175,12 @@
 @end
 
 @interface ReplyStreamResponse : Jastor
+//@property(nonatomic,retain) Json_meta * meta;
+@property(nonatomic,retain) NSArray * objects;
+@end
+
+@interface ExperienceStreamResponse : Jastor
+//@property(nonatomic,retain) Json_meta * meta;
 @property(nonatomic,retain) NSArray * objects;
 @end
 
