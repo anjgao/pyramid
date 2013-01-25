@@ -13,8 +13,13 @@
 "td_today" = "'今天 'HH':'mm";
 "td_thisYear" = "MM'月'dd'日 'HH':'mm";
 
+// new linkee
+"selectPhoto" = "从相册选取";
+"takePhoto" = "拍照";
+
 // common
 "fw" = "转发";
+"cancel" = "取消";
 
 // login
 "login" = "登录";

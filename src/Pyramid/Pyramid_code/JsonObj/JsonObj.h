@@ -158,6 +158,15 @@
 @end
 
 ///////////////////////////////////////////////////////////////////////////////////////
+@interface Json_pic_upload : Jastor
+@property(nonatomic,retain) NSNumber * id;
+@property(nonatomic,retain) NSString * raw;
+// raw_dimension
+@property(nonatomic,retain) NSString * resource_uri;
+@property(nonatomic,retain) NSString * thumbnail_uri;
+@end
+
+///////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////
 @interface ExploreLinkeeResponse : Jastor
 //@property(nonatomic,retain) Json_meta * meta;
@@ -182,5 +191,10 @@
 @interface ExperienceStreamResponse : Jastor
 //@property(nonatomic,retain) Json_meta * meta;
 @property(nonatomic,retain) NSArray * objects;
+@end
+
+@interface PicUploadResponse : Jastor
+@property(nonatomic,retain) NSString * status;
+@property(nonatomic,retain) Json_pic_upload* data;
 @end
 

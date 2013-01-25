@@ -14,3 +14,12 @@ NSURL* linkkkUrl(NSString* urlPath)
 
     return [NSURL URLWithString:[@"http://www.linkkk.com" stringByAppendingString:urlPath]];
 }
+
+UIImage* scaleImage(UIImage* image,CGSize newSize)
+{
+    UIGraphicsBeginImageContext(newSize);
+    [image drawInRect:CGRectMake(0,0,newSize.width,newSize.height)];
+    UIImage* newImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return newImage;
+}

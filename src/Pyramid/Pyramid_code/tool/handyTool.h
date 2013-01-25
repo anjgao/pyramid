@@ -35,6 +35,7 @@ NSURL* linkkkUrl(NSString* urlPath);
     }
 
 //
+UIImage* scaleImage(UIImage* image,CGSize newSize);
 
 
 #endif

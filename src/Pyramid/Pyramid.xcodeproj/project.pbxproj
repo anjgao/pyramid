@@ -137,6 +137,8 @@
 		19E20B7016A6BC9B00313036 /* JsonObj.m in Sources */ = {isa = PBXBuildFile; fileRef = 19E20B6E16A6BC9B00313036 /* JsonObj.m */; };
 		19E32FA316A3E15F00B5A5F2 /* PersonalController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19E32FA216A3E15F00B5A5F2 /* PersonalController.m */; };
 		19E32FAB16A3F54400B5A5F2 /* SettingController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19E32FAA16A3F54400B5A5F2 /* SettingController.m */; };
+		19F1CD0D16B29669000BF832 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F1CD0C16B29669000BF832 /* MBProgressHUD.m */; };
+		19F1CD0E16B29669000BF832 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F1CD0C16B29669000BF832 /* MBProgressHUD.m */; };
 		19FE6ABC16A4F5C7003CEE1C /* libPonyDebugger.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19B6929516A4F097004B0374 /* libPonyDebugger.a */; };
 		19FE6ABE16A4F5C8003CEE1C /* libSocketRocket.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19FE6ABD16A4F5C7003CEE1C /* libSocketRocket.a */; };
 		19FE6AC016A4F6B3003CEE1C /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 19FE6ABF16A4F6B3003CEE1C /* libicucore.dylib */; };
@@ -283,6 +285,8 @@
 		19E32FA216A3E15F00B5A5F2 /* PersonalController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonalController.m; sourceTree = "<group>"; };
 		19E32FA916A3F54400B5A5F2 /* SettingController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingController.h; sourceTree = "<group>"; };
 		19E32FAA16A3F54400B5A5F2 /* SettingController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingController.m; sourceTree = "<group>"; };
+		19F1CD0B16B29669000BF832 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		19F1CD0C16B29669000BF832 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		19FE6ABD16A4F5C7003CEE1C /* libSocketRocket.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSocketRocket.a; path = "Third-Party/PonyDebugger/ObjC/SocketRocket/build/Release-iphoneos/libSocketRocket.a"; sourceTree = "<group>"; };
 		19FE6ABF16A4F6B3003CEE1C /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
 		19FE6AC216A4F733003CEE1C /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
@@ -408,6 +412,7 @@
 		193F0770169E74EE005D60DD /* Third-Party */ = {
 			isa = PBXGroup;
 			children = (
+				19F1CD0616B29492000BF832 /* MBProgressHUD */,
 				19CE664E16AF84E1001DD00E /* EGOTableViewPullRefresh */,
 				19E20B6116A6602200313036 /* STKeychain */,
 				193F0771169E7586005D60DD /* ASIHTTPRequest */,
@@ -699,6 +704,15 @@
 			path = Setting;
 			sourceTree = "<group>";
 		};
+		19F1CD0616B29492000BF832 /* MBProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				19F1CD0B16B29669000BF832 /* MBProgressHUD.h */,
+				19F1CD0C16B29669000BF832 /* MBProgressHUD.m */,
+			);
+			path = MBProgressHUD;
+			sourceTree = "<group>";
+		};
 		19FE6AC116A4F6C3003CEE1C /* Pyramid_PonyD */ = {
 			isa = PBXGroup;
 			children = (
@@ -887,6 +901,7 @@
 				19B01D5416B0FABF00C7D41F /* ExperienceStreamController.m in Sources */,
 				19B01D5916B1172000C7D41F /* ExperienceController.m in Sources */,
 				19B01D5E16B1219800C7D41F /* NewLinkeeController.m in Sources */,
+				19F1CD0D16B29669000BF832 /* MBProgressHUD.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -939,6 +954,7 @@
 				19B01D5516B0FABF00C7D41F /* ExperienceStreamController.m in Sources */,
 				19B01D5A16B1172000C7D41F /* ExperienceController.m in Sources */,
 				19B01D5F16B1219800C7D41F /* NewLinkeeController.m in Sources */,
+				19F1CD0E16B29669000BF832 /* MBProgressHUD.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
