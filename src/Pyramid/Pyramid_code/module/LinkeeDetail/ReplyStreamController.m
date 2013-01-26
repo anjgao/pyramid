@@ -8,6 +8,7 @@
 
 #import "ReplyStreamController.h"
 #import "JsonObj.h"
+#import "PersonalController.h"
 
 #define CELL_CONTENT 500
 #define CELL_NAME 501
@@ -43,14 +44,29 @@
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark - inner method
+-(void)headClicked:(UITapGestureRecognizer*)gr
+{
+    UIImageView * head = (UIImageView*)gr.view;
+    UITableViewCell * cell = (UITableViewCell*)head.superview.superview;
+    NSIndexPath * index = [_table indexPathForCell:cell];
+    Json_reply * item = (Json_reply*)_data[index.row];
+    PersonalController * personCtrl = [[PersonalController alloc] init];
+    [self pushCtl:personCtrl];
+    [personCtrl showProfileWithID:item.author.id];
+}
+
 #pragma mark - LKTableControllerDelegate
--(void)createCellSubviews:(UITableViewCell*)cell
+- (void)createCellSubviews:(UITableViewCell*)cell
 {
     int w = cell.bounds.size.width;
     
     UIImageView * head = [[UIImageView alloc] initWithFrame:CGRectMake(10, 10, 50, 50)];
     head.tag = CELL_HEAD;
     [cell.contentView addSubview:head];
+    head.userInteractionEnabled = YES;
+    UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(headClicked:)];
+    [head addGestureRecognizer:singleTap];
     
     UILabel * name = [[UILabel alloc] initWithFrame:CGRectMake(70, 15, w-70-10, 20)];
     name.tag = CELL_NAME;

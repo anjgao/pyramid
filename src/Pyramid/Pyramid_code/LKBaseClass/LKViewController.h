@@ -10,4 +10,9 @@
 
 @interface LKViewController : UIViewController
 
+@property(nonatomic,retain) MBProgressHUD * hud;
+
+@property(nonatomic,assign)UINavigationController * navCtl;
+-(void)pushCtl:(UIViewController*)ctl;
+
 @end

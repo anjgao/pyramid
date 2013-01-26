@@ -26,4 +26,25 @@
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark - HUD
+-(MBProgressHUD*)hud
+{
+    if (_hud == nil) {
+        _hud = [[MBProgressHUD alloc] initWithView:self.view];
+        [self.view addSubview:_hud];
+    }
+    return _hud;
+}
+
+#pragma mark - navCtl
+-(void)pushCtl:(UIViewController*)ctl
+{
+    ctl.hidesBottomBarWhenPushed = YES;
+    
+    if (self.navigationController)
+        [self.navigationController pushViewController:ctl animated:YES];
+    else
+        [_navCtl pushViewController:ctl animated:YES];
+}
+
 @end

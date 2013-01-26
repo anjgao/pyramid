@@ -20,6 +20,7 @@
 // common
 "fw" = "转发";
 "cancel" = "取消";
+"delete" = "删除";
 
 // login
 "login" = "登录";
@@ -38,3 +39,4 @@
 // linkee
 "exploreLinkee" = "广场";
 "friendLinkee" = "动态";
+"sureDelete" = "是否删除这条记录?";

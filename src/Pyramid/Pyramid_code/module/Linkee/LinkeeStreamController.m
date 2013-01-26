@@ -9,6 +9,7 @@
 #import "LinkeeStreamController.h"
 #import "JsonObj.h"
 #import "LinkeeDetailController.h"
+#import "PersonalController.h"
 
 #define CELL_TEXT           250
 #define CELL_IMG            251
@@ -36,6 +37,9 @@
     img.contentMode = UIViewContentModeScaleAspectFit;
     img.tag = CELL_IMG;
     [cell.contentView addSubview:img];
+    img.userInteractionEnabled = YES;
+    UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(headClicked:)];
+    [img addGestureRecognizer:singleTap];
     
     UILabel* name = [[UILabel alloc] init];
     name.tag = CELL_NAME;
@@ -195,6 +199,17 @@
     return retSize;
 }
 
+-(void)headClicked:(UITapGestureRecognizer*)gr
+{
+    UIImageView * head = (UIImageView*)gr.view;
+    UITableViewCell * cell = (UITableViewCell*)head.superview.superview;
+    NSIndexPath * index = [_table indexPathForCell:cell];
+    Json_linkee * item = [self getCellLinkee: _data[index.row]];
+    PersonalController * personCtrl = [[PersonalController alloc] init];
+    [self pushCtl:personCtrl];
+    [personCtrl showProfileWithID:item.author.id];
+}
+
 #pragma mark - UITableView
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -203,12 +218,7 @@
     
     Json_linkee * item = [self getCellLinkee: _data[indexPath.row]];
     LinkeeDetailController * ldCtl = [[LinkeeDetailController alloc] initWithLinkee:item];
-    ldCtl.hidesBottomBarWhenPushed = YES;
-    
-    if (self.navigationController)
-        [self.navigationController pushViewController:ldCtl animated:YES];
-    else
-        [_navCtl pushViewController:ldCtl animated:YES];
+    [self pushCtl:ldCtl];
 }
 
 

@@ -11,14 +11,21 @@
 #import "ASIHTTPRequest.h"
 #import "ASIFormDataRequest.h"
 #import "JsonObj.h"
+#import "MBProgressHUD.h"
 
 @interface NewLinkeeController () <UIImagePickerControllerDelegate,UINavigationControllerDelegate,UIActionSheetDelegate>
 {
+    // view
     UITextView * _input;
+    
+    // data
+    PicUploadResponse * _picUploadRes;
+    BOOL _sendWhenImgUploadOK;
+    BOOL _sending;
+    
+    // request
     ASIHTTPRequest * _sendRequest;
     ASIFormDataRequest * _picPostRequest;
-    
-    PicUploadResponse * _picUploadRes;
 }
 @end
 
@@ -64,7 +71,7 @@
 //////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////
 -(void)photoPressed:(id)sender
-{
+{    
     UIActionSheet* actionSheet = [[UIActionSheet alloc] init];
     [actionSheet addButtonWithTitle:LKString(takePhoto)];
     [actionSheet addButtonWithTitle:LKString(selectPhoto)];
@@ -102,6 +109,12 @@
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
     [self dismissViewControllerAnimated:YES completion:nil];
+    
+    if (_picPostRequest) {
+        [_picPostRequest clearDelegatesAndCancel];
+        _picPostRequest = nil;
+        _sendWhenImgUploadOK = NO;
+    }
     
 //    NSString * tyep =  [info objectForKey:UIImagePickerControllerMediaType];
     UIImage * img = [info objectForKey:UIImagePickerControllerOriginalImage];
@@ -163,13 +176,30 @@
     json2obj(request.responseData, PicUploadResponse)
     if ([repObj.status isEqualToString:@"okay"]) {
         _picUploadRes = repObj;
+        if (_sendWhenImgUploadOK) {
+            _sendWhenImgUploadOK = NO;
+            [self postLinkeeData];
+        }
+    }
+    else {
+        showHUDTip(self.hud,@"upload image fail");
+        if (_sendWhenImgUploadOK) {
+            _sendWhenImgUploadOK = NO;
+            _sending = NO;
+        }
     }
 }
 
 -(void)postPicFail:(ASIFormDataRequest*)request
 {
     _picPostRequest = nil;
+    if (_sendWhenImgUploadOK) {
+        _sendWhenImgUploadOK = NO;
+        _sending = NO;
+    }
+    
     LKLog([[request error] localizedDescription]);
+    showHUDTip(self.hud,@"upload image fail");
 }
 
 
@@ -191,13 +221,38 @@
     if (_picUploadRes)
         img = _picUploadRes.data.resource_uri;
     
-    NSDictionary * dic = @{@"content":_input.text, @"image":img, @"activity":[NSNull null]};
+    NSDictionary * dic = @{@"content":_input.text, @"image":img, @"activity":[NSNull null], @"tag_from":@"iPhoneApp"};   // todo tag_from添加app版本号
     NSError* err = nil;
     NSData* jsonData = [NSJSONSerialization dataWithJSONObject:dic options:0 error:&err];
     return jsonData;
 }
 
 -(void)sendLinkee
+{
+    if (_sending)
+        return;
+    
+    if ( _input.text == nil || _input.text.length == 0 ) {
+        showHUDTip(self.hud,@"please input content");
+        return;
+    }
+    
+    self.hud.mode = MBProgressHUDModeIndeterminate;
+    self.hud.labelText = @"sending";
+    self.hud.dimBackground = YES;
+    [self.hud show:YES];
+    
+    _sending = YES;
+    
+    if (!_picPostRequest) {
+        [self postLinkeeData];
+        _sendWhenImgUploadOK = NO;
+    }
+    else
+        _sendWhenImgUploadOK = YES;
+}
+
+-(void)postLinkeeData
 {
     NSData * postJson = [self makeSendJson];
     
@@ -213,15 +268,21 @@
 - (void)requestFinished:(ASIHTTPRequest *)request
 {
     _sendRequest = nil;
+    _sending = NO;
     
-    // Use when fetching text data
-    LKLog([request responseString]);
+    json2obj(request.responseData, NewLinkeeResponse);
+    
+    showHUDTip(self.hud,@"send success");
+    _picUploadRes = nil;
 }
 
 - (void)requestFailed:(ASIHTTPRequest *)request
 {
     _sendRequest = nil;
+    _sending = NO;
     LKLog([[request error] localizedDescription]);
+    
+    showHUDTip(self.hud,@"send fail");
 }
 
 @end

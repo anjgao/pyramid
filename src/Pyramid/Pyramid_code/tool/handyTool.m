@@ -23,3 +23,14 @@ UIImage* scaleImage(UIImage* image,CGSize newSize)
     UIGraphicsEndImageContext();
     return newImage;
 }
+
+void showHUDTip(MBProgressHUD* hud,NSString* text)
+{
+    hud.mode = MBProgressHUDModeText;
+    hud.labelText = text;
+    hud.dimBackground = NO;
+    [hud.superview bringSubviewToFront:hud];
+    [hud show:YES];
+    [hud hide:YES afterDelay:3];
+
+}

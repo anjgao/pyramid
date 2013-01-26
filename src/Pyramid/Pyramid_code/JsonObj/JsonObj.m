@@ -40,7 +40,7 @@
 
 @end
 
-@implementation Json_FW_user
+@implementation Json_mini_user
 
 @end
 
@@ -120,5 +120,15 @@
 
 @implementation PicUploadResponse : Jastor
 
+@end
+
+@implementation DeleteLinkeeResponse : Jastor
+
+@end
+
+@implementation NewLinkeeResponse : Jastor
++ (Class)mentions_class {
+    return [Json_mention class];
+}
 @end
 

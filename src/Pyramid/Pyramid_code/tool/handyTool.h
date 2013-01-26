@@ -9,6 +9,8 @@
 #ifndef Pyramid_handyTool_h
 #define Pyramid_handyTool_h
 
+#import "MBProgressHUD.h"
+
 // 
 #define LKString(key)      NSLocalizedString(@#key,nil)
 
@@ -37,5 +39,7 @@ NSURL* linkkkUrl(NSString* urlPath);
 //
 UIImage* scaleImage(UIImage* image,CGSize newSize);
 
+//
+void showHUDTip(MBProgressHUD* hud,NSString* text);
 
 #endif

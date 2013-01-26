@@ -10,8 +10,10 @@
 #import "JsonObj.h"
 #import "ASIHTTPRequest.h"
 #import "ReplyStreamController.h"
+#import "ASIFormDataRequest.h"
+#import "PersonalController.h"
 
-@interface LinkeeDetailController ()
+@interface LinkeeDetailController () <UIAlertViewDelegate>
 {
     // data
     Json_linkee * _linkee;
@@ -32,6 +34,7 @@
     // request
     ASIHTTPRequest * _portraitRequest;
     ASIHTTPRequest * _picRequest;
+    ASIFormDataRequest * _delRequest;
 }
 @end
 
@@ -55,12 +58,17 @@
 {
     [_portraitRequest clearDelegatesAndCancel];
     [_picRequest clearDelegatesAndCancel];
+    [_delRequest clearDelegatesAndCancel];
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
+    _reply.navCtl = self.navigationController;
+    
+    if ( [_linkee.user.id isEqualToNumber:LK_USER.userID] ) {
+        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:LKString(delete) style:UIBarButtonItemStylePlain target:self action:@selector(delPressed:)];
+    }
     
     [self createViews];
     
@@ -80,6 +88,9 @@
     
     _portrait = [[UIImageView alloc] initWithFrame:CGRectMake(10, startY, 50, 50)];
     [_linkeeView addSubview:_portrait];
+    _portrait.userInteractionEnabled = YES;
+    UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(headClicked:)];
+    [_portrait addGestureRecognizer:singleTap];
     
     _name = [[UILabel alloc] initWithFrame:CGRectMake(70, 15, w-70-10, 20)];
     _name.text = _linkee.author.username;
@@ -123,6 +134,57 @@
     
     _linkeeView.frame = CGRectMake(0, 0, w, startY);
 //    [self.view addSubview:_linkeeView];
+}
+
+#pragma mark - delete linkee
+-(void)delPressed:(id)sender
+{
+    UIAlertView * delAlert = [[UIAlertView alloc] initWithTitle:LKString(sureDelete) message:nil delegate:self cancelButtonTitle:LKString(cancel) otherButtonTitles:LKString(delete), nil];
+    [delAlert show];
+}
+
+-(void)deleteLinkee
+{
+    _delRequest = [[ASIFormDataRequest alloc] initWithURL:linkkkUrl(@"/io/delete/linkee/")];
+    _delRequest.delegate = self;
+    _delRequest.didFinishSelector = @selector(delSuccess:);
+    _delRequest.didFailSelector = @selector(delFail:);
+    [_delRequest addRequestHeader:@"X-XSRF-TOKEN" value:LK_USER.xsrfToken];
+    [_delRequest setPostValue:_linkee.id forKey:@"linkee"];
+    [_delRequest startAsynchronous];
+}
+
+-(void)delSuccess:(ASIFormDataRequest*)request
+{
+    _delRequest = nil;
+    json2obj(request.responseData, DeleteLinkeeResponse)
+    if ([repObj.status isEqualToString:@"okay"]) {
+        showHUDTip(self.hud,@"delete success");        
+    }
+    else {
+        showHUDTip(self.hud,@"delete fail");
+    }
+}
+
+-(void)delFail:(ASIFormDataRequest*)request
+{
+    _delRequest = nil;
+    showHUDTip(self.hud,@"delete fail");
+    LKLog([[request error] localizedDescription]);
+}
+
+#pragma mark - UIAlertViewDelegate
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex != 1)
+        return;
+    
+    [self deleteLinkee];
+}
+
+- (void)alertViewCancel:(UIAlertView *)alertView
+{
+    
 }
 
 #pragma mark - request images
@@ -202,5 +264,12 @@
     LKLog([[request error] localizedDescription]);
 }
 
+#pragma mark - inner method
+-(void)headClicked:(UITapGestureRecognizer*)gr
+{
+    PersonalController * personCtrl = [[PersonalController alloc] init];
+    [self pushCtl:personCtrl];
+    [personCtrl showProfileWithID:_linkee.author.id];
+}
 
 @end
