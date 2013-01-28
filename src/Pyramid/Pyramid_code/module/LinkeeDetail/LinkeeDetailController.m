@@ -12,12 +12,15 @@
 #import "ReplyStreamController.h"
 #import "ASIFormDataRequest.h"
 #import "PersonalController.h"
+#import "ReplyController.h"
+#import "LKNavigationController.h"
 
-@interface LinkeeDetailController () <UIAlertViewDelegate>
+@interface LinkeeDetailController () <UIAlertViewDelegate,ReplyCtlDelegate,ReplyStreamCtlDelegate>
 {
     // data
     Json_linkee * _linkee;
     int _contentEndY;
+    Json_reply * _replyToDelete;
     
     // view
     UIView * _linkeeView;
@@ -51,6 +54,7 @@
     self = [super init];
     _linkee = linkee;
     _reply = [[ReplyStreamController alloc] initWithLinkeeID:_linkee.id];
+    _reply.delegate = self;
     return self;
 }
 
@@ -66,12 +70,22 @@
     [super viewDidLoad];
     _reply.navCtl = self.navigationController;
     
+    // navigation item
+    UIBarButtonItem * replyItem = [[UIBarButtonItem alloc] initWithTitle:LKString(reply) style:UIBarButtonItemStylePlain target:self action:@selector(replyPressed:)];
+    UIBarButtonItem * fwItem = [[UIBarButtonItem alloc] initWithTitle:LKString(fw) style:UIBarButtonItemStylePlain target:self action:@selector(fwPressed:)];
+    
     if ( [_linkee.user.id isEqualToNumber:LK_USER.userID] ) {
-        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:LKString(delete) style:UIBarButtonItemStylePlain target:self action:@selector(delPressed:)];
+        UIBarButtonItem * deleteItem = [[UIBarButtonItem alloc] initWithTitle:LKString(delete) style:UIBarButtonItemStylePlain target:self action:@selector(delPressed:)];
+        self.navigationItem.rightBarButtonItems = @[replyItem,fwItem,deleteItem];
+    }
+    else {
+        self.navigationItem.rightBarButtonItems = @[replyItem,fwItem];
     }
     
+    // view
     [self createViews];
     
+    // reply table
     _reply.view.frame = self.view.bounds;
     [self.view addSubview:_reply.view];
     [_reply getTable].tableHeaderView = _linkeeView;
@@ -145,6 +159,14 @@
 
 -(void)deleteLinkee
 {
+    if (_delRequest)
+        return;
+    
+    self.hud.mode = MBProgressHUDModeIndeterminate;
+    self.hud.labelText = @"delete linkee";
+    self.hud.dimBackground = YES;
+    [self.hud show:YES];
+    
     _delRequest = [[ASIFormDataRequest alloc] initWithURL:linkkkUrl(@"/io/delete/linkee/")];
     _delRequest.delegate = self;
     _delRequest.didFinishSelector = @selector(delSuccess:);
@@ -173,13 +195,38 @@
     LKLog([[request error] localizedDescription]);
 }
 
+#pragma mark - relinkee
+-(void)fwPressed:(id)sender
+{
+
+}
+
+#pragma mark - reply linkee
+-(void)replyPressed:(id)sender
+{
+    [self popReplyCtl:nil isRelinkee:NO];
+}
+
+-(void)popReplyCtl:(Json_reply*)reply isRelinkee:(BOOL)bRelinkee
+{
+    ReplyController * replyCtl = [[ReplyController alloc] initWithLinkee:_linkee reply:reply isRelinkee:bRelinkee];
+    replyCtl.delegate = self;
+    LKNavigationController * nav = [[LKNavigationController alloc] initWithRootViewController:replyCtl];
+    [self presentModalViewController:nav animated:YES];
+}
+
 #pragma mark - UIAlertViewDelegate
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-    if (buttonIndex != 1)
+    if (buttonIndex != 1) {
+        _replyToDelete = nil;
         return;
-    
-    [self deleteLinkee];
+    }
+        
+    if (_replyToDelete)
+        [self deleteReply];
+    else
+        [self deleteLinkee];
 }
 
 - (void)alertViewCancel:(UIAlertView *)alertView
@@ -270,6 +317,73 @@
     PersonalController * personCtrl = [[PersonalController alloc] init];
     [self pushCtl:personCtrl];
     [personCtrl showProfileWithID:_linkee.author.id];
+}
+
+#pragma mark - ReplyCtlDelegate
+-(void)replySuccess
+{
+    [self dismissViewControllerAnimated:YES completion:^{
+        [_reply refresh];
+    }];
+    showHUDTip(self.hud,@"reply success");
+}
+
+#pragma mark - ReplyStreamCtlDelegate
+- (void)replyDidSelect:(Json_reply*)reply
+{
+    if ([reply.author.id isEqualToNumber:LK_USER.userID])
+        [self askDeleteReply:reply];
+    else
+        [self popReplyCtl:reply isRelinkee:NO];
+}
+
+#pragma mark - delete reply
+- (void)askDeleteReply:(Json_reply*)reply
+{
+    _replyToDelete = reply;
+    UIAlertView * delAlert = [[UIAlertView alloc] initWithTitle:LKString(sureDeleteReply) message:nil delegate:self cancelButtonTitle:LKString(cancel) otherButtonTitles:LKString(delete), nil];
+    [delAlert show];
+}
+
+- (void)deleteReply
+{
+    if (_delRequest)
+        return;
+    
+    self.hud.mode = MBProgressHUDModeIndeterminate;
+    self.hud.labelText = @"delete reply";
+    self.hud.dimBackground = YES;
+    [self.hud show:YES];
+    
+    _delRequest = [[ASIFormDataRequest alloc] initWithURL:linkkkUrl(@"/io/delete/reply/")];
+    _delRequest.delegate = self;
+    _delRequest.didFinishSelector = @selector(delReplySuccess:);
+    _delRequest.didFailSelector = @selector(delReplyFail:);
+    [_delRequest addRequestHeader:@"X-XSRF-TOKEN" value:LK_USER.xsrfToken];
+    [_delRequest setPostValue:_replyToDelete.id forKey:@"reply"];
+    [_delRequest startAsynchronous];
+
+    _replyToDelete = nil;
+}
+
+-(void)delReplySuccess:(ASIFormDataRequest*)request
+{
+    _delRequest = nil;
+    json2obj(request.responseData, DeleteLinkeeResponse)
+    if ([repObj.status isEqualToString:@"okay"]) {
+        showHUDTip(self.hud,@"delete success");
+        [_reply refresh];
+    }
+    else {
+        showHUDTip(self.hud,@"delete fail");
+    }
+}
+
+-(void)delReplyFail:(ASIFormDataRequest*)request
+{
+    _delRequest = nil;
+    showHUDTip(self.hud,@"delete fail");
+    LKLog([[request error] localizedDescription]);
 }
 
 @end

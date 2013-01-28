@@ -56,6 +56,16 @@
     [personCtrl showProfileWithID:item.author.id];
 }
 
+#pragma mark - UITableView
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell* cell = [_table cellForRowAtIndexPath:indexPath];
+    cell.selected = NO;
+    
+    Json_reply * reply = (Json_reply*)_data[indexPath.row];
+    [_delegate replyDidSelect:reply];
+}
+
 #pragma mark - LKTableControllerDelegate
 - (void)createCellSubviews:(UITableViewCell*)cell
 {

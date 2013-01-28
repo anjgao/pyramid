@@ -132,3 +132,10 @@
 }
 @end
 
+@implementation ReplyResponse : Jastor
++ (Class)mentions_class {
+    return [Json_mention class];
+}
+@end
+
+

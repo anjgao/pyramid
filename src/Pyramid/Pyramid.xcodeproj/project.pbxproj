@@ -56,6 +56,8 @@
 		19B48F2B16A01030009FFC09 /* LKViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19B48F2A16A01030009FFC09 /* LKViewController.m */; };
 		19B48F2D16A01698009FFC09 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 19B48F2C16A01698009FFC09 /* Localizable.strings */; };
 		19B48F2F16A01D17009FFC09 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 19B48F2E16A01D17009FFC09 /* InfoPlist.strings */; };
+		19B57F9916B3D32D002644F7 /* ReplyController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19B57F9816B3D32D002644F7 /* ReplyController.m */; };
+		19B57F9A16B3D32D002644F7 /* ReplyController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19B57F9816B3D32D002644F7 /* ReplyController.m */; };
 		19B6929C16A4F0DB004B0374 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 193F0711169E686E005D60DD /* main.m */; };
 		19B6929D16A4F0DB004B0374 /* LKAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 193F0715169E686E005D60DD /* LKAppDelegate.m */; };
 		19B6929E16A4F0DB004B0374 /* ASIAuthenticationDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = 193F0773169E7586005D60DD /* ASIAuthenticationDialog.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -239,6 +241,8 @@
 		19B48F2A16A01030009FFC09 /* LKViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKViewController.m; sourceTree = "<group>"; };
 		19B48F2C16A01698009FFC09 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		19B48F2E16A01D17009FFC09 /* InfoPlist.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = InfoPlist.strings; sourceTree = "<group>"; };
+		19B57F9716B3D32D002644F7 /* ReplyController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReplyController.h; sourceTree = "<group>"; };
+		19B57F9816B3D32D002644F7 /* ReplyController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReplyController.m; sourceTree = "<group>"; };
 		19B6928816A4F096004B0374 /* PonyDebugger.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = PonyDebugger.xcodeproj; path = PonyDebugger/ObjC/PonyDebugger.xcodeproj; sourceTree = "<group>"; };
 		19B692C716A4F0DB004B0374 /* Pyramid_PonyD.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pyramid_PonyD.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		19B692C916A4F0DC004B0374 /* Pyramid_PonyD-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Pyramid_PonyD-Info.plist"; path = "/Users/andregao/work/App/pyramid/src/Pyramid/Pyramid/Pyramid_PonyD-Info.plist"; sourceTree = "<absolute>"; };
@@ -539,6 +543,15 @@
 			path = NewLinkee;
 			sourceTree = "<group>";
 		};
+		19B57F9616B3D258002644F7 /* ReplyLinkee */ = {
+			isa = PBXGroup;
+			children = (
+				19B57F9716B3D32D002644F7 /* ReplyController.h */,
+				19B57F9816B3D32D002644F7 /* ReplyController.m */,
+			);
+			path = ReplyLinkee;
+			sourceTree = "<group>";
+		};
 		19B6928616A4F059004B0374 /* PonyDebugger */ = {
 			isa = PBXGroup;
 			children = (
@@ -570,6 +583,7 @@
 		19C4D0A3169FBE74000610A6 /* module */ = {
 			isa = PBXGroup;
 			children = (
+				19B57F9616B3D258002644F7 /* ReplyLinkee */,
 				19B01D5B16B1213D00C7D41F /* NewLinkee */,
 				19B01D5616B1168100C7D41F /* Experience */,
 				19B01D5116B0F9C200C7D41F /* ExperienceStream */,
@@ -902,6 +916,7 @@
 				19B01D5916B1172000C7D41F /* ExperienceController.m in Sources */,
 				19B01D5E16B1219800C7D41F /* NewLinkeeController.m in Sources */,
 				19F1CD0D16B29669000BF832 /* MBProgressHUD.m in Sources */,
+				19B57F9916B3D32D002644F7 /* ReplyController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -955,6 +970,7 @@
 				19B01D5A16B1172000C7D41F /* ExperienceController.m in Sources */,
 				19B01D5F16B1219800C7D41F /* NewLinkeeController.m in Sources */,
 				19F1CD0E16B29669000BF832 /* MBProgressHUD.m in Sources */,
+				19B57F9A16B3D32D002644F7 /* ReplyController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

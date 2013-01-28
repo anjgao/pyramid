@@ -8,10 +8,13 @@
 
 #import <Foundation/Foundation.h>
 
+@class PersonProfile;
+
 @interface UserCentre : NSObject
 
-@property(nonatomic,retain) NSNumber*   userID;
-@property(nonatomic,retain) NSString*   xsrfToken;
+@property(nonatomic,retain) NSNumber *   userID;
+@property(nonatomic,retain) NSString *   xsrfToken;
+@property(nonatomic,retain) PersonProfile * profile;
 
 // userName and password
 -(BOOL)storeUserName:(NSString*)name andPW:(NSString*)pw;

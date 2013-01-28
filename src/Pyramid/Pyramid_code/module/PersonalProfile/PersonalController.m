@@ -130,6 +130,7 @@
     
     json2obj(request.responseData, PersonProfile)
     _curProfile = repObj;
+    LK_USER.profile = repObj;
     self.title = _curProfile.username;
     [self fillView];
     [self requestPortrait];

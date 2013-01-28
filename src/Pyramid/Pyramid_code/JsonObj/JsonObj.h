@@ -59,8 +59,8 @@
 
 ///////////////////////////////////////////////////////////////////////////////////////
 @interface Json_mention : Jastor
-@property(nonatomic,retain) NSNumber * end;
-@property(nonatomic,retain) NSNumber * start;
+@property(nonatomic,assign) int end;
+@property(nonatomic,assign) int start;
 @property(nonatomic,retain) NSNumber * user_id;
 @end
 
@@ -107,7 +107,7 @@
 @property(nonatomic,retain) NSArray * mentions;
 @property(nonatomic,retain) NSArray * recent_replies;
 @property(nonatomic,retain) NSNumber * reply_count;
-//@property(nonatomic,retain) NSString * resource_uri;
+@property(nonatomic,retain) NSString * resource_uri;
 @property(nonatomic,retain) Json_mini_user * user;
 @end
 
@@ -214,5 +214,16 @@
 @property(nonatomic,retain) NSString * tag_from;
 //@property(nonatomic,retain) NSString * resource_uri;
 @property(nonatomic,retain) Json_mini_user * user;
+@end
+
+@interface ReplyResponse : Jastor
+@property(nonatomic,retain) Json_user * author;
+@property(nonatomic,retain) NSString * content;
+@property(nonatomic,retain) NSString * created;
+@property(nonatomic,retain) NSNumber * id;
+@property(nonatomic,retain) Json_linkee * linkee;
+@property(nonatomic,retain) NSArray * mentions;
+//@property(nonatomic,retain) NSString * resource_uri;
+@property(nonatomic,retain) NSString * tag_from;
 @end
 

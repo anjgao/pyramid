@@ -8,6 +8,13 @@
 
 #import "LKTableController.h"
 
+@class Json_reply;
+
+@protocol ReplyStreamCtlDelegate <NSObject>
+- (void)replyDidSelect:(Json_reply*)reply;
+@end
+
 @interface ReplyStreamController : LKTableController
+@property id<ReplyStreamCtlDelegate> delegate;
 - (id)initWithLinkeeID:(NSNumber*)linkeeID;
 @end

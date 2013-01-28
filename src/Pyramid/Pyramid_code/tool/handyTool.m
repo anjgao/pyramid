@@ -31,6 +31,6 @@ void showHUDTip(MBProgressHUD* hud,NSString* text)
     hud.dimBackground = NO;
     [hud.superview bringSubviewToFront:hud];
     [hud show:YES];
-    [hud hide:YES afterDelay:3];
+    [hud hide:YES afterDelay:2];
 
 }

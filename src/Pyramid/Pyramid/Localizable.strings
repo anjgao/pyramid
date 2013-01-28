@@ -21,6 +21,8 @@
 "fw" = "转发";
 "cancel" = "取消";
 "delete" = "删除";
+"reply" = "回复";
+"send" = "发送";
 
 // login
 "login" = "登录";
@@ -40,3 +42,4 @@
 "exploreLinkee" = "广场";
 "friendLinkee" = "动态";
 "sureDelete" = "是否删除这条记录?";
+"sureDeleteReply" = "是否删除回复?";
