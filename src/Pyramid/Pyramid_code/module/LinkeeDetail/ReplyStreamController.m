@@ -109,7 +109,10 @@
         UIImageView * head = (UIImageView*)[cell.contentView viewWithTag:CELL_HEAD];
         head.image = nil;
         NSDictionary * imgDic = @{@"index":index};
-        [self requestCellItem:reply.author.medium_avatar userInfo:imgDic];
+        if ([LK_CONFIG isRetina])
+            [self requestCellItem:reply.author.medium_avatar userInfo:imgDic];
+        else
+            [self requestCellItem:reply.author.small_avatar userInfo:imgDic];
     }
     
     int w = cell.bounds.size.width;

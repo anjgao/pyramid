@@ -245,7 +245,10 @@
     [_portraitRequest startAsynchronous];
     
     if (_linkee.image) {
-        _picRequest = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:_linkee.image.large]];
+        if ([LK_CONFIG isRetina])
+            _picRequest = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:_linkee.image.large]];
+        else
+            _picRequest = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:_linkee.image.medium]];
         _picRequest.didFinishSelector = @selector(picLoadFinished:);
         _picRequest.didFailSelector = @selector(picLoadFailed:);
         _picRequest.delegate = self;
