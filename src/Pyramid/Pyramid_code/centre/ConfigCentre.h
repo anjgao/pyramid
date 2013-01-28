@@ -13,4 +13,5 @@
 -(void)clearCache;
 -(BOOL)isRetina;
 -(NSString*)dateDisplayString:(NSString*)date;
+-(NSString*)tagFrom;
 @end

@@ -137,4 +137,9 @@
     return [_outputDateFormatter stringFromDate:theDate];
 }
 
+-(NSString*)tagFrom
+{
+    return @"iPhoneApp";
+}
+
 @end

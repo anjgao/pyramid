@@ -221,7 +221,7 @@
     if (_picUploadRes)
         img = _picUploadRes.data.resource_uri;
     
-    NSDictionary * dic = @{@"content":_input.text, @"image":img, @"activity":[NSNull null], @"tag_from":@"iPhoneApp"};   // todo tag_from添加app版本号
+    NSDictionary * dic = @{@"content":_input.text, @"image":img, @"activity":[NSNull null], @"tag_from":[LK_CONFIG tagFrom]};
     NSError* err = nil;
     NSData* jsonData = [NSJSONSerialization dataWithJSONObject:dic options:0 error:&err];
     return jsonData;

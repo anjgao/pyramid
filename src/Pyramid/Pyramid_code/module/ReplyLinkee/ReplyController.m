@@ -60,7 +60,9 @@
     _input.layer.borderColor = [[UIColor grayColor] CGColor];
     [self.view addSubview:_input];
 
-    _input.text = [self buildPlaceHolder];
+    if (!_bRelinkee) {
+        _input.text = [self buildPlaceHolder];
+    }
     
     [_input becomeFirstResponder];
 }
@@ -81,25 +83,32 @@
 {
     if (_replyRequest)
         return;
-    if (_input.text == nil || _input.text.length == 0 ) {
-        showHUDTip(self.hud,@"please input content");
-        return;
-    }
+//    if (_input.text == nil || _input.text.length == 0 ) {
+//        showHUDTip(self.hud,@"please input content");
+//        return;
+//    }
     
     NSString * content = _input.text;
+    [_input resignFirstResponder];
     [self replyLinkee:content];
 }
 
 #pragma mark - reply linkee
 -(void)replyLinkee:(NSString*)content
 {
-    [_input resignFirstResponder];
-    
     self.hud.mode = MBProgressHUDModeIndeterminate;
     self.hud.labelText = @"sending";
     self.hud.dimBackground = YES;
     [self.hud show:YES];
     
+    if (_bRelinkee)
+        [self sendFWRequest:content];
+    else
+        [self sendReplyRequest:content];
+}
+
+-(void)sendReplyRequest:(NSString*)content
+{
     NSData * replyJson = [self makeReplyString:content];
     
     _replyRequest = [[ASIHTTPRequest alloc] initWithURL:linkkkUrl(@"/api/alpha/reply/")];
@@ -116,13 +125,13 @@
 - (NSData*)makeReplyString:(NSString*)content
 {
     // {"linkee":"/api/alpha/timeline/14240/","content":"1"}
-    NSDictionary * dic = @{@"linkee":_linkee.resource_uri, @"content":content, @"tag_from":@"iPhoneApp"};   // todo tag_from添加app版本号
+    NSDictionary * dic = @{@"linkee":_linkee.resource_uri, @"content":content, @"tag_from":[LK_CONFIG tagFrom]};
     NSError* err = nil;
     NSData* jsonData = [NSJSONSerialization dataWithJSONObject:dic options:0 error:&err];
     return jsonData;
 }
 
--(void)replySuccess:(ASIFormDataRequest*)request
+-(void)replySuccess:(ASIHTTPRequest*)request
 {
     _replyRequest = nil;
     
@@ -131,23 +140,62 @@
     [_delegate replySuccess];
 }
 
--(void)replyFail:(ASIFormDataRequest*)request
+-(void)replyFail:(ASIHTTPRequest*)request
 {
     _replyRequest = nil;
     showHUDTip(self.hud,@"reply fail");
     LKLog([[request error] localizedDescription]);
 }
 
-#pragma mark
--(void)addStringToHolder:(NSMutableString*)holder strs:(NSMutableArray*)strs userName:(NSString*)name
+#pragma mark - relinkee
+-(void)sendFWRequest:(NSString*)content
 {
-    for (NSString* str in strs) {
-        if ([str isEqualToString:name])
+    ASIFormDataRequest * fwRequest = [[ASIFormDataRequest alloc] initWithURL:linkkkUrl(@"/io/relinkee/")];
+    fwRequest.delegate = self;
+    fwRequest.didFinishSelector = @selector(fwSuccess:);
+    fwRequest.didFailSelector = @selector(fwFail:);
+    [fwRequest addRequestHeader:@"X-XSRF-TOKEN" value:LK_USER.xsrfToken];
+    [fwRequest setPostValue:_linkee.id forKey:@"linkee"];
+    [fwRequest setPostValue:content forKey:@"comment"];
+    [fwRequest setPostValue:[LK_CONFIG tagFrom] forKey:@"tag_from"];
+    [fwRequest startAsynchronous];
+    
+    _replyRequest = fwRequest;
+}
+
+-(void)fwSuccess:(ASIHTTPRequest*)request
+{
+    _replyRequest = nil;
+    
+    json2obj(request.responseData, RelinkeeResponse)
+    
+    if ([repObj.status isEqualToString:@"okay"]) {
+        [_delegate relinkeeSuccess];
+    }
+    else {
+        showHUDTip(self.hud,@"relinkee fail");
+        LKLog(request.responseString);
+    }
+}
+
+-(void)fwFail:(ASIHTTPRequest*)request
+{
+    _replyRequest = nil;
+    showHUDTip(self.hud,@"relinkee fail");
+    LKLog([[request error] localizedDescription]);
+}
+
+
+#pragma mark
+-(void)addStringToHolder:(NSMutableString*)holder strs:(NSMutableArray*)ids userName:(NSString*)name userID:(NSNumber*)userID
+{
+    for (NSNumber* theID in ids) {
+        if ([theID isEqualToNumber:userID])
             return;
     }
     
     [holder appendFormat:@"@%@ ",name];
-    [strs addObject:name];
+    [ids addObject:userID];
 }
 
 -(NSString*)buildPlaceHolder
@@ -155,26 +203,26 @@
     NSMutableString * str = [[NSMutableString alloc] initWithCapacity:64];
     NSMutableArray * arr = [[NSMutableArray alloc] initWithCapacity:8];
     [str appendString:LKString(reply)];
-    [arr addObject:LK_USER.profile.username];
+    [arr addObject:LK_USER.userID];
     
-    [self addStringToHolder:str strs:arr userName:_linkee.user.username];
-    [self addStringToHolder:str strs:arr userName:_linkee.author.username];
+    [self addStringToHolder:str strs:arr userName:_linkee.user.username userID:_linkee.user.id];
+    [self addStringToHolder:str strs:arr userName:_linkee.author.username userID:_linkee.author.id];
     
     NSRange range;
     for (Json_mention* men in _linkee.mentions) {
         range.location = men.start+1;
         range.length = men.end - men.start-1;
         NSString * user = [_linkee.content substringWithRange:range];
-        [self addStringToHolder:str strs:arr userName:user];
+        [self addStringToHolder:str strs:arr userName:user userID:men.user_id];
     }
     
     if (_reply) {
-        [self addStringToHolder:str strs:arr userName:_reply.author.username];
+        [self addStringToHolder:str strs:arr userName:_reply.author.username userID:_reply.author.id];
         for (Json_mention* men in _reply.mentions) {
             range.location = men.start+1;
             range.length = men.end - men.start-1;
             NSString * user = [_reply.content substringWithRange:range];
-            [self addStringToHolder:str strs:arr userName:user];
+            [self addStringToHolder:str strs:arr userName:user userID:men.user_id];
         }
     }
     

@@ -227,3 +227,8 @@
 @property(nonatomic,retain) NSString * tag_from;
 @end
 
+@interface RelinkeeResponse : Jastor
+@property(nonatomic,retain) NewLinkeeResponse * data;
+@property(nonatomic,retain) NSString * status;
+@end
+

@@ -13,6 +13,7 @@
 
 @protocol ReplyCtlDelegate <NSObject>
 -(void)replySuccess;
+-(void)relinkeeSuccess;
 @end
 
 @interface ReplyController : LKViewController

@@ -138,4 +138,7 @@
 }
 @end
 
+@implementation RelinkeeResponse : Jastor
+
+@end
 

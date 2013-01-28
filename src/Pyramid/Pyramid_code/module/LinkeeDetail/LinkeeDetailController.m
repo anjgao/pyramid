@@ -198,7 +198,7 @@
 #pragma mark - relinkee
 -(void)fwPressed:(id)sender
 {
-
+    [self popReplyCtl:nil isRelinkee:YES];
 }
 
 #pragma mark - reply linkee
@@ -243,14 +243,15 @@
     _portraitRequest.delegate = self;
     _portraitRequest.cacheStoragePolicy = ASICachePermanentlyCacheStoragePolicy;
     [_portraitRequest startAsynchronous];
-
     
-    _picRequest = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:_linkee.image.large]];
-    _picRequest.didFinishSelector = @selector(picLoadFinished:);
-    _picRequest.didFailSelector = @selector(picLoadFailed:);
-    _picRequest.delegate = self;
-    _picRequest.cacheStoragePolicy = ASICachePermanentlyCacheStoragePolicy;
-    [_picRequest startAsynchronous];
+    if (_linkee.image) {
+        _picRequest = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:_linkee.image.large]];
+        _picRequest.didFinishSelector = @selector(picLoadFinished:);
+        _picRequest.didFailSelector = @selector(picLoadFailed:);
+        _picRequest.delegate = self;
+        _picRequest.cacheStoragePolicy = ASICachePermanentlyCacheStoragePolicy;
+        [_picRequest startAsynchronous];
+    }
 }
 
 - (void)portraitLoadFinished:(ASIHTTPRequest *)request
@@ -327,6 +328,15 @@
     }];
     showHUDTip(self.hud,@"reply success");
 }
+
+-(void)relinkeeSuccess
+{
+    [self dismissViewControllerAnimated:YES completion:^{
+        [_reply refresh];
+    }];
+    showHUDTip(self.hud,@"relinkee success");
+}
+
 
 #pragma mark - ReplyStreamCtlDelegate
 - (void)replyDidSelect:(Json_reply*)reply
