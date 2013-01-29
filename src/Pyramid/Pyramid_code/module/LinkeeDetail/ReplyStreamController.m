@@ -9,13 +9,14 @@
 #import "ReplyStreamController.h"
 #import "JsonObj.h"
 #import "PersonalController.h"
+#import "TTTAttributedLabel.h"
 
 #define CELL_CONTENT 500
 #define CELL_NAME 501
 #define CELL_HEAD 502
 #define CELL_TIME 503
 
-@interface ReplyStreamController ()
+@interface ReplyStreamController () <TTTAttributedLabelDelegate>
 {
     NSNumber * _linkeeID;
 }
@@ -88,10 +89,11 @@
     time.font = [UIFont systemFontOfSize:12];
     [cell.contentView addSubview:time];
     
-    UILabel * content = [[UILabel alloc] init];
+    TTTAttributedLabel * content = [[TTTAttributedLabel alloc] initWithFrame:CGRectZero];
     content.tag = CELL_CONTENT;
-    content.font = [UIFont systemFontOfSize:14];
+    content.font = [UIFont systemFontOfSize:15];
     content.numberOfLines = 0;
+    content.delegate = self;
     [cell.contentView addSubview:content];
 }
 
@@ -116,10 +118,29 @@
     }
     
     int w = cell.bounds.size.width;
+    
     UILabel * content = (UILabel*)[cell.contentView viewWithTag:CELL_CONTENT];
     content.frame = CGRectMake(10, 70, w-20, 0);
     content.text = reply.content;
     [content sizeToFit];
+    
+    TTTAttributedLabel* text = (TTTAttributedLabel*)[cell.contentView viewWithTag:CELL_CONTENT];
+    content.frame = CGRectMake(10, 70, w-20, 0);
+    content.text = reply.content;
+    if (!bForHeight) {        
+        [text setText:reply.content];
+        NSRange range;
+        for (Json_mention * men in reply.mentions) {
+            range.location = men.start;
+            range.length = men.end - men.start;
+            [text addLinkToPhoneNumber:(NSString*)men.user_id withRange:range];
+        }
+    }
+    else
+    {
+        [text setText:reply.content];
+    }
+    [text sizeToFit];
     
     CGRect cellB = cell.bounds;
     cellB.size.height = content.bounds.size.height + 80;
@@ -168,5 +189,13 @@
     
 }
 
+#pragma mark - TTTAttributedLabelDelegate
+- (void)attributedLabel:(TTTAttributedLabel *)label didSelectLinkWithPhoneNumber:(NSString *)phoneNumber
+{
+    NSNumber * num = (NSNumber*)phoneNumber;
+    PersonalController * personCtrl = [[PersonalController alloc] init];
+    [self pushCtl:personCtrl];
+    [personCtrl showProfileWithID:num];
+}
 
 @end

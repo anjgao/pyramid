@@ -139,6 +139,10 @@
 		19E20B7016A6BC9B00313036 /* JsonObj.m in Sources */ = {isa = PBXBuildFile; fileRef = 19E20B6E16A6BC9B00313036 /* JsonObj.m */; };
 		19E32FA316A3E15F00B5A5F2 /* PersonalController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19E32FA216A3E15F00B5A5F2 /* PersonalController.m */; };
 		19E32FAB16A3F54400B5A5F2 /* SettingController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19E32FAA16A3F54400B5A5F2 /* SettingController.m */; };
+		19EF00BA16B7731F001964D3 /* TTTAttributedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 19EF00B916B7731F001964D3 /* TTTAttributedLabel.m */; };
+		19EF00BB16B7731F001964D3 /* TTTAttributedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 19EF00B916B7731F001964D3 /* TTTAttributedLabel.m */; };
+		19EF00BD16B77C11001964D3 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19EF00BC16B77C11001964D3 /* CoreText.framework */; };
+		19EF00BE16B77C27001964D3 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19EF00BC16B77C11001964D3 /* CoreText.framework */; };
 		19F1CD0D16B29669000BF832 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F1CD0C16B29669000BF832 /* MBProgressHUD.m */; };
 		19F1CD0E16B29669000BF832 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F1CD0C16B29669000BF832 /* MBProgressHUD.m */; };
 		19FE6ABC16A4F5C7003CEE1C /* libPonyDebugger.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19B6929516A4F097004B0374 /* libPonyDebugger.a */; };
@@ -289,6 +293,9 @@
 		19E32FA216A3E15F00B5A5F2 /* PersonalController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonalController.m; sourceTree = "<group>"; };
 		19E32FA916A3F54400B5A5F2 /* SettingController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingController.h; sourceTree = "<group>"; };
 		19E32FAA16A3F54400B5A5F2 /* SettingController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingController.m; sourceTree = "<group>"; };
+		19EF00B816B7731F001964D3 /* TTTAttributedLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTTAttributedLabel.h; sourceTree = "<group>"; };
+		19EF00B916B7731F001964D3 /* TTTAttributedLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTTAttributedLabel.m; sourceTree = "<group>"; };
+		19EF00BC16B77C11001964D3 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 		19F1CD0B16B29669000BF832 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		19F1CD0C16B29669000BF832 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		19FE6ABD16A4F5C7003CEE1C /* libSocketRocket.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSocketRocket.a; path = "Third-Party/PonyDebugger/ObjC/SocketRocket/build/Release-iphoneos/libSocketRocket.a"; sourceTree = "<group>"; };
@@ -304,6 +311,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				19EF00BD16B77C11001964D3 /* CoreText.framework in Frameworks */,
 				19CE667316AF8B23001DD00E /* QuartzCore.framework in Frameworks */,
 				19E20B6216A6623F00313036 /* Security.framework in Frameworks */,
 				193F07A0169E8EF0005D60DD /* libz.dylib in Frameworks */,
@@ -320,6 +328,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				19EF00BE16B77C27001964D3 /* CoreText.framework in Frameworks */,
 				19CE667416AF8B4B001DD00E /* QuartzCore.framework in Frameworks */,
 				19FE6AC516A4F74C003CEE1C /* Security.framework in Frameworks */,
 				19FE6AC316A4F733003CEE1C /* CoreData.framework in Frameworks */,
@@ -363,6 +372,7 @@
 		193F0704169E686E005D60DD /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				19EF00BC16B77C11001964D3 /* CoreText.framework */,
 				19CE667216AF8B23001DD00E /* QuartzCore.framework */,
 				193F079F169E8EF0005D60DD /* libz.dylib */,
 				193F079D169E8EDC005D60DD /* MobileCoreServices.framework */,
@@ -416,6 +426,7 @@
 		193F0770169E74EE005D60DD /* Third-Party */ = {
 			isa = PBXGroup;
 			children = (
+				19EF00B716B772C3001964D3 /* TTTAttributedLabel */,
 				19F1CD0616B29492000BF832 /* MBProgressHUD */,
 				19CE664E16AF84E1001DD00E /* EGOTableViewPullRefresh */,
 				19E20B6116A6602200313036 /* STKeychain */,
@@ -718,6 +729,15 @@
 			path = Setting;
 			sourceTree = "<group>";
 		};
+		19EF00B716B772C3001964D3 /* TTTAttributedLabel */ = {
+			isa = PBXGroup;
+			children = (
+				19EF00B816B7731F001964D3 /* TTTAttributedLabel.h */,
+				19EF00B916B7731F001964D3 /* TTTAttributedLabel.m */,
+			);
+			path = TTTAttributedLabel;
+			sourceTree = "<group>";
+		};
 		19F1CD0616B29492000BF832 /* MBProgressHUD */ = {
 			isa = PBXGroup;
 			children = (
@@ -917,6 +937,7 @@
 				19B01D5E16B1219800C7D41F /* NewLinkeeController.m in Sources */,
 				19F1CD0D16B29669000BF832 /* MBProgressHUD.m in Sources */,
 				19B57F9916B3D32D002644F7 /* ReplyController.m in Sources */,
+				19EF00BA16B7731F001964D3 /* TTTAttributedLabel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -971,6 +992,7 @@
 				19B01D5F16B1219800C7D41F /* NewLinkeeController.m in Sources */,
 				19F1CD0E16B29669000BF832 /* MBProgressHUD.m in Sources */,
 				19B57F9A16B3D32D002644F7 /* ReplyController.m in Sources */,
+				19EF00BB16B7731F001964D3 /* TTTAttributedLabel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

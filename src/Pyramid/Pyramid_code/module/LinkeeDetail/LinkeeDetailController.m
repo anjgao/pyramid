@@ -14,8 +14,9 @@
 #import "PersonalController.h"
 #import "ReplyController.h"
 #import "LKNavigationController.h"
+#import "TTTAttributedLabel.h"
 
-@interface LinkeeDetailController () <UIAlertViewDelegate,ReplyCtlDelegate,ReplyStreamCtlDelegate>
+@interface LinkeeDetailController () <UIAlertViewDelegate,ReplyCtlDelegate,ReplyStreamCtlDelegate,TTTAttributedLabelDelegate>
 {
     // data
     Json_linkee * _linkee;
@@ -27,7 +28,7 @@
     UIImageView * _portrait;
     UILabel * _name;
     UILabel * _story;
-    UILabel * _content;
+    TTTAttributedLabel * _content;
     UILabel * _time;
     UILabel * _exp;
     
@@ -117,10 +118,17 @@
     [_linkeeView addSubview:_story];
     
     startY = 70;
-    _content = [[UILabel alloc] initWithFrame:CGRectMake(10, startY, w-20, 0)];
+    _content = [[TTTAttributedLabel alloc] initWithFrame:CGRectMake(10, startY, w-20, 0)];
+    _content.delegate = self;
     _content.numberOfLines = 0;
-    _content.font = [UIFont systemFontOfSize:15];
-    _content.text = _linkee.content;
+    _content.font = [UIFont systemFontOfSize:17];
+    [_content setText:_linkee.content];
+    NSRange range;
+    for (Json_mention * men in _linkee.mentions) {
+        range.location = men.start;
+        range.length = men.end - men.start;
+        [_content addLinkToPhoneNumber:(NSString*)men.user_id withRange:range];
+    }
     [_content sizeToFit];
     [_linkeeView addSubview:_content];
     startY += (_content.bounds.size.height + 10);
@@ -397,6 +405,15 @@
     _delRequest = nil;
     showHUDTip(self.hud,@"delete fail");
     LKLog([[request error] localizedDescription]);
+}
+
+#pragma mark - TTTAttributedLabelDelegate
+- (void)attributedLabel:(TTTAttributedLabel *)label didSelectLinkWithPhoneNumber:(NSString *)phoneNumber
+{
+    NSNumber * num = (NSNumber*)phoneNumber;
+    PersonalController * personCtrl = [[PersonalController alloc] init];
+    [self pushCtl:personCtrl];
+    [personCtrl showProfileWithID:num];
 }
 
 @end

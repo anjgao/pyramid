@@ -10,6 +10,7 @@
 #import "JsonObj.h"
 #import "LinkeeDetailController.h"
 #import "PersonalController.h"
+#import "TTTAttributedLabel.h"
 
 #define CELL_TEXT           250
 #define CELL_IMG            251
@@ -18,7 +19,7 @@
 #define CELL_TIME           254
 #define CELL_FW             255
 
-@interface LinkeeStreamController ()
+@interface LinkeeStreamController () <TTTAttributedLabelDelegate>
 
 @end
 
@@ -27,11 +28,20 @@
 #pragma mark - LKTableControllerDelegate
 -(void)createCellSubviews:(UITableViewCell*)cell
 {
-    UILabel* text = [[UILabel alloc] initWithFrame:CGRectMake(10, 70, cell.bounds.size.width-20, 0)];
-    text.tag = CELL_TEXT;
-    text.numberOfLines = 0;
-    text.font = [UIFont systemFontOfSize:15];
-    [cell.contentView addSubview:text];
+//    UILabel* text = [[UILabel alloc] initWithFrame:CGRectMake(10, 70, cell.bounds.size.width-20, 0)];
+//    text.tag = CELL_TEXT;
+//    text.numberOfLines = 0;
+//    text.font = [UIFont systemFontOfSize:15];
+//    [cell.contentView addSubview:text];
+    
+    TTTAttributedLabel *label = [[TTTAttributedLabel alloc] initWithFrame:CGRectMake(10, 70, cell.bounds.size.width-20, 0)];
+    label.tag = CELL_TEXT;
+    label.font = [UIFont systemFontOfSize:15];
+    label.lineBreakMode = UILineBreakModeCharacterWrap;
+    label.numberOfLines = 0;
+    label.delegate = self;
+//    label.dataDetectorTypes = UIDataDetectorTypeLink;
+    [cell.contentView addSubview:label];
     
     UIImageView * img = [[UIImageView alloc] initWithFrame:CGRectMake(10, 10, 50, 50)];
     img.contentMode = UIViewContentModeScaleAspectFit;
@@ -107,12 +117,33 @@
         }
     }
     
-    // content
-    UILabel* text = (UILabel*)[cell.contentView viewWithTag:CELL_TEXT];
+    TTTAttributedLabel* text = (TTTAttributedLabel*)[cell.contentView viewWithTag:CELL_TEXT];
     CGRect frame = text.frame;
     frame.size = CGSizeMake(cell.bounds.size.width - 20, 0);
     text.frame = frame;
-    text.text = objData.content;
+    if (!bForHeight) {
+//        [text setText:objData.content afterInheritingLabelAttributesAndConfiguringWithBlock:^ NSMutableAttributedString *(NSMutableAttributedString *mutableAttributedString) {
+//            NSRange range;
+//            for (Json_mention * men in objData.mentions) {
+//                range.location = men.start;
+//                range.length = men.end - men.start;
+//                [mutableAttributedString addAttribute:(NSString *)kCTForegroundColorAttributeName value:(id)[[UIColor brownColor] CGColor] range:range];
+//            }
+//            return mutableAttributedString;
+//        }];
+        
+        [text setText:objData.content];
+        NSRange range;
+        for (Json_mention * men in objData.mentions) {
+            range.location = men.start;
+            range.length = men.end - men.start;
+            [text addLinkToPhoneNumber:(NSString*)men.user_id withRange:range];
+        }
+    }
+    else
+    {
+        [text setText:objData.content];
+    }
     [text sizeToFit];
     
     CGRect cellFrame = cell.frame;
@@ -221,5 +252,13 @@
     [self pushCtl:ldCtl];
 }
 
+#pragma mark - TTTAttributedLabelDelegate
+- (void)attributedLabel:(TTTAttributedLabel *)label didSelectLinkWithPhoneNumber:(NSString *)phoneNumber
+{
+    NSNumber * num = (NSNumber*)phoneNumber;
+    PersonalController * personCtrl = [[PersonalController alloc] init];
+    [self pushCtl:personCtrl];
+    [personCtrl showProfileWithID:num];
+}
 
 @end
