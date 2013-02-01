@@ -32,11 +32,11 @@
 
 @end
 
-@implementation Json_current_profile
+@implementation Json_mini_profile
 
 @end
 
-@implementation Json_activity
+@implementation Json_mini_activity
 
 @end
 
@@ -74,7 +74,15 @@
 }
 @end
 
-@implementation Json_activity_profile
+@implementation Json_profile
+
+@end
+
+@implementation Json_activity
+
+@end
+
+@implementation Json_watchedExp
 
 @end
 
@@ -115,6 +123,18 @@
 @implementation ExperienceStreamResponse : Jastor
 + (Class)objects_class {
     return [Json_experience class];
+}
+@end
+
+@implementation HostedExpStreamResponse : Jastor
++ (Class)objects_class {
+    return [Json_activity class];
+}
+@end
+
+@implementation WatchedExpStreamResponse : Jastor
++ (Class)objects_class {
+    return [Json_watchedExp class];
 }
 @end
 

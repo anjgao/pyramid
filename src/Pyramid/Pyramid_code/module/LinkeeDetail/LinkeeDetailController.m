@@ -171,7 +171,7 @@
         return;
     
     self.hud.mode = MBProgressHUDModeIndeterminate;
-    self.hud.labelText = @"delete linkee";
+    self.hud.detailsLabelText = @"delete linkee";
     self.hud.dimBackground = YES;
     [self.hud show:YES];
     
@@ -372,7 +372,7 @@
         return;
     
     self.hud.mode = MBProgressHUDModeIndeterminate;
-    self.hud.labelText = @"delete reply";
+    self.hud.detailsLabelText = @"delete reply";
     self.hud.dimBackground = YES;
     [self.hud show:YES];
     

@@ -9,9 +9,11 @@
 #import <Foundation/Foundation.h>
 
 @interface ConfigCentre : NSObject
+@property(nonatomic,readonly,retain) UIImage * linkeeBg;
 -(void)clearSessionCookie;
 -(void)clearCache;
 -(BOOL)isRetina;
+-(BOOL)isiPhone5;
 -(NSString*)dateDisplayString:(NSString*)date;
 -(NSString*)tagFrom;
 @end

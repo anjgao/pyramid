@@ -6,8 +6,8 @@
 //  Copyright (c) 2013年 linkkk.com. All rights reserved.
 //
 
-#import "LKTableController.h"
+#import "ExpStreamBaseController.h"
 
-@interface ExperienceStreamController : LKTableController
-- (id)initWithUserID:(NSNumber*)userID;
+@interface ExperienceStreamController : ExpStreamBaseController
+
 @end

@@ -14,7 +14,6 @@
 {
     UITextField*    _nameInput;
     UITextField*    _pwInput;
-    UILabel*        _errInfo;
     NSString*       _user;
     NSString*       _pw;
 }
@@ -25,34 +24,57 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self.view addSubview:[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Default"]]];
     
-//    UILabel* test = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, 300, 20)];
-//    test.text = LKString(login);
-//    [self.view addSubview:test];
-
-    _nameInput = [[UITextField alloc] initWithFrame:CGRectMake(50, 30, 220, 30)];
-    _nameInput.borderStyle = UITextBorderStyleRoundedRect;
+    UIImage * img;
+    if ([LK_CONFIG isiPhone5])
+        img = [UIImage imageNamed:@"Default-568h"];
+    else
+        img = [UIImage imageNamed:@"Default"];
+    UIImageView * bg = [[UIImageView alloc] initWithImage:img];
+    CGPoint bgPos = bg.center;
+    bgPos.y -= 20;
+    bg.center = bgPos;
+    [self.view addSubview:bg];
+    
+    UIImageView * inputBg = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Login"]];
+    inputBg.userInteractionEnabled = YES;
+    CGPoint inputBgCenter = inputBg.center;
+    inputBgCenter = bgPos;
+    inputBgCenter.y = 150;
+    inputBg.center = inputBgCenter;
+    inputBg.alpha = 0.0;
+    [self.view addSubview:inputBg];
+    
+    _nameInput = [[UITextField alloc] initWithFrame:CGRectMake(10, 11, 252, 24)];
+    _nameInput.font = [UIFont systemFontOfSize:20];
+//    _nameInput.borderStyle = UITextBorderStyleLine;
+    _nameInput.clearButtonMode = UITextFieldViewModeWhileEditing;
     _nameInput.autocapitalizationType = UITextAutocapitalizationTypeNone;
     _nameInput.keyboardType = UIKeyboardTypeEmailAddress;
     _nameInput.autocorrectionType = UITextAutocorrectionTypeNo;
 //    _nameInput.enablesReturnKeyAutomatically = YES;
     _nameInput.returnKeyType = UIReturnKeyNext;
+    _nameInput.placeholder = LKString(username);
     _nameInput.delegate = self;
-    [self.view addSubview:_nameInput];
+    [inputBg addSubview:_nameInput];
     
-    _pwInput = [[UITextField alloc] initWithFrame:CGRectMake(50, 80, 220, 30)];
+    _pwInput = [[UITextField alloc] initWithFrame:CGRectMake(10, 56, 252, 24)];
+    _pwInput.font = [UIFont systemFontOfSize:20];
+//    _pwInput.borderStyle = UITextBorderStyleLine;
+    _pwInput.clearButtonMode = UITextFieldViewModeWhileEditing;
     _pwInput.secureTextEntry = YES;
-    _pwInput.borderStyle = UITextBorderStyleRoundedRect;
     _pwInput.keyboardType = UIKeyboardTypeASCIICapable;
 //    _pwInput.enablesReturnKeyAutomatically = YES;
     _pwInput.returnKeyType = UIReturnKeyGo;
+    _pwInput.placeholder = LKString(password);
     _pwInput.delegate = self;
-    [self.view addSubview:_pwInput];
-    
-    _errInfo = [[UILabel alloc] initWithFrame:CGRectMake(50, 120, 220, 60)];
-    _errInfo.numberOfLines = 0;
-    _errInfo.text = _hint;
-    [self.view addSubview:_errInfo];
+    [inputBg addSubview:_pwInput];
+        
+    [UIView beginAnimations:nil context:nil];
+    [UIView setAnimationDuration:0.5];
+    inputBg.alpha = 1.0;
+    [UIView commitAnimations];
     
     [_nameInput becomeFirstResponder];
 }
@@ -72,7 +94,12 @@
     else if (textField == _pwInput) {
         _user = _nameInput.text;
         _pw = _pwInput.text;
-        [self startLogin];
+        [_pwInput resignFirstResponder];
+        
+        if (_user.length == 0 || _pw.length == 0)
+            showHUDTip(self.hud, LKString(logininfo));
+        else
+            [self startLogin];
     }
     return NO;
 }
@@ -80,6 +107,10 @@
 #pragma mark - inner method
 -(void)startLogin
 {
+    self.hud.mode = MBProgressHUDModeIndeterminate;
+    self.hud.detailsLabelText = LKString(logining);
+    [self.hud show:YES];
+    
     ASIFormDataRequest* loginRequest = [ASIFormDataRequest requestWithURL:linkkkUrl(@"/io/login/")];
     loginRequest.delegate = self;
     loginRequest.shouldRedirect = NO;
@@ -92,34 +123,37 @@
 
 - (void)requestFinished:(ASIHTTPRequest *)request
 {
-    LKLog(request.responseString);
-    
     json2obj(request.responseData,LoginResponse)
     
     if ([repObj.status isEqualToString:@"okay"]) {
         [self saveXSRFToken:request.responseCookies];
         LK_USER.userID = repObj.data.user_id;
         [LK_USER storeUserName:_user andPW:_pw];
+        
+        [self.hud hide:YES];
         [LK_UI loginSuccess];
     }
     else if ([repObj.status isEqualToString:@"oops"]) {
+        NSString * errStr;
         if (repObj.invalidations.__all__[0]) {
-            _errInfo.text = repObj.invalidations.__all__[0];
+            errStr = repObj.invalidations.__all__[0];
         }
         else if (repObj.invalidations.login[0]) {
-            _errInfo.text = repObj.invalidations.login[0];
+            errStr = repObj.invalidations.login[0];
         }
         else if (repObj.invalidations.password[0]) {
-            _errInfo.text = repObj.invalidations.password[0];
+            errStr = repObj.invalidations.password[0];
         }
+        
+        showHUDTip(self.hud, errStr);
     }
 }
 
 - (void)requestFailed:(ASIHTTPRequest *)request
 {
     LKLog([request responseString]);
-    
     LKLog([[request error] localizedDescription]);
+    showHUDTip(self.hud, LKString(netErr));
 }
 
 -(void)saveXSRFToken:(NSArray*)cookies

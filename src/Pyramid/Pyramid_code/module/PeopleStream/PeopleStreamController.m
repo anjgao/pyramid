@@ -58,7 +58,6 @@
     
     NSNumber * userID = ((Json_people*)_data[indexPath.row]).follow.id;
     PersonalController * peopleCtl = [[PersonalController alloc] init];
-    peopleCtl.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:peopleCtl animated:YES];
     [peopleCtl showProfileWithID:userID];
 }

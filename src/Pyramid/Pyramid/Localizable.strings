@@ -23,15 +23,21 @@
 "delete" = "删除";
 "reply" = "回复";
 "send" = "发送";
+"netErr" = "网络错误";
 
 // login
 "login" = "登录";
+"username" = "昵称 或 邮箱";
+"password" = "登录密码";
+"logining" = "登录中...";
+"logininfo" = "请填写登录信息";
 
 // personal profile
 "myProfile" = "我的资料";
-"friend" = "遇到朋友";
-"exps" = "参与经历";
-"hostexps" = "发起经历";
+"friend" = "朋友";//"遇到朋友";
+"exps" = "参与"; //"参与经历";
+"hostexps" = "发起";//"发起经历";
+"watchExp" = "关注";//"关注经历";
 
 // setting
 "setting" = "设置";

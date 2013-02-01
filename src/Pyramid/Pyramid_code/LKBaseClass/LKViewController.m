@@ -31,6 +31,7 @@
 {
     if (_hud == nil) {
         _hud = [[MBProgressHUD alloc] initWithView:self.view];
+        _hud.detailsLabelFont = [UIFont systemFontOfSize:20];
         [self.view addSubview:_hud];
     }
     return _hud;
@@ -39,12 +40,26 @@
 #pragma mark - navCtl
 -(void)pushCtl:(UIViewController*)ctl
 {
-    ctl.hidesBottomBarWhenPushed = YES;
-    
     if (self.navigationController)
         [self.navigationController pushViewController:ctl animated:YES];
     else
         [_navCtl pushViewController:ctl animated:YES];
 }
+
+#pragma mark
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
+{
+    return NO;
+}
+
+//-(NSUInteger)supportedInterfaceOrientations{
+//    return UIInterfaceOrientationMaskAllButUpsideDown;
+//}
+
+- (BOOL)shouldAutorotate
+{
+    return NO;
+}
+
 
 @end

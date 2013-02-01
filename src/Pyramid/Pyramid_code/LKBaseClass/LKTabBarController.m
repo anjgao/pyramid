@@ -58,4 +58,15 @@
     self.selectedIndex = index;
 }
 
+#pragma mark
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
+{
+    return NO;
+}
+
+- (BOOL)shouldAutorotate
+{
+    return NO;
+}
+
 @end

@@ -11,16 +11,16 @@
 
 @interface ExperienceController ()
 {
-    Json_experience * _exp;
+    NSNumber * _expID;
     UIWebView * _webView;
 }
 @end
 
 @implementation ExperienceController
-- (id)initWithExp:(Json_experience*)exp
+- (id)initWithExp:(NSNumber*)exp
 {
     self = [super initWithCapacity:20];
-    _exp = exp;
+    _expID = exp;
     return self;
 }
 
@@ -32,7 +32,7 @@
     _webView = [[UIWebView alloc] initWithFrame:self.view.bounds];
     [self.view addSubview:_webView];
     _webView.scalesPageToFit = YES;
-    NSString * urlPath = [@"/experience/" stringByAppendingString:[_exp.id stringValue]];
+    NSString * urlPath = [@"/experience/" stringByAppendingString:[_expID stringValue]];
     [_webView loadRequest:[NSURLRequest requestWithURL:linkkkUrl(urlPath)]];
 }
 

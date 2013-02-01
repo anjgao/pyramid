@@ -238,7 +238,7 @@
     }
     
     self.hud.mode = MBProgressHUDModeIndeterminate;
-    self.hud.labelText = @"sending";
+    self.hud.detailsLabelText = @"sending";
     self.hud.dimBackground = YES;
     [self.hud show:YES];
     

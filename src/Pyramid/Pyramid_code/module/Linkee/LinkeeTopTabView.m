@@ -21,7 +21,7 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        self.backgroundColor = [UIColor grayColor];
+        self.backgroundColor = UICOLOR(229, 229, 229);
         
         _exploreBtn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
         _exploreBtn.frame = CGRectMake(0, 2, 160, 40);

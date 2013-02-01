@@ -46,7 +46,8 @@ void printCookies(void)
     NSArray* cookies = cookieStorage.cookies;
     for (NSHTTPCookie * cookie in cookies ) {
         NSString* strDate = [df stringFromDate:cookie.expiresDate];
-        LKLog(@"%@  %@  %@  %@  %@", cookie.name, cookie.value, strDate,cookie.domain, cookie.path);
+        NSString * cookieStr = [NSString stringWithFormat:@"%@  %@  %@  %@  %@", cookie.name, cookie.value, strDate,cookie.domain, cookie.path];
+        LKLog(cookieStr);
     }
     LKLog(@"=====================");
 }

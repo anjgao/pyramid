@@ -27,10 +27,9 @@ UIImage* scaleImage(UIImage* image,CGSize newSize)
 void showHUDTip(MBProgressHUD* hud,NSString* text)
 {
     hud.mode = MBProgressHUDModeText;
-    hud.labelText = text;
+    hud.detailsLabelText = text;
     hud.dimBackground = NO;
     [hud.superview bringSubviewToFront:hud];
     [hud show:YES];
     [hud hide:YES afterDelay:1.5];
-
 }

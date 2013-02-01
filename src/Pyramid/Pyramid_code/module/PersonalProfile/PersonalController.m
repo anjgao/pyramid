@@ -12,6 +12,8 @@
 #import "PeopleStreamController.h"
 #import "ProfileLinkeeController.h"
 #import "ExperienceStreamController.h"
+#import "HostedExpStreamController.h"
+#import "WatchedExpStreamController.h"
 
 @interface PersonalController ()
 {
@@ -30,6 +32,7 @@
     UIButton * _friend;
     UIButton * _exp;
     UIButton * _hostedexp;
+    UIButton * _watch;
     UIImageView * _portrait;
     
     // request
@@ -94,18 +97,24 @@
     [_infoView addSubview:_story];
     
     _friend = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    _friend.frame = CGRectMake(10, 150, 90, 30);
+    _friend.frame = CGRectMake(0, 150, 80, 30);
     [_infoView addSubview:_friend];
     [_friend addTarget:self action:@selector(friendedPressed:) forControlEvents:UIControlEventTouchUpInside];
     
     _exp = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    _exp.frame = CGRectMake(115, 150, 90, 30);
+    _exp.frame = CGRectMake(80, 150, 80, 30);
     [_infoView addSubview:_exp];
     [_exp addTarget:self action:@selector(expPressed:) forControlEvents:UIControlEventTouchUpInside];
     
     _hostedexp = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    _hostedexp.frame = CGRectMake(220, 150, 90, 30);
+    _hostedexp.frame = CGRectMake(160, 150, 80, 30);
     [_infoView addSubview:_hostedexp];
+    [_hostedexp addTarget:self action:@selector(hostedexpPressed:) forControlEvents:UIControlEventTouchUpInside];
+    
+    _watch = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    _watch.frame = CGRectMake(240, 150, 80, 30);
+    [_infoView addSubview:_watch];
+    [_watch addTarget:self action:@selector(watchPressed:) forControlEvents:UIControlEventTouchUpInside];
     
     _portrait = [[UIImageView alloc] initWithFrame:CGRectMake(10, 10, 130, 130)];
     [_infoView addSubview:_portrait];
@@ -150,7 +159,8 @@
     
     [_friend setTitle:[LKString(friend) stringByAppendingFormat:@": %@",[_curProfile.stat.circle_count stringValue]] forState:UIControlStateNormal];
     [_exp setTitle:[LKString(exps) stringByAppendingFormat:@": %@",[_curProfile.stat.team_count stringValue]] forState:UIControlStateNormal];
-    [_hostedexp setTitle:[LKString(hostexps) stringByAppendingFormat:@": %@",[_curProfile.stat.hosted_team_count stringValue]] forState:UIControlStateNormal];
+    [_hostedexp setTitle:[LKString(hostexps) stringByAppendingFormat:@": %d",_curProfile.stat.hosted_experiences.count] forState:UIControlStateNormal];
+    [_watch setTitle:[LKString(watchExp) stringByAppendingFormat:@": %@",[_curProfile.stat.watched_exp_count stringValue]] forState:UIControlStateNormal];
 }
 
 -(void)requestPortrait
@@ -179,14 +189,24 @@
 -(void)friendedPressed:(UIButton*)btn
 {
     PeopleStreamController* psCtl = [[PeopleStreamController alloc] initWithID:_curPersonID];
-    psCtl.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:psCtl animated:YES];
 }
 
 -(void)expPressed:(UIButton*)btn
 {
     ExperienceStreamController * psCtl = [[ExperienceStreamController alloc] initWithUserID:_curPersonID];
-    psCtl.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:psCtl animated:YES];
+}
+
+-(void)hostedexpPressed:(UIButton*)btn
+{
+    HostedExpStreamController* psCtl = [[HostedExpStreamController alloc] initWithUserID:_curPersonID];
+    [self.navigationController pushViewController:psCtl animated:YES];
+}
+
+-(void)watchPressed:(UIButton*)btn
+{
+    WatchedExpStreamController * psCtl = [[WatchedExpStreamController alloc] initWithUserID:_curPersonID];
     [self.navigationController pushViewController:psCtl animated:YES];
 }
 

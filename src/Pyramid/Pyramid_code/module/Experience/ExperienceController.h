@@ -8,8 +8,6 @@
 
 #import "LKTableController.h"
 
-@class Json_experience;
-
 @interface ExperienceController : LKTableController
-- (id)initWithExp:(Json_experience*)exp;
+- (id)initWithExp:(NSNumber*)exp;
 @end

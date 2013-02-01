@@ -43,9 +43,10 @@
 -(void)loginSuccess
 {
     self.window.rootViewController = _tabCtl;
+    
     [UIView transitionWithView:self.window
                       duration:0.3
-                       options: UIViewAnimationOptionTransitionCrossDissolve | UIViewAnimationOptionCurveEaseOut
+                       options: UIViewAnimationOptionTransitionFlipFromRight | UIViewAnimationOptionCurveEaseOut
                     animations:nil
                     completion:nil];
     

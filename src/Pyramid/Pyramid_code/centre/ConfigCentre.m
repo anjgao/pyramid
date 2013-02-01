@@ -18,9 +18,13 @@
 @interface ConfigCentre()
 {
     BOOL                _isRetina;
+    BOOL                _isiPhone5;
+    
     NSDateFormatter*    _inputDateFormatter;
     NSDateFormatter*    _outputDateFormatter;
     NSDateFormatter*    _dayDateFormatter;
+    
+    
 }
 @end
 
@@ -44,8 +48,10 @@
     // statusBar color
 //    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackTranslucent]; 
     
-    // isRetina
+    //
     _isRetina = ([UIScreen instancesRespondToSelector:@selector(scale)] ? (2 == [[UIScreen mainScreen] scale]) : NO);
+    _isiPhone5 = [UIScreen instancesRespondToSelector:@selector(currentMode)] ?
+                    CGSizeEqualToSize(CGSizeMake(640, 1136), [[UIScreen mainScreen] currentMode].size) : NO;
     
     // date
     _dayDateFormatter = [[NSDateFormatter alloc] init];
@@ -54,6 +60,9 @@
     _inputDateFormatter = [[NSDateFormatter alloc] init];
     [_inputDateFormatter setDateFormat:@"yyyy'-'MM'-'dd'T'HH':'mm':'sszzz"];
     _outputDateFormatter = [[NSDateFormatter alloc] init];
+    
+    // common image
+    _linkeeBg = [[UIImage imageNamed:@"linkee_stream_bg"] resizableImageWithCapInsets:UIEdgeInsetsMake(10, 10, 10, 10)];
     
     return self;
 }
@@ -110,6 +119,11 @@
 -(BOOL)isRetina
 {
     return _isRetina;
+}
+
+-(BOOL)isiPhone5
+{
+    return _isiPhone5;
 }
 
 -(NSString*)dateDisplayString:(NSString*)date

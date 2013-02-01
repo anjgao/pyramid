@@ -65,14 +65,14 @@
 @end
 
 ///////////////////////////////////////////////////////////////////////////////////////
-@interface Json_current_profile : Jastor
+@interface Json_mini_profile : Jastor
 @property(nonatomic,retain) Json_image * cover_image;
 @property(nonatomic,retain) NSString * name;
 //@property(nonatomic,retain) NSString * resource_uri;
 @end
 
-@interface Json_activity : Jastor
-@property(nonatomic,retain) Json_current_profile * current_profile;
+@interface Json_mini_activity : Jastor
+@property(nonatomic,retain) Json_mini_profile * current_profile;
 @property(nonatomic,retain) NSNumber * id;
 //@property(nonatomic,retain) NSString * resource_uri;
 @end
@@ -95,7 +95,7 @@
 @end
 
 @interface Json_linkee : Jastor
-@property(nonatomic,retain) Json_activity * activity;
+@property(nonatomic,retain) Json_mini_activity * activity;
 @property(nonatomic,retain) Json_user * author;
 @property(nonatomic,retain) NSString * content;
 @property(nonatomic,retain) NSString * created;
@@ -138,7 +138,7 @@
 @end
 
 ///////////////////////////////////////////////////////////////////////////////////////
-@interface Json_activity_profile : Jastor
+@interface Json_profile : Jastor
 @property(nonatomic,retain) NSString * abstract;
 @property(nonatomic,retain) NSString * address;
 @property(nonatomic,retain) Json_image * cover_image;
@@ -149,8 +149,26 @@
 //@property(nonatomic,retain) NSString * resource_uri;
 @end
 
+@interface Json_activity : Jastor
+@property(nonatomic,retain) NSString * created;
+@property(nonatomic,retain) Json_profile * current_profile;
+@property(nonatomic,retain) NSNumber * id;
+@property(nonatomic,retain) NSString * modified;
+@property(nonatomic,retain) NSString * provider;
+//@property(nonatomic,retain) NSString * resource_uri;
+@end
+
+@interface Json_watchedExp : Jastor
+@property(nonatomic,retain) Json_activity * activity;
+@property(nonatomic,retain) NSString * created;
+@property(nonatomic,retain) NSString * provider;
+@property(nonatomic,retain) NSNumber * id;
+//@property(nonatomic,retain) NSString * resource_uri;
+@property(nonatomic,retain) NSNumber * user;
+@end
+
 @interface Json_experience : Jastor
-@property(nonatomic,retain) Json_activity_profile * activity_profile;
+@property(nonatomic,retain) Json_profile * activity_profile;
 @property(nonatomic,retain) NSNumber * id;
 //@property(nonatomic,retain) Json_team * team;     // todo
 @property(nonatomic,retain) NSString * user;
@@ -193,6 +211,16 @@
 @property(nonatomic,retain) NSArray * objects;
 @end
 
+@interface WatchedExpStreamResponse : Jastor
+//@property(nonatomic,retain) Json_meta * meta;
+@property(nonatomic,retain) NSArray * objects;
+@end
+
+@interface HostedExpStreamResponse : Jastor
+//@property(nonatomic,retain) Json_meta * meta;
+@property(nonatomic,retain) NSArray * objects;
+@end
+
 @interface PicUploadResponse : Jastor
 @property(nonatomic,retain) NSString * status;
 @property(nonatomic,retain) Json_pic_upload* data;
@@ -203,7 +231,7 @@
 @end
 
 @interface NewLinkeeResponse : Jastor
-@property(nonatomic,retain) Json_activity * activity;
+@property(nonatomic,retain) Json_mini_activity * activity;
 @property(nonatomic,retain) Json_user * author;
 @property(nonatomic,retain) NSString * content;
 @property(nonatomic,retain) NSString * created;

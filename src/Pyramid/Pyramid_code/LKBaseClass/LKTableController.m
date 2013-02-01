@@ -57,6 +57,7 @@
         _table.dataSource = self;
         _table.delegate = self;
         _table.autoresizingMask = UIViewAutoresizingFlexibleHeight;
+        _table.backgroundColor = [UIColor clearColor];
         [self.view addSubview:_table];
     }
     
@@ -161,6 +162,9 @@
     if (_bRefreshRequest) {
         [_refreshHeaderView egoRefreshScrollViewDataSourceDidFinishedLoading:_table];
         [_data removeAllObjects];
+        _table.tableFooterView = _footer;
+        _bLoadFinish = NO;
+        
         [self loadSuccess:request bRefresh:YES];
         [_table reloadData];
     }
@@ -177,6 +181,9 @@
         }
         [_table insertRowsAtIndexPaths:insertArr withRowAnimation:UITableViewRowAnimationNone];
     }
+    
+    if (_bLoadFinish && _data.count > 0)
+        _table.tableFooterView = nil;
 }
 
 - (void)dataLoadFailed:(ASIHTTPRequest *)request

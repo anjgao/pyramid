@@ -26,6 +26,14 @@
 @implementation LinkeeStreamController
 
 #pragma mark - LKTableControllerDelegate
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    
+    self.view.backgroundColor = UICOLOR(229,229,229);
+    _table.separatorStyle = UITableViewCellSeparatorStyleNone;
+}
+
 -(void)createCellSubviews:(UITableViewCell*)cell
 {
 //    UILabel* text = [[UILabel alloc] initWithFrame:CGRectMake(10, 70, cell.bounds.size.width-20, 0)];
@@ -60,6 +68,9 @@
     time.font = [UIFont systemFontOfSize:13];
     time.textColor = [UIColor grayColor];
     [cell.contentView addSubview:time];
+    
+    cell.backgroundView = [[UIImageView alloc] initWithImage:LK_CONFIG.linkeeBg];
+//    cell.selectedBackgroundView = [[UIImageView alloc] initWithImage:LK_CONFIG.linkeeBg];
 }
 
 -(void)fillCell:(UITableViewCell*)cell data:(id)data index:(NSIndexPath *)index forHeight:(BOOL)bForHeight

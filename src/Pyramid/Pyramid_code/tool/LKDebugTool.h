@@ -11,7 +11,7 @@
 
 // log
 #ifdef DEBUG
-#define LKLog(format, ...) NSLog(format, ## __VA_ARGS__)
+#define LKLog(format, ...) NSLog(@"%@",[NSString stringWithFormat:@"%@",format, ## __VA_ARGS__])
 #else
 #define LKLog(format, ...)
 #endif
