@@ -58,6 +58,12 @@
     self.view.autoresizingMask = UIViewAutoresizingFlexibleHeight;
 	
     [self createViews];
+    
+    if (_curPersonID) {
+        [self requestPersonalData];
+        _linkeeCtl.targetID = _curPersonID;
+        [_linkeeCtl firstLoad];
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -73,13 +79,9 @@
 }
 
 #pragma mark - public method
--(void)showProfileWithID:(NSNumber*)personID
+-(void)setUserID:(NSNumber*)personID
 {
     _curPersonID = personID;
-    [self requestPersonalData];
-    
-    _linkeeCtl.targetID = personID;
-    [_linkeeCtl refresh];
 }
 
 #pragma mark - inner method
@@ -87,13 +89,23 @@
 {
     _infoView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 190)];
     
-    _name = [[UILabel alloc] initWithFrame:CGRectMake(150, 10, 150, 30)];
+    _name = [[UILabel alloc] initWithFrame:CGRectMake(150, 10, 165, 30)];
+    _name.font = [UIFont systemFontOfSize:20];
+    _name.shadowColor = [UIColor whiteColor];
+    _name.shadowOffset = CGSizeMake(0, 1);
+    _name.backgroundColor = [UIColor clearColor];
     [_infoView addSubview:_name];
     
-    _area = [[UILabel alloc] initWithFrame:CGRectMake(150, 50, 150, 20)];
+    _area = [[UILabel alloc] initWithFrame:CGRectMake(150, 40, 165, 20)];
+    _area.textColor = [UIColor grayColor];
+    _area.font = [UIFont systemFontOfSize:14];
+    _area.backgroundColor = [UIColor clearColor];
     [_infoView addSubview:_area];
 
-    _story = [[UILabel alloc] initWithFrame:CGRectMake(150, 80, 150, 60)];
+    _story = [[UILabel alloc] initWithFrame:CGRectMake(150, 60, 165, 80)];
+    _story.font = [UIFont systemFontOfSize:14];
+    _story.numberOfLines = 0;
+    _story.backgroundColor = [UIColor clearColor];
     [_infoView addSubview:_story];
     
     _friend = [UIButton buttonWithType:UIButtonTypeRoundedRect];
@@ -139,7 +151,7 @@
     
     json2obj(request.responseData, PersonProfile)
     _curProfile = repObj;
-    self.title = _curProfile.username;
+//    self.title = _curProfile.username;
     [self fillView];
     [self requestPortrait];
 }
@@ -154,7 +166,7 @@
 -(void)fillView
 {
     _name.text = _curProfile.username;
-    _area.text = [_curProfile.district.name stringByAppendingString:_curProfile.district.city.name];
+    _area.text = [[_curProfile.district.city.name stringByAppendingString:@" "] stringByAppendingString:_curProfile.district.name];
     _story.text = _curProfile.story;
     
     [_friend setTitle:[LKString(friend) stringByAppendingFormat:@": %@",[_curProfile.stat.circle_count stringValue]] forState:UIControlStateNormal];

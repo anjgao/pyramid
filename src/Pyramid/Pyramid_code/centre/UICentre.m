@@ -14,7 +14,7 @@
 #import "LinkeeViewController.h"
 #import "NewLinkeeController.h"
 
-@interface UICentre()
+@interface UICentre() <UITabBarControllerDelegate>
 {
     PersonalController*    _personalController;
 }
@@ -36,7 +36,7 @@
 -(void)autoLoginFinish:(BOOL)bSuccess;
 {
     if (bSuccess) {
-        [_personalController showProfileWithID:LK_USER.userID];
+        [_personalController setUserID:LK_USER.userID];
     }
 }
 
@@ -50,39 +50,48 @@
                     animations:nil
                     completion:nil];
     
-    [_personalController showProfileWithID:LK_USER.userID];
+    [_personalController setUserID:LK_USER.userID];
 }
 
 #pragma mark - inner method
 -(void)initTabs
 {
     _tabCtl = [[LKTabBarController alloc] init];
+    _tabCtl.delegate = self;
+    UITabBar * tabBar = _tabCtl.tabBar;    
+    tabBar.backgroundImage = [LK_CONFIG linkeeBg];
+//    tabBar.tintColor = [UIColor whiteColor];
+//    tabBar.selectionIndicatorImage = [UIImage imageNamed:@"icon"];
 
     // tab 1
-    _personalController = [[PersonalController alloc] init];
-    LKNavigationController* nav1 = [[LKNavigationController alloc] initWithRootViewController:_personalController];
+    LinkeeViewController* ctl1 = [[LinkeeViewController alloc] init];
+    LKNavigationController* nav1 = [[LKNavigationController alloc] initWithRootViewController:ctl1];
     nav1.navigationBarHidden = YES;
     nav1.delegate = nav1;
-    
-    // tab 2
-    LinkeeViewController* ctl2 = [[LinkeeViewController alloc] init];
-    LKNavigationController* nav2 = [[LKNavigationController alloc] initWithRootViewController:ctl2];
-    nav2.navigationBarHidden = YES;
-    nav2.delegate = nav2;
+    nav1.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"linkee" image:nil tag:1];
     
     // tab 3
-    NewLinkeeController * ctl3 = [[NewLinkeeController alloc] init];
-    LKNavigationController* nav3 = [[LKNavigationController alloc] initWithRootViewController:ctl3];
+    UIViewController * nav2 = [[UIViewController alloc] init];
+    nav2.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"message" image:nil tag:2];
+    
+    // tab 2
+    _personalController = [[PersonalController alloc] init];
+    LKNavigationController* nav3 = [[LKNavigationController alloc] initWithRootViewController:_personalController];
+    nav3.navigationBarHidden = YES;
+    nav3.delegate = nav3;
+    nav3.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"me" image:nil tag:3];
 
     // tab 4
     SettingController* sc = [[SettingController alloc] init];
     LKNavigationController* nav4 = [[LKNavigationController alloc] initWithRootViewController:sc];
-
-    _tabCtl.viewControllers = @[nav1,nav2,nav3,nav4];
+    nav4.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"setting" image:nil tag:4];
     
-//    [_tabCtl createCustomBtns];
-//    _tabCtl.tabBar.hidden = YES;
-//    self.window.rootViewController = _tabCtl;   // layout main view
+    // for btn
+    UIViewController * btnCtl = [[UIViewController alloc] init];
+    btnCtl.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"new" image:nil tag:5];
+
+    // set controllers
+    _tabCtl.viewControllers = @[nav1,nav2,btnCtl,nav3,nav4];
 }
 
 -(void)startup:(BOOL)bLogin
@@ -107,6 +116,20 @@
                        options: UIViewAnimationOptionTransitionFlipFromLeft
                     animations:nil
                     completion:nil];
+}
+
+#pragma mark - UITabBarControllerDelegate
+- (BOOL)tabBarController:(UITabBarController *)tabBarController shouldSelectViewController:(UIViewController *)viewController
+{
+    if (viewController.tabBarItem.tag == 5){
+        NewLinkeeController * sendLinkeeCtl = [[NewLinkeeController alloc] init];
+        LKNavigationController* sendLinkeeNav = [[LKNavigationController alloc] initWithRootViewController:sendLinkeeCtl];
+        [_tabCtl presentModalViewController:sendLinkeeNav animated:YES];
+        return NO;
+    }
+    else {
+        return YES;
+    }
 }
 
 @end

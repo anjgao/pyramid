@@ -58,8 +58,8 @@
     
     NSNumber * userID = ((Json_people*)_data[indexPath.row]).follow.id;
     PersonalController * peopleCtl = [[PersonalController alloc] init];
+    [peopleCtl setUserID:userID];
     [self.navigationController pushViewController:peopleCtl animated:YES];
-    [peopleCtl showProfileWithID:userID];
 }
 
 #pragma mark - LKTableControllerDelegate

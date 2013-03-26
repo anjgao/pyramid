@@ -15,7 +15,6 @@
 
 @implementation ProfileLinkeeController
 
-#pragma mark - request data
 -(NSString*)requestUrlPath:(BOOL)bRefresh
 {
     if (_targetID == nil)

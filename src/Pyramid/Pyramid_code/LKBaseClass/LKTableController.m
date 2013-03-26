@@ -14,6 +14,7 @@
 {
     EGORefreshTableHeaderView *_refreshHeaderView;
     UIActivityIndicatorView * _footer;
+    UILabel* _footLabel;
     UITableViewCell * _cellForH;
     
     BOOL _bRefreshRequest;
@@ -58,14 +59,21 @@
         _table.delegate = self;
         _table.autoresizingMask = UIViewAutoresizingFlexibleHeight;
         _table.backgroundColor = [UIColor clearColor];
+        _table.separatorStyle = UITableViewCellSeparatorStyleNone;
         [self.view addSubview:_table];
     }
     
     if (nil == _footer) {
         _footer = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-        _footer.frame = CGRectMake(0, 0, _table.bounds.size.width, 60);
+        _footer.frame = CGRectMake(0, 0, _table.bounds.size.width, 30);
         _footer.hidesWhenStopped = YES;
-        _table.tableFooterView = _footer;
+        
+        _footLabel = [[UILabel alloc] initWithFrame:_footer.bounds];
+        _footLabel.text = LKString(upmore);
+        _footLabel.textAlignment = NSTextAlignmentCenter;
+        _footLabel.font = [UIFont systemFontOfSize:13];
+        _footLabel.textColor = UICOLOR(150, 150, 150);
+        _footLabel.backgroundColor = [UIColor clearColor];
     }
     
     if (nil == _refreshHeaderView) {
@@ -86,6 +94,12 @@
     [_table setContentOffset:CGPointMake(0, -65) animated:NO];
     [_refreshHeaderView egoRefreshScrollViewDidScroll:_table];
 	[_refreshHeaderView egoRefreshScrollViewDidEndDragging:_table];
+}
+
+-(void)firstLoad
+{
+    if (_data.count == 0)
+        [self requestData:NO];
 }
 
 -(UITableView*)getTable
@@ -126,13 +140,13 @@
     return _cellForH.frame.size.height;
 }
 
-- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if ( !_bLoadFinish && indexPath.row == _data.count-1 )
-    {
-        [self requestData:NO];
-    }
-}
+//- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    if ( !_bLoadFinish && indexPath.row == _data.count-1 )
+//    {
+//        [self requestData:NO];
+//    }
+//}
 
 #pragma mark - request data
 -(void)requestData:(BOOL)bRefresh
@@ -151,8 +165,10 @@
     [_curRequest startAsynchronous];
     
     _bRefreshRequest = bRefresh;
-    if (!bRefresh)
+    if (!bRefresh) {
+        _table.tableFooterView = _footer;
         [_footer startAnimating];
+    }
 }
 
 - (void)dataLoadFinished:(ASIHTTPRequest *)request
@@ -182,8 +198,10 @@
         [_table insertRowsAtIndexPaths:insertArr withRowAnimation:UITableViewRowAnimationNone];
     }
     
-    if (_bLoadFinish && _data.count > 0)
+    if (_bLoadFinish)
         _table.tableFooterView = nil;
+    else
+        _table.tableFooterView = _footLabel;
 }
 
 - (void)dataLoadFailed:(ASIHTTPRequest *)request
@@ -229,12 +247,17 @@
 #pragma mark - UIScrollViewDelegate Methods
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
-	[_refreshHeaderView egoRefreshScrollViewDidScroll:scrollView];    
+	[_refreshHeaderView egoRefreshScrollViewDidScroll:scrollView];
 }
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
 {
 	[_refreshHeaderView egoRefreshScrollViewDidEndDragging:scrollView];
+    
+    if ( !_bLoadFinish )
+        if ( scrollView.contentOffset.y > scrollView.bounds.size.height
+            && scrollView.contentOffset.y + scrollView.bounds.size.height > scrollView.contentSize.height )
+            [self requestData:NO];
 }
 
 #pragma mark - LKTableControllerDelegate
@@ -260,7 +283,7 @@
 
 -(void)loadFailed:(ASIHTTPRequest *)request bRefresh:(BOOL)bRefresh
 {
-    
+    showHUDTip(self.hud, LKString(netErr));
 }
 
 -(void)cellItemLoadFinish:(ASIHTTPRequest*)request

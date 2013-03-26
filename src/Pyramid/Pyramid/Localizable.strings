@@ -24,6 +24,7 @@
 "reply" = "回复";
 "send" = "发送";
 "netErr" = "网络错误";
+"upmore" = "上拉加载";
 
 // login
 "login" = "登录";

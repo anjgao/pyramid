@@ -31,7 +31,6 @@
     [super viewDidLoad];
     
     self.view.backgroundColor = UICOLOR(229,229,229);
-    _table.separatorStyle = UITableViewCellSeparatorStyleNone;
 }
 
 -(void)createCellSubviews:(UITableViewCell*)cell
@@ -248,8 +247,8 @@
     NSIndexPath * index = [_table indexPathForCell:cell];
     Json_linkee * item = [self getCellLinkee: _data[index.row]];
     PersonalController * personCtrl = [[PersonalController alloc] init];
+    [personCtrl setUserID:item.author.id];
     [self pushCtl:personCtrl];
-    [personCtrl showProfileWithID:item.author.id];
 }
 
 #pragma mark - UITableView
@@ -268,8 +267,8 @@
 {
     NSNumber * num = (NSNumber*)phoneNumber;
     PersonalController * personCtrl = [[PersonalController alloc] init];
+    [personCtrl setUserID:num];
     [self pushCtl:personCtrl];
-    [personCtrl showProfileWithID:num];
 }
 
 @end

@@ -64,6 +64,18 @@
     // common image
     _linkeeBg = [[UIImage imageNamed:@"linkee_stream_bg"] resizableImageWithCapInsets:UIEdgeInsetsMake(10, 10, 10, 10)];
     
+    // tabbar item
+//    [[UITabBarItem appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
+//                                                       [UIFont fontWithName:@"AmericanTypewriter" size:20.0f], UITextAttributeFont,
+//                                                       [UIColor yellowColor], UITextAttributeTextColor,
+//                                                       [UIColor redColor], UITextAttributeTextShadowColor,
+//                                                       [NSValue valueWithUIOffset:UIOffsetMake(0.0f, 1.0f)], UITextAttributeTextShadowOffset,
+//                                                       nil] forState:UIControlStateNormal];
+    
+    [[UITabBarItem appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
+                                                       [UIColor blackColor], UITextAttributeTextColor,
+                                                       nil] forState:UIControlStateSelected];
+    
     return self;
 }
 

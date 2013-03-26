@@ -30,7 +30,6 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
-    _table.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self refresh];
 }
 
@@ -77,12 +76,6 @@
         [self requestCellItem:expProfile.cover_image.medium userInfo:imgDic];
     else
         [self requestCellItem:expProfile.cover_image.small userInfo:imgDic];
-}
-
-
--(void)loadFailed:(ASIHTTPRequest *)request bRefresh:(BOOL)bRefresh
-{
-    
 }
 
 -(void)cellItemLoadFinish:(ASIHTTPRequest*)request

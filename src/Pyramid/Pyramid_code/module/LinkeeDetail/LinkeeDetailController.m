@@ -31,6 +31,7 @@
     TTTAttributedLabel * _content;
     UILabel * _time;
     UILabel * _exp;
+    UIView * _endLine;
     
     //
     ReplyStreamController * _reply;
@@ -153,6 +154,10 @@
         startY += (18+10);
         [_linkeeView addSubview:_exp];
     }
+    
+    _endLine = [[UIView alloc] initWithFrame:CGRectMake(20, startY-1, 280, 1)];
+    _endLine.backgroundColor = UICOLOR(230, 230, 220);
+    [_linkeeView addSubview:_endLine];
     
     _linkeeView.frame = CGRectMake(0, 0, w, startY);
 //    [self.view addSubview:_linkeeView];
@@ -301,6 +306,9 @@
     centre = _exp.center;
     centre.y += newOffset;
     _exp.center = centre;
+    centre = _endLine.center;
+    centre.y += newOffset;
+    _endLine.center = centre;
     
     CGRect lvFrame = _linkeeView.frame;
     lvFrame.size.height += newOffset;
@@ -327,8 +335,8 @@
 -(void)headClicked:(UITapGestureRecognizer*)gr
 {
     PersonalController * personCtrl = [[PersonalController alloc] init];
+    [personCtrl setUserID:_linkee.author.id];
     [self pushCtl:personCtrl];
-    [personCtrl showProfileWithID:_linkee.author.id];
 }
 
 #pragma mark - ReplyCtlDelegate
@@ -412,8 +420,8 @@
 {
     NSNumber * num = (NSNumber*)phoneNumber;
     PersonalController * personCtrl = [[PersonalController alloc] init];
+    [personCtrl setUserID:num];
     [self pushCtl:personCtrl];
-    [personCtrl showProfileWithID:num];
 }
 
 @end

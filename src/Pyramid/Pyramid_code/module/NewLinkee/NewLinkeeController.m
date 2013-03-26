@@ -41,6 +41,7 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    self.view.backgroundColor = [UIColor whiteColor];
     
     _input = [[UITextView alloc] initWithFrame:CGRectMake(10, 10, self.view.bounds.size.width - 20, 100)];
     _input.layer.borderWidth = 2;
@@ -65,7 +66,7 @@
 
 -(void)cancelPressed:(id)sender
 {
-    [_input resignFirstResponder];
+    [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
 }
 
 //////////////////////////////////////////////////////////////////////////////
@@ -79,7 +80,7 @@
     actionSheet.cancelButtonIndex = 2;
     actionSheet.delegate = self;
     actionSheet.actionSheetStyle = UIActionSheetStyleBlackTranslucent;
-    [actionSheet showFromTabBar:self.tabBarController.tabBar];
+    [actionSheet showInView:self.view];
     return;
 }
 

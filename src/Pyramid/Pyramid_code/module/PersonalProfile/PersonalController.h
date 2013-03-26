@@ -9,5 +9,5 @@
 #import "LKViewController.h"
 
 @interface PersonalController : LKViewController
--(void)showProfileWithID:(NSNumber*)personID;
+-(void)setUserID:(NSNumber*)personID;
 @end

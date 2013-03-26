@@ -36,7 +36,7 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
-    [self refresh];
+    [self firstLoad];
 }
 
 - (void)didReceiveMemoryWarning
@@ -53,8 +53,8 @@
     NSIndexPath * index = [_table indexPathForCell:cell];
     Json_reply * item = (Json_reply*)_data[index.row];
     PersonalController * personCtrl = [[PersonalController alloc] init];
+    [personCtrl setUserID:item.author.id];
     [self pushCtl:personCtrl];
-    [personCtrl showProfileWithID:item.author.id];
 }
 
 #pragma mark - UITableView
@@ -168,11 +168,6 @@
     }
 }
 
--(void)loadFailed:(ASIHTTPRequest *)request bRefresh:(BOOL)bRefresh
-{
-    
-}
-
 -(void)cellItemLoadFinish:(ASIHTTPRequest*)request
 {
     NSIndexPath * index = [request.userInfo objectForKey:@"index"];
@@ -194,8 +189,8 @@
 {
     NSNumber * num = (NSNumber*)phoneNumber;
     PersonalController * personCtrl = [[PersonalController alloc] init];
+    [personCtrl setUserID:num];
     [self pushCtl:personCtrl];
-    [personCtrl showProfileWithID:num];
 }
 
 @end

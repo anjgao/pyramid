@@ -46,8 +46,8 @@
     inputBg.alpha = 0.0;
     [self.view addSubview:inputBg];
     
-    _nameInput = [[UITextField alloc] initWithFrame:CGRectMake(10, 11, 252, 24)];
-    _nameInput.font = [UIFont systemFontOfSize:20];
+    _nameInput = [[UITextField alloc] initWithFrame:CGRectMake(10, 12, 252, 22)];
+    _nameInput.font = [UIFont systemFontOfSize:18];
 //    _nameInput.borderStyle = UITextBorderStyleLine;
     _nameInput.clearButtonMode = UITextFieldViewModeWhileEditing;
     _nameInput.autocapitalizationType = UITextAutocapitalizationTypeNone;
@@ -59,8 +59,8 @@
     _nameInput.delegate = self;
     [inputBg addSubview:_nameInput];
     
-    _pwInput = [[UITextField alloc] initWithFrame:CGRectMake(10, 56, 252, 24)];
-    _pwInput.font = [UIFont systemFontOfSize:20];
+    _pwInput = [[UITextField alloc] initWithFrame:CGRectMake(10, 57, 252, 22)];
+    _pwInput.font = [UIFont systemFontOfSize:18];
 //    _pwInput.borderStyle = UITextBorderStyleLine;
     _pwInput.clearButtonMode = UITextFieldViewModeWhileEditing;
     _pwInput.secureTextEntry = YES;
