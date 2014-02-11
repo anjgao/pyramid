@@ -57,7 +57,7 @@
     _nameInput.returnKeyType = UIReturnKeyNext;
     _nameInput.placeholder = LKString(username);
     _nameInput.delegate = self;
-    [inputBg addSubview:_nameInput];
+    [inputBg addSubview:_nameInput];        // git测试：master
     
     _pwInput = [[UITextField alloc] initWithFrame:CGRectMake(10, 57, 252, 22)];
     _pwInput.font = [UIFont systemFontOfSize:18];
