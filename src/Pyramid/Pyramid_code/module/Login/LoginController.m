@@ -55,7 +55,7 @@
     _nameInput.autocorrectionType = UITextAutocorrectionTypeNo;
 //    _nameInput.enablesReturnKeyAutomatically = YES;
     _nameInput.returnKeyType = UIReturnKeyNext;
-    _nameInput.placeholder = LKString(username);
+    _nameInput.placeholder = LKString(username);    // git 测试
     _nameInput.delegate = self;
     [inputBg addSubview:_nameInput];
     
