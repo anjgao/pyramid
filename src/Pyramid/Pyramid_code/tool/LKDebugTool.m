@@ -33,7 +33,7 @@ void printViewTree(UIView* rootView)
     NSMutableString* str = [NSMutableString stringWithCapacity:64];
     LKLog(@"=========== view tree start ============");
     printViewTreeWithDeep(rootView,0,str);
-    LKLog(@"===========  view tree end  ============");  // for git test
+    LKLog(@"===========  view tree end  ============");  // for git testttt
 }
 
 void printCookies(void)
